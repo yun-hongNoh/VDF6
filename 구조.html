@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>구조 — VDF 6.0</title><meta name="description" content="VDF 6.0이 어떻게 움직이는가">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet"><style>:root{
+--ground:#E4E5E3; --ground-2:#EDEEEC; --surface:#F7F7F6; --line:#CFD1CE; --line-2:#B9BCB8;
+--ink:#212528; --ink-2:#5C6167; --ink-3:#868B90;
+--key:#1F6F68; --key-bg:#DDE9E7; --key-line:#8FBAB5;
+--warn:#9A5320; --warn-bg:#F2E4D8;
+--ok:#2E6B3E; --ok-bg:#DFE9E0;
+--r:3px; --shadow:6px 8px 18px -10px rgba(33,37,40,.28);
+--f:"IBM Plex Sans KR",system-ui,sans-serif; --m:"IBM Plex Mono",monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--f);color:var(--ink);font-size:15px;line-height:1.65;
+background:var(--ground);
+background-image:linear-gradient(180deg,var(--ground-2) 0%,var(--ground) 46%,var(--ground) 100%);
+background-attachment:fixed;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:19px;font-weight:600;letter-spacing:-.01em;margin:0}
+.eyebrow{font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 6px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.mono{font-family:var(--m);font-size:12px;line-height:1.7}
+a{color:var(--key)}
+:focus-visible{outline:2px solid var(--key);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+button{font-family:var(--f);font-size:13px;padding:6px 13px;border:1px solid var(--line-2);border-radius:var(--r);background:var(--surface);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--ink-3)}
+nav{display:flex;gap:2px;margin:0 0 24px}
+nav a{font-size:13px;padding:7px 14px;text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+nav a.here{background:var(--key);border-color:var(--key);color:#fff}
+.tabs{display:flex;gap:2px;margin:0 0 18px;flex-wrap:wrap}
+.tabs button{font-size:13px;padding:7px 15px}
+.tabs button.on{background:var(--key-bg);border-color:var(--key-line);color:var(--key)}
+.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start}
+.info{padding:18px 20px;position:sticky;top:20px}
+.info h3{font-size:15px;font-weight:600;margin:6px 0 8px}
+.info p{font-size:13.5px;color:var(--ink-2);margin:0;line-height:1.7}
+.info ul{margin:12px 0 0;padding-left:18px;font-size:13px;color:var(--ink-2);line-height:1.9}
+.pwho{font-family:var(--m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.nd,.gn{cursor:pointer}
+.nd rect,.gn rect{transition:fill .12s,stroke .12s}
+.nd.sel rect,.gn.sel rect{fill:var(--key-bg);stroke:var(--key)}
+.nd.sel text,.gn.sel text{fill:var(--key)}
+.bx{fill:var(--surface);stroke:var(--line-2);stroke-width:1}
+.tx{font-family:var(--f);fill:var(--ink);font-size:12.5px;font-weight:500}
+.ts{font-family:var(--f);fill:var(--ink-2);font-size:11px}
+.ln{stroke:var(--line-2);stroke-width:1;fill:none}
+.lk{stroke:var(--key);stroke-width:1.1;fill:none;stroke-dasharray:4 3}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:0 0 18px}
+.sn{font-family:var(--m);font-size:10px;letter-spacing:.1em;color:var(--ink-3);padding-top:16px}
+.sb{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:14px 16px}
+.step.end .sb{border-color:var(--key-line);background:var(--key-bg)}
+.sb h3{font-size:14px;font-weight:600;margin:0 0 4px}
+.sb p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.7}
+.q{margin:0 0 10px!important;color:var(--ink)!important}
+.hint{margin:10px 0 0!important;font-size:12.5px!important;color:var(--ink-3)!important}
+.opts2{display:flex;gap:8px;flex-wrap:wrap}
+.opt{flex:1 1 180px;text-align:left;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.opt.on{background:var(--key-bg);border-color:var(--key);color:var(--key)}
+.ot{font-size:13.5px;font-weight:500}
+.os{font-size:12px;color:var(--ink-3)}
+.opt.on .os{color:var(--key)}
+.cds{display:flex;gap:6px;flex-wrap:wrap}
+.cd{width:104px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink-2)}
+.cd.on{background:var(--key-bg);border-color:var(--key-line);color:var(--key)}
+.cd.dim{opacity:.5}
+.ct{font-size:11.5px;font-weight:500}
+.cs{font-size:10.5px;color:var(--ink-3)}
+.fr{margin:0;padding-left:0;list-style:none}
+.fr li{padding:7px 0;border-top:1px solid var(--line)}
+.fr li:first-child{border-top:none;padding-top:0}
+.fr code{font-family:var(--m);font-size:11.5px;color:var(--ink);display:block;word-break:break-word}
+.fr span{font-size:12px;color:var(--ink-3)}
+pre.pr{margin:0;font-family:var(--m);font-size:11.5px;line-height:1.75;white-space:pre-wrap;word-break:break-word;color:var(--ink-2);background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 13px}
+pre.pr .k{color:var(--ink-3)}
+.wait{font-size:13px;color:var(--ink-3);padding-left:56px}
+.lead{color:var(--ink-2);font-size:14px;margin:0 0 18px;max-width:64ch}
+@media(max-width:720px){.two{grid-template-columns:1fr}.info{position:static}}
+
+.its{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+.itb{flex:1 1 128px;padding:9px 10px;display:flex;flex-direction:column;gap:2px;text-align:left}
+.itb.on{background:var(--key-bg);border-color:var(--key);color:var(--key)}
+.itn{font-size:13px;font-weight:500}
+.itf{font-family:var(--m);font-size:10.5px;color:var(--ink-3)}
+.itb.on .itf{color:var(--key);opacity:.8}
+.itp{border-top:1px solid var(--line);padding-top:12px}
+.itt{margin:0 0 12px!important;font-size:13.5px!important;color:var(--ink)!important}
+.itl{font-family:var(--m);font-size:10px!important;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)!important;margin:12px 0 6px!important}
+.itl code{text-transform:none;letter-spacing:0;background:var(--ground-2);padding:1px 5px;border-radius:2px;font-size:10.5px}
+.itx{margin:0;padding:0;list-style:none;background:#fff;border:1px solid var(--line);border-radius:var(--r)}
+.itx li{padding:7px 11px;font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);line-height:1.6}
+.itx li:first-child{border-top:none}
+.cd.bad{border-color:var(--warn);color:var(--warn)}
+.guard{margin:10px 0 0!important;padding:9px 12px;background:var(--warn-bg);color:var(--warn)!important;border-left:3px solid var(--warn);border-radius:0 var(--r) var(--r) 0;font-size:13px!important}
+</style></head><body><div class="wrap"><nav><a href="index.html">검사기</a><a class="here" href="구조.html">구조</a></nav>
+<p class="eyebrow">VDF 6.0</p><h1>VDF는 이렇게 움직인다</h1>
+<p class="lead">노트를 넣으면 슬라이드가 나오기까지 무슨 일이 일어나는지 본다. 직접 눌러보면서 따라갈 수 있다.</p>
+<div class="tabs"><button id="t-flow" class="on" onclick="tab('flow')">전체 흐름</button>
+<button id="t-tree" onclick="tab('tree')">단계별로 정하기</button>
+<button id="t-onto" onclick="tab('onto')">무엇과 무엇이 묶이나</button></div>
+
+<section id="s-flow"><div class="two">
+<figure class="panel" style="padding:20px 12px;margin:0"><svg id="pipe" viewBox="0 0 440 600" role="group" aria-label="전체 흐름"><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="context-stroke" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<g class="nd" data-k="note" onclick="pick('note')" tabindex="0" role="button"><rect x="153" y="20" width="180" height="42" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="150" y="16" width="180" height="42" rx="3"/><text class="tx" x="240.0" y="37.0" text-anchor="middle" dominant-baseline="central">강의노트</text></g>
+<line class="ln" x1="240" y1="58" x2="240" y2="82" marker-end="url(#a)"/>
+<g class="nd" data-k="gpt" onclick="pick('gpt')" tabindex="0" role="button"><rect x="153" y="90" width="180" height="50" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="150" y="86" width="180" height="50" rx="3"/><text class="tx" x="240.0" y="105.0" text-anchor="middle" dominant-baseline="central">Custom GPT</text><text class="ts" x="240.0" y="121.0" text-anchor="middle" dominant-baseline="central">AI가 판단</text></g>
+<line class="ln" x1="240" y1="136" x2="240" y2="160" marker-end="url(#a)"/>
+<g class="nd" data-k="out" onclick="pick('out')" tabindex="0" role="button"><rect x="153" y="168" width="180" height="50" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="150" y="164" width="180" height="50" rx="3"/><text class="tx" x="240.0" y="183.0" text-anchor="middle" dominant-baseline="central">계획 두 벌</text><text class="ts" x="240.0" y="199.0" text-anchor="middle" dominant-baseline="central">내가 볼 것 / 검사기가 볼 것</text></g>
+<line class="ln" x1="240" y1="214" x2="240" y2="238" marker-end="url(#a)"/>
+<g class="nd" data-k="insp" onclick="pick('insp')" tabindex="0" role="button"><rect x="153" y="246" width="180" height="50" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="150" y="242" width="180" height="50" rx="3"/><text class="tx" x="240.0" y="261.0" text-anchor="middle" dominant-baseline="central">검사기</text><text class="ts" x="240.0" y="277.0" text-anchor="middle" dominant-baseline="central">규칙으로 확인</text></g>
+<line class="ln" x1="240" y1="292" x2="240" y2="316" marker-end="url(#a)"/>
+<g class="nd" data-k="pr" onclick="pick('pr')" tabindex="0" role="button"><rect x="153" y="324" width="180" height="42" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="150" y="320" width="180" height="42" rx="3"/><text class="tx" x="240.0" y="341.0" text-anchor="middle" dominant-baseline="central">그림 프롬프트</text></g>
+<line class="ln" x1="240" y1="362" x2="240" y2="386" marker-end="url(#a)"/>
+<g class="nd" data-k="gem" onclick="pick('gem')" tabindex="0" role="button"><rect x="153" y="394" width="180" height="42" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="150" y="390" width="180" height="42" rx="3"/><text class="tx" x="240.0" y="411.0" text-anchor="middle" dominant-baseline="central">제미나이 앱</text></g>
+<line class="ln" x1="240" y1="432" x2="240" y2="456" marker-end="url(#a)"/>
+<g class="nd" data-k="ppt" onclick="pick('ppt')" tabindex="0" role="button"><rect x="153" y="464" width="180" height="42" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="150" y="460" width="180" height="42" rx="3"/><text class="tx" x="240.0" y="481.0" text-anchor="middle" dominant-baseline="central">PowerPoint</text></g>
+<g class="nd" data-k="rules" onclick="pick('rules')" tabindex="0" role="button"><rect x="11" y="168" width="120" height="50" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="8" y="164" width="120" height="50" rx="3"/><text class="tx" x="68.0" y="183.0" text-anchor="middle" dominant-baseline="central">rules.json</text><text class="ts" x="68.0" y="199.0" text-anchor="middle" dominant-baseline="central">규칙이 사는 곳</text></g>
+<path class="lk" d="M132 178 H140 V111 H144" marker-end="url(#a)"/>
+<path class="lk" d="M132 200 H140 V267 H144" marker-end="url(#a)"/>
+</svg></figure>
+<div class="panel info" id="pinfo"></div></div>
+<p class="hint" style="margin:16px 0 0;font-size:13px;color:var(--ink-3)">상자를 누르면 그 단계에서 무슨 일이 일어나는지, 누가 손을 대는지 나온다.</p></section>
+
+<section id="s-tree" hidden>
+<p class="lead">블록 하나를 직접 태워본다. 대부분은 두 번째 관문에서 글으로 되돌아간다.</p>
+<div style="margin:0 0 14px"><button onclick="treeReset()">처음부터</button></div>
+<div id="tree"></div></section>
+
+<section id="s-onto" hidden><div class="two">
+<figure class="panel" style="padding:20px 12px;margin:0"><svg id="graph" viewBox="0 0 440 470" role="group" aria-label="무엇과 무엇이 묶이나"><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="context-stroke" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<g class="gn" data-k="blk" onclick="node('blk')" tabindex="0" role="button"><rect x="163" y="16" width="120" height="42" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="160" y="12" width="120" height="42" rx="3"/><text class="tx" x="220.0" y="33.0" text-anchor="middle" dominant-baseline="central">블록</text></g>
+<path class="ln" d="M220 54 V72 H86 V92" marker-end="url(#a)"/>
+<path class="ln" d="M220 54 V72 H354 V92" marker-end="url(#a)"/>
+<g class="gn" data-k="info" onclick="node('info')" tabindex="0" role="button"><rect x="19" y="100" width="140" height="46" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="16" y="96" width="140" height="46" rx="3"/><text class="tx" x="86.0" y="113.0" text-anchor="middle" dominant-baseline="central">글</text><text class="ts" x="86.0" y="129.0" text-anchor="middle" dominant-baseline="central">항상</text></g>
+<g class="gn" data-k="bg" onclick="node('bg')" tabindex="0" role="button"><rect x="287" y="100" width="140" height="46" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="284" y="96" width="140" height="46" rx="3"/><text class="tx" x="354.0" y="113.0" text-anchor="middle" dominant-baseline="central">그림</text><text class="ts" x="354.0" y="129.0" text-anchor="middle" dominant-baseline="central">있을 수도 없을 수도</text></g>
+<line class="ln" x1="86" y1="142" x2="86" y2="166" marker-end="url(#a)"/>
+<line class="ln" x1="354" y1="142" x2="354" y2="166" marker-end="url(#a)"/>
+<g class="gn" data-k="it" onclick="node('it')" tabindex="0" role="button"><rect x="11" y="174" width="156" height="50" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="8" y="170" width="156" height="50" rx="3"/><text class="tx" x="86.0" y="189.0" text-anchor="middle" dominant-baseline="central">항목 관계</text><text class="ts" x="86.0" y="205.0" text-anchor="middle" dominant-baseline="central">여섯 개</text></g>
+<g class="gn" data-k="card" onclick="node('card')" tabindex="0" role="button"><rect x="279" y="174" width="156" height="50" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="276" y="170" width="156" height="50" rx="3"/><text class="tx" x="354.0" y="189.0" text-anchor="middle" dominant-baseline="central">화면 배치</text><text class="ts" x="354.0" y="205.0" text-anchor="middle" dominant-baseline="central">6가지</text></g>
+<line class="lk" x1="168" y1="195" x2="270" y2="195" marker-end="url(#a)"/>
+<text class="ts" x="219" y="182" text-anchor="middle">제약</text>
+<line class="ln" x1="354" y1="220" x2="354" y2="252" marker-end="url(#a)"/>
+<g class="gn" data-k="sub" onclick="node('sub')" tabindex="0" role="button"><rect x="279" y="260" width="156" height="46" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="276" y="256" width="156" height="46" rx="3"/><text class="tx" x="354.0" y="273.0" text-anchor="middle" dominant-baseline="central">그릴 것</text><text class="ts" x="354.0" y="289.0" text-anchor="middle" dominant-baseline="central">성격 5가지</text></g>
+<line class="ln" x1="354" y1="302" x2="354" y2="330" marker-end="url(#a)"/>
+<g class="gn" data-k="frag" onclick="node('frag')" tabindex="0" role="button"><rect x="279" y="338" width="156" height="46" rx="3" fill="#212528" opacity=".06"/><rect class="bx" x="276" y="334" width="156" height="46" rx="3"/><text class="tx" x="354.0" y="351.0" text-anchor="middle" dominant-baseline="central">덧붙는 문구</text><text class="ts" x="354.0" y="367.0" text-anchor="middle" dominant-baseline="central">성격이 정한다</text></g>
+<path class="ln" d="M276 195 H258 V357 H270" marker-end="url(#a)"/>
+</svg></figure>
+<div class="panel info" id="ginfo"></div></div>
+<p class="hint" style="margin:16px 0 0;font-size:13px;color:var(--ink-3)">상자를 누르면 설명이 나온다. 점선은 「이건 저걸 못 쓰게 막는다」는 뜻이다.</p></section></div>
+<script>const RULES={"cards": {"A": {"ko": "에셋세트 · 무배경", "cap": 4, "model": "gemini", "status": "verified", "use": ["같은 것의 여러 변형", "같은 사물의 단계별 부품", "기준점 + 변형"], "no": ["정보 유형이 분류·계층이고 분류가 둘 이상일 때 — 한 줄에 놓으면 분류 경계가 사라진다(FT-3)", "서로 다른 사물을 병렬로 늘어놓을 때 — '여러 항목 병렬'을 그렇게 읽지 않는다. 같은 사물의 변형이어야 한다(R4)."], "bg": "uniform solid light-gray seamless background", "cp": "a single row, lower 10% clear", "st": "premium 3D educational render, matte materials, soft directional key light from upper-left, no baked shadows", "ng": "text-free, no readable text, no letters, no numbers, no labels, no logos, no brand names, no overlapping objects, no environmental props", "ex": "four variations of a paper clip, all clearly made from the same bent wire form, each repurposed as a different object, evenly spaced in a single row, three-quarter angle", "frs": [{"id": "identical_scale", "f": "identical scale", "when": "형태 변화가 학습 포인트", "ex": "크기 변화가 학습 포인트"}, {"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "브랜드 연상이 강한 대상군은 항상. 휴대기기·웨어러블·차량·가전·컴퓨터.", "ex": ""}, {"id": "same_form_anchor", "f": "all clearly made from the same bent wire form", "when": "같은 사물의 변형을 나열할 때. 카드 A의 기본 용법이므로 사실상 항상.", "ex": ""}], "rep": "클립 4종"}, "B": {"ko": "개념 · 단일 오브젝트 · 무배경", "cap": 3, "model": "gemini", "status": "verified", "use": ["추상 원리를 한 컷으로", "대비되는 두 상태를 한 오브젝트에"], "no": [], "bg": "uniform solid light-gray seamless background, subtle floor reflection", "cp": "the object centered, lower 10% clear", "st": "premium 3D educational render, matte materials, soft key light", "ng": "text-free, no readable text, no labels, no environmental detail, no decorative HUD rings, no floating data readouts", "ex": "a balance scale, tilted, a plain gray card on the raised pan and a vivid accent-colored card with a check badge on the lowered pan", "frs": [{"id": "superseded_gray", "f": "the superseded items rendered in flat desaturated gray, clearly unused", "when": "과거/현재 대비를 그릴 때", "ex": ""}, {"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": "캡슐 커피머신"}, "C": {"ko": "조건 대조 · 좌우 분할", "cap": 3, "model": "gemini", "status": "verified_after_fix", "use": ["조건 A와 B의 결과 차이가 학습 포인트"], "no": [], "bg": "plain seamless background, environment barely visible", "cp": "both halves sit on one single continuous unbroken floor plane with no seam or line between them, identical camera angle and scale, the pair grouped within the left 60% of the frame, the right 40% is empty background", "st": "premium 3D educational render, accent glow carrying the data only", "ng": "text-free, no readable text, no labels, no decorative HUD rings", "ex": "two identical soil cross-sections side by side, exactly the same number of elements on each side, left with a smooth pile driven down showing cool stress lines, right with a rough pile showing dense friction lines", "frs": [{"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": "교통 대조 (최초본)"}, "D": {"ko": "장치 작동 · 단일 · 맥락 배경", "cap": 2, "model": "gemini", "status": "unverified", "use": ["장치의 작동 맥락이 학습 포인트일 때"], "no": [], "bg": "plain seamless background, minimal environment barely visible", "cp": "low angle close-up on the left, right 40% empty", "st": "premium 3D educational render, accent glow used only for airflow", "ng": "text-free, no readable text, no decorative HUD rings, no floating data readouts, no sci-fi interface overlays", "ex": "a vacuum cleaner head on carpet, airflow arrows drawn into the nozzle showing suction direction", "frs": [{"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": ""}, "E": {"ko": "순차 패널", "cap": null, "model": "gemini", "status": "risky", "use": ["단계가 3~4개이고 순서 자체가 내용일 때"], "no": [], "bg": "uniform solid light-gray seamless background", "cp": "four evenly spaced panels in one row, no dividers", "st": "technical illustration, consistent cutaway style across all four", "ng": "text-free, no readable text, no numbers, no step labels, no arrows between panels", "ex": "the same cylindrical filter housing shown four times in a row, identical angle and scale, differing only in internal state", "frs": [{"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": ""}, "F": {"ko": "배경 이미지 (슬라이드를 덮음)", "cap": 2, "model": "gemini_app", "status": "verified", "use": ["텍스트가 주인공이고 이미지는 무대"], "no": [], "bg": "high key, low saturation, large empty area for text overlay", "cp": "one continuous seamless background, no vertical seam, no split-screen, no panel division", "st": "soft natural light, muted palette", "ng": "text-free, no readable text, no informational elements, no charts, no diagrams, no HUD, no strong focal point in the center", "ex": "an empty office desk scene, softly out of focus", "frs": [{"id": "empty_side_explicit", "f": "the left 55% is plain empty wall with no objects", "when": "사물이 화면 전체에 퍼지는 대상(작업대·선반·공방 등) 또는 이전 시도에서 빈 자리가 안 나온 경우", "ex": "사물이 자연히 한쪽에 모이는 대상(책상·복도). 지시를 덜 넣는 쪽이 낫다."}, {"id": "blur_everything", "f": "everything softly out of focus, shallow depth of field throughout, no sharp object anywhere", "when": "앞쪽에 물체가 놓이는 대상. 사실상 대부분의 F 대상.", "ex": ""}, {"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": "작업대 · 좌측 55% 빈 벽"}}, "info_types": ["순서·절차", "분류·계층", "비교·대조", "인과·수렴", "정의", "목록"], "guards": [], "caps": {}};
+const IT={"순서·절차": {"fmt": "번호 | 명칭 | 설명", "sig": ["단계", "순서", "~후에", "프로세스"], "ex": ["1 | 문제 인식 | 스스로 일상의 비효율을 발견함", "2 | 문제 정의 | 근본 원인을 찾아 진짜 문제를 정의함", "3 | 아이디어 도출 | 대안을 만들고 제약 안에서 판별함"], "src": "1주차 · 공학적 창의성의 4단계", "tell": "순서를 바꾸면 뜻이 달라진다"}, "분류·계층": {"fmt": "대분류 | 하위항목 목록", "sig": ["상위-하위", "~로 나뉨", "유형"], "ex": ["S 대체 | 유리 → 플렉시블 / 손에 드는 방식 → 손목형", "C 결합 | 자동차 키 기능 / 온디바이스 AI"], "src": "13주차 · 스마트폰의 대체와 결합", "tell": "항목이 두 무리 이상으로 묶인다. 카드 A를 쓰면 그 경계가 사라진다"}, "비교·대조": {"fmt": "항목 | A값 | B값", "sig": ["반면", "~와 달리", "장단점"], "ex": ["질문 방식 | 일반인: 기발한 아이디어 요구 | 숙련자: S와 C 조건을 강제", "결과 경향 | 일반인: 일반적 결과 | 숙련자: 조건에 맞춘 파생 아이디어"], "src": "SCAMPER 차시 · 일반 질문과 스캠퍼 질문", "tell": "두 대상을 같은 잣대로 잰다. 잣대가 왼쪽 열이 된다"}, "인과·수렴": {"fmt": "원인 → 중간 → 결과", "sig": ["따라서", "그 결과", "~로 이어짐"], "ex": ["동전 사용의 불편", "결제 수단을 무엇으로 대체할지 질문", "신용카드로 대체한 스마트 주차 요금 징수기"], "src": "SCAMPER 차시 · 스마트 주차 요금 징수기", "tell": "앞이 뒤를 낳는다. 화살표로 이어붙이지 말고 원소로 쪼갠다"}, "정의": {"fmt": "용어 | 정의문", "sig": ["~란", "~을 의미함"], "ex": ["SCAMPER | 사물·서비스·프로세스를 새로운 것으로 변형하기 위한 9가지 아이디어 변형 기법"], "src": "SCAMPER 차시 · 스캠퍼의 의미", "tell": "용어 하나에 뜻 하나. 여러 개면 목록이다"}, "목록": {"fmt": "항목 배열", "sig": ["특징", "요소", "규칙"], "ex": ["S | Substitute · 대체하기", "C | Combine · 결합하기", "A | Adapt · 적용/응용하기"], "src": "SCAMPER 차시 · 7가지 구성 요소", "tell": "순서를 바꿔도 뜻이 그대로다. 바뀌면 순서·절차다"}};
+const ICONS={"A": "<svg width=\"66\" height=\"26\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"4\" y=\"9\" width=\"15\" height=\"15\" rx=\"1.5\"/><rect x=\"23\" y=\"9\" width=\"15\" height=\"15\" rx=\"1.5\"/><rect x=\"42\" y=\"9\" width=\"15\" height=\"15\" rx=\"1.5\"/><rect x=\"61\" y=\"9\" width=\"15\" height=\"15\" rx=\"1.5\"/></svg>", "B": "<svg width=\"66\" height=\"26\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"32\" y=\"7\" width=\"20\" height=\"18\" rx=\"1.5\"/><path d=\"M28 27h28\" opacity=\".5\"/></svg>", "C": "<svg width=\"66\" height=\"26\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"36\" height=\"18\" rx=\"1.5\"/><rect x=\"45\" y=\"7\" width=\"36\" height=\"18\" rx=\"1.5\"/><path d=\"M3 27h78\" opacity=\".5\"/></svg>", "D": "<svg width=\"66\" height=\"26\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"6\" y=\"8\" width=\"40\" height=\"18\" rx=\"1.5\"/><path d=\"M50 17h24M50 17l6-4M50 17l6 4\"/></svg>", "E": "<svg width=\"66\" height=\"26\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"2\" y=\"9\" width=\"18\" height=\"15\" rx=\"1.5\"/><rect x=\"23\" y=\"9\" width=\"18\" height=\"15\" rx=\"1.5\"/><rect x=\"44\" y=\"9\" width=\"18\" height=\"15\" rx=\"1.5\"/><rect x=\"65\" y=\"9\" width=\"18\" height=\"15\" rx=\"1.5\"/></svg>", "F": "<svg width=\"66\" height=\"26\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"2\" y=\"3\" width=\"80\" height=\"26\" rx=\"1.5\" fill=\"currentColor\" opacity=\".25\" stroke=\"none\"/><rect x=\"8\" y=\"11\" width=\"40\" height=\"10\" rx=\"1.5\"/></svg>"};
+const $=s=>document.querySelector(s);
+const esc=t=>String(t==null?"":t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function tab(n){
+ ["flow","tree","onto"].forEach(k=>{
+  $("#t-"+k).classList.toggle("on",k===n);
+  $("#s-"+k).hidden=(k!==n);
+ });
+}
+
+/* ===== 처리 흐름 ===== */
+const STEPS={
+ note:{t:"강의노트",who:"내가 한다",d:"본문만 넣는다. 표지·학습목표·마음열기·평가·학습정리는 넣지 않는다. 그 부분은 노트에서 그대로 복사해 쓰면 된다. 노트 한 편이 아니라 문장 하나만 넣어도 된다."},
+ gpt:{t:"Custom GPT",who:"AI가 한다",d:"규칙을 읽고 노트를 덩어리로 나눈다. 덩어리마다 글을 어떻게 쓸지, 그림이 필요한지, 필요하면 어떤 배치로 그릴지 정한다. 그릴 것의 성격 다섯 가지도 함께 적어준다."},
+ out:{t:"계획 두 벌",who:"내가 복사한다",d:"같은 내용을 두 형태로 준다. 앞쪽은 내가 읽는 계획이고 뒤쪽은 검사기가 읽는 JSON이다. 앞쪽만 보고 작업해도 되지만, 검사를 거치면 놓친 게 드러난다."},
+ insp:{t:"검사기",who:"자동",d:"규칙을 코드로 적용한다. 스스로 판단하지 않는다. 그림 프롬프트를 원본에서 꺼내 조립하고, 그릴 것의 성격에 따라 문구를 덧붙이고, 개수가 넘치거나 배치를 잘못 고른 곳을 짚어준다."},
+ pr:{t:"그림 프롬프트",who:"내가 복사한다",d:"여섯 줄 중 첫 줄만 덩어리마다 다르고 나머지 다섯 줄은 고정돼 있다. 여러 번 시험해서 확정한 문장이라 손대지 않는 게 낫다."},
+ gem:{t:"제미나이 앱",who:"내가 한다",d:"그림 만들기는 자동으로 넘기지 않는다. 같은 프롬프트라도 결과가 매번 달라서 여러 장 중 골라야 하고, 다른 도구로 바꾸면 지금까지 확인한 것이 무효가 된다."},
+ ppt:{t:"PowerPoint",who:"내가 한다",d:"그림과 글을 템플릿에 얹는다. 어떤 레이아웃을 쓸지는 VDF가 정하지 않는다. 직접 고르는 게 빠르고 정확하다."},
+ rules:{t:"rules.json",who:"규칙 원본",d:"이 파일 자체는 아무 데서도 돌아가지 않는다. GPT가 읽는 규칙 문서와 이 검사기가 여기서 만들어진다. 규칙을 바꿀 때는 항상 여기를 먼저 고치고 둘을 다시 만든다. 반대로 하면 세 개가 서로 달라진다. 규칙이 왜 그렇게 됐는지, 무엇을 확인했고 무엇을 되돌렸는지도 여기 적혀 있다."}
+};
+function pick(k){
+ const s=STEPS[k];
+ document.querySelectorAll("#pipe .nd").forEach(n=>n.classList.toggle("sel",n.dataset.k===k));
+ $("#pinfo").innerHTML='<p class="pwho">'+esc(s.who)+'</p><h3>'+esc(s.t)+'</h3><p>'+esc(s.d)+'</p>';
+}
+
+/* ===== 판정 ===== */
+let T={label:null,it:null,gate:null,card:null};
+const CARDS=RULES.cards;
+function treeSet(k,v){T[k]=v;if(k==="label"){T.it=null;T.gate=null;T.card=null}if(k==="gate")T.card=null;drawTree()}
+function treeReset(){T={label:null,it:null,gate:null,card:null};drawTree()}
+function opt(k,v,label,sub,on){
+ return '<button class="opt'+(on?" on":"")+'" onclick="treeSet(\''+k+'\',\''+v+'\')">'+
+  '<span class="ot">'+label+'</span><span class="os">'+sub+'</span></button>';
+}
+function itPanel(k){
+ const e=IT[k];
+ return '<div class="itp"><p class="itt">'+esc(e.tell)+'</p>'+
+  '<p class="itl">이렇게 쓴다 · '+esc(e.src)+'</p>'+
+  '<ul class="itx">'+e.ex.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>'+
+  '<p class="itl">노트에 이런 말이 있으면 '+e.sig.map(s=>'<code>'+esc(s)+'</code>').join(" ")+'</p></div>';
+}
+function drawTree(){
+ let h="";
+ h+='<div class="step"><div class="sn">1</div><div class="sb"><h3>글자를 지워본다</h3>'+
+  '<p class="q">이 덩어리에서 글자를 다 지우면, 그림으로 남는 게 있는가?</p><div class="opts2">'+
+  opt("label","image","남는다","사물·장치·현상이 그림으로 남는다",T.label==="image")+
+  opt("label","shape","없다","글자 자체가 내용이다",T.label==="shape")+
+  '</div><p class="hint">「브레인스토밍 8단계」는 글자를 지우면 빈 상자만 남는다. 「항타 단면」은 글자를 지워도 그림이 남는다.<br>표·수식·정의 목록은 물어볼 것 없이 글이다.</p></div></div>';
+
+ if(!T.label)return $("#tree").innerHTML=h+'<p class="wait">위에서 하나를 고른다.</p>';
+
+ h+='<div class="step"><div class="sn">2</div><div class="sb"><h3>항목들의 관계를 정한다</h3>'+
+  '<p class="q">이 덩어리 안의 항목들이 서로 어떤 사이인가?</p><div class="its">'+
+  Object.keys(IT).map(k=>'<button class="itb'+(T.it===k?" on":"")+'" onclick="treeSet(\'it\',\''+k+'\')">'+
+   '<span class="itn">'+k+'</span><span class="itf">'+IT[k].fmt+'</span></button>').join("")+
+  '</div>'+(T.it?itPanel(T.it):'<p class="hint">이 여섯 개 안에서만 고른다. 그림이 있든 없든 글은 항상 나온다.</p>')+
+  '</div></div>';
+
+ if(T.label==="shape"){
+  h+='<div class="step end"><div class="sn">끝</div><div class="sb"><h3>글만으로 슬라이드가 된다</h3>'+
+   '<p>그림 없이 완성된다. 실제로 대부분이 여기서 끝난다 — 예시 열한 덩어리 중 아홉이 그랬다.</p></div></div>';
+  return $("#tree").innerHTML=h;
+ }
+
+ h+='<div class="step"><div class="sn">3</div><div class="sb"><h3>무엇을 그릴지 정한다</h3>'+
+  '<p class="q">그릴 것이 사물 하나, 또는 같은 사물의 여러 모습으로 정해지는가?</p><div class="opts2">'+
+  opt("gate","pass","정해진다","클립 하나 · 저울 하나 · 같은 의자의 세 모습",T.gate==="pass")+
+  opt("gate","fail","안 정해진다","서로 다른 물건을 여러 개 그려야 한다",T.gate==="fail")+
+  '</div><p class="hint">물건 하나하나가 구체적이라고 해서 통과는 아니다. 구텐베르크 인쇄기는 동전 펀치기·포도주 압착기·인쇄기를 다 그려야 해서 여기서 걸렸다.<br>노트에 없는 물건을 지어내서는 안 된다. 이 관문이 실패한 그림들의 공통 원인이었다.</p></div></div>';
+
+ if(T.gate==="fail"){
+  h+='<div class="step end"><div class="sn">끝</div><div class="sb"><h3>글로 되돌린다</h3>'+
+   '<p>왜 그림을 안 그렸는지 이유를 남긴다. 나중에 「여기는 왜 그림이 없지」 할 때 답이 된다.</p></div></div>';
+  return $("#tree").innerHTML=h;
+ }
+ if(!T.gate)return $("#tree").innerHTML=h+'<p class="wait">위에서 하나를 고른다.</p>';
+
+ h+='<div class="step"><div class="sn">4</div><div class="sb"><h3>화면 배치를 고른다</h3>'+
+  '<p class="q">사물이 화면에 어떻게 놓이는가?</p><div class="cds">'+
+  Object.keys(CARDS).map(k=>{
+   const c=CARDS[k],ok=c.status==="verified"||c.status==="verified_after_fix";
+   const bad=(k==="A"&&T.it==="분류·계층");
+   return '<button class="cd'+(T.card===k?" on":"")+(ok?"":" dim")+(bad?" bad":"")+'" onclick="treeSet(\'card\',\''+k+'\')">'+
+    ICONS[k]+'<span class="ct">'+k+' '+c.ko.split(" ·")[0]+'</span>'+
+    '<span class="cs">'+(c.cap?"최대 "+c.cap+"개":"—")+(ok?"":" · 확인 안 됨")+'</span></button>';
+  }).join("")+'</div>'+
+  (T.it==="분류·계층"?'<p class="guard">항목이 두 무리로 묶여 있으면 A는 쓰지 않는다. 한 줄에 늘어놓으면 어느 게 어느 무리인지 사라진다.</p>':'')+
+  '<p class="hint">흐린 것은 아직 충분히 확인되지 않은 배치다. 써도 되지만 결과를 꼭 눈으로 본다.</p></div></div>';
+
+ if(T.card){
+  const c=CARDS[T.card];
+  h+='<div class="step"><div class="sn">5</div><div class="sb"><h3>문구를 덧붙인다</h3>'+
+   '<p class="q">그릴 것의 성격에 따라 프롬프트에 문장이 붙는다</p>'+
+   (c.frs.length?'<ul class="fr">'+c.frs.map(f=>'<li><code>'+esc(f.f)+'</code><span>'+esc(f.w||"")+'</span></li>').join("")+'</ul>'
+    :'<p class="hint">이 배치에는 덧붙는 문구가 없다.</p>')+
+   '<p class="hint">이 문장은 내가 쓰는 게 아니라 검사기가 붙인다.</p></div></div>';
+  h+='<div class="step end"><div class="sn">끝</div><div class="sb"><h3>이 프롬프트가 나온다</h3>'+
+   '<pre class="pr"><span class="k">subject:</span> '+esc(c.ex)+'\n'+
+   '<span class="k">background:</span> '+esc(c.bg)+'\n'+
+   '<span class="k">composition:</span> '+esc(c.cp)+'\n'+
+   '<span class="k">style:</span> '+esc(c.st)+'\n'+
+   '<span class="k">ratio:</span> 16:9\n'+
+   '<span class="k">negative:</span> '+esc(c.ng)+'</pre>'+
+   '<p class="hint">첫 줄만 덩어리마다 다르다. 나머지는 고정이다. '+esc(c.model)+'에서 만든다.</p></div></div>';
+ }
+ $("#tree").innerHTML=h;
+}
+
+/* ===== 개념 관계 ===== */
+const NODES={
+ blk:{t:"덩어리",d:"본문을 나눈 한 토막. 대체로 슬라이드 한 장에 해당한다.",rel:["글은 반드시 있다","그림은 있을 수도, 없을 수도 있다"]},
+ info:{t:"글",d:"항상 있다. 슬라이드의 텍스트가 된다. 그림이 없어도 슬라이드는 완성된다.",rel:["여섯 관계 중 하나를 가진다","슬라이드에 들어갈 문장을 만든다"]},
+ bg:{t:"그림",d:"없을 수 있다. 그릴 것이 하나로 정해진 덩어리만 가진다. 예시 열한 덩어리 중 둘이었다.",rel:["화면 배치를 하나 고른다","그릴 것을 하나 가진다"]},
+ it:{t:"항목들의 관계",d:"순서·절차 / 분류·계층 / 비교·대조 / 인과·수렴 / 정의 / 목록. 이 여섯 개 안에서만 고른다.",rel:["문장을 어떤 형식으로 쓸지 정한다","어떤 배치를 못 쓰는지 정한다 — 두 무리로 묶이면 A 금지"]},
+ card:{t:"화면 배치 A~F",d:"사물이 화면에 어떻게 놓이는가. 프롬프트 여섯 줄 중 다섯 줄이 배치마다 고정돼 있다.",rel:["한 장에 그릴 개수가 정해져 있다","어느 도구에서 만들지가 정해져 있다","덧붙는 문구 목록을 가진다"]},
+ sub:{t:"그릴 것",d:"성격 다섯 가지를 가진다 — 브랜드가 연상되는 물건인가 / 같은 사물의 여러 모습인가 / 무언가를 바꾼 것인가 / 크기 변화가 핵심인가 / 화면 전체에 퍼지는가.",rel:["덧붙는 문구를 발동시킨다","GPT는 성격만 적고 문구는 쓰지 않는다"]},
+ frag:{t:"덧붙는 문구",d:"그릴 것의 성격에 따라 프롬프트에 들어가거나 빠지는 문장. 판단은 GPT가, 붙이는 건 검사기가 한다.",rel:["그릴 것의 성격이 발동시킨다","배치마다 목록이 다르다"]}
+};
+function node(k){
+ const n=NODES[k];
+ document.querySelectorAll("#graph .gn").forEach(x=>x.classList.toggle("sel",x.dataset.k===k));
+ $("#ginfo").innerHTML='<h3>'+esc(n.t)+'</h3><p>'+esc(n.d)+'</p><ul>'+n.rel.map(r=>'<li>'+esc(r)+'</li>').join("")+'</ul>';
+}
+
+pick("gpt");drawTree();node("blk");
+</script></body></html>
