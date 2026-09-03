@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>계획 확인하기 — VDF 6.0</title><meta name="description" content="GPT가 만든 슬라이드 계획을 규칙으로 확인하고 그림 프롬프트를 완성한다">
+<title>계획 확인하기 — VDF 6.0</title><meta name="description" content="GPT가 만든 슬라이드 계획을 규칙으로 확인하고 그림 프롬프트와 도형을 만든다">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet"><style>:root{
 --ground:#E4E5E3; --ground-2:#EDEEEC; --surface:#F7F7F6; --line:#CFD1CE; --line-2:#B9BCB8;
 --ink:#212528; --ink-2:#5C6167; --ink-3:#868B90;
@@ -43,7 +43,7 @@ select{font-family:var(--f);font-size:13px;padding:4px 8px;border:1px solid var(
 .trk{margin-left:auto;font-family:var(--m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
 .lay{display:grid;grid-template-columns:58px minmax(0,1fr);gap:14px;padding:12px 18px;border-bottom:1px solid var(--line)}
 .lay:last-child{border-bottom:none}
-.lno{font-family:var(--m);font-size:9.5px;letter-spacing:.06em;color:var(--ink-3);padding-top:4px}
+.lno{font-family:var(--m);font-size:10px;letter-spacing:.1em;color:var(--ink-3);padding-top:4px}
 .rsn{font-size:13px;color:var(--ink-2);margin:3px 0 0}
 .chip{display:inline-block;font-size:12px;padding:2px 9px;border-radius:var(--r);margin:0 5px 5px 0;border:1px solid transparent}
 .c-k{background:var(--key-bg);color:var(--key);border-color:var(--key-line)}
@@ -100,46 +100,245 @@ button.mini{font-size:11.5px;padding:3px 9px}
 .filt button.on{background:var(--key-bg);border-color:var(--key-line);color:var(--key)}
 .blk.plain>header{background:var(--surface)}
 .blk.plain .bid{color:var(--ink-3)}
+.dg{margin:9px 0 0;padding:12px;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow-x:auto}
+.dg svg{display:block;max-width:100%;height:auto}
+.dgbar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0 0}
+.dghint{font-size:11.5px;color:var(--ink-3)}
+.opts input[type=color]{width:34px;height:24px;padding:0;border:1px solid var(--line);border-radius:var(--r);background:#fff;cursor:pointer}
 </style></head><body><div class="wrap"><nav><a class="here" href="index.html">검사기</a><a href="구조.html">구조</a></nav>
 <div class="topbar"><div><p class="eyebrow">VDF 6.0 · 검사</p><h1>계획 확인하기</h1>
-<p class="sub">GPT가 만든 계획을 넣으면 규칙에 어긋나는 곳을 짚어주고, 그림 프롬프트를 완성해 준다.</p></div>
+<p class="sub">GPT가 만든 계획을 넣으면 규칙에 어긋나는 곳을 짚어드리고, 그림 프롬프트와 도형을 완성해 드립니다.</p></div>
 <div id="gpt"></div></div>
 
 <details class="panel guide"><summary>처음이라면 — 쓰는 순서</summary>
-<ol><li>Custom GPT에 강의노트를 붙여넣는다.</li>
-<li>답변 뒤쪽의 <code>2부 — JSON</code> 코드블록을 복사한다.</li>
-<li>아래 칸에 붙여넣는다. 파일로 저장해 끌어다 놓아도 된다.</li>
-<li>짚어준 것을 확인하고, 필요하면 배치나 항목 관계를 바꾼다.</li>
-<li>완성된 프롬프트를 복사해 제미나이 앱에서 그림을 만든다.</li>
-<li>그림과 글을 PowerPoint에 얹는다.</li></ol></details>
+<ol><li>Custom GPT에 강의노트를 붙여넣습니다.</li>
+<li>답변 뒤쪽의 <code>2부 — JSON</code> 코드블록을 복사합니다.</li>
+<li>아래 칸에 붙여넣습니다. 파일로 저장해 끌어다 놓으셔도 됩니다.</li>
+<li>짚어드린 것을 확인하고, 필요하면 배치나 항목 관계를 바꿉니다.</li>
+<li>그림은 프롬프트를 복사해 제미나이 앱에서 만들고, 도형은 SVG를 복사해 PPT에 붙입니다.</li>
+<li>그림·도형과 글을 PowerPoint에 얹습니다.</li></ol></details>
 
 <section class="panel io"><label for="in">GPT가 만든 계획</label>
 <div class="dz" id="dz"><textarea id="in" spellcheck="false" placeholder='{"blocks":[ ... ]}'></textarea>
-<p class="dzhint">파일을 여기에 끌어다 놓아도 된다.</p></div>
+<p class="dzhint">파일을 여기에 끌어다 놓으셔도 됩니다.</p></div>
 <div class="bar"><button class="pri" id="run">확인하기</button><button id="pick">파일 선택</button><button id="demo">예시로 해보기</button>
 <input type="file" id="file" accept=".json,.txt,application/json" hidden></div>
 <p class="err" id="err" hidden></p></section>
 
 <section class="panel opts"><span class="eyebrow" style="margin:0">이 차시 설정</span>
 <label>글이 놓일 쪽 <select id="side"><option value="left">좌측</option><option value="right">우측</option></select></label>
-<label>브랜드 안 나오게 <select id="brand"><option value="on">켜기</option><option value="off">끄기</option></select></label></section>
+<label>브랜드 안 나오게 <select id="brand"><option value="on">켜기</option><option value="off">끄기</option></select></label>
+<label>도형 강조색 <input type="color" id="accent" value="#1F6F68"></label></section>
 <div id="out"></div></div>
-<script>const RULES={"cards": {"A": {"ko": "에셋세트 · 무배경", "cap": 4, "model": "gemini", "status": "verified", "use": ["같은 것의 여러 변형", "같은 사물의 단계별 부품", "기준점 + 변형"], "no": ["정보 유형이 분류·계층이고 분류가 둘 이상일 때 — 한 줄에 놓으면 분류 경계가 사라진다(FT-3)", "서로 다른 사물을 병렬로 늘어놓을 때 — '여러 항목 병렬'을 그렇게 읽지 않는다. 같은 사물의 변형이어야 한다(R4)."], "bg": "uniform solid light-gray seamless background", "cp": "a single row, lower 10% clear", "st": "premium 3D educational render, matte materials, soft directional key light from upper-left, no baked shadows", "ng": "text-free, no readable text, no letters, no numbers, no labels, no logos, no brand names, no overlapping objects, no environmental props", "ex": "four variations of a paper clip, all clearly made from the same bent wire form, each repurposed as a different object, evenly spaced in a single row, three-quarter angle", "frs": [{"id": "identical_scale", "f": "identical scale", "when": "형태 변화가 학습 포인트", "ex": "크기 변화가 학습 포인트"}, {"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "브랜드 연상이 강한 대상군은 항상. 휴대기기·웨어러블·차량·가전·컴퓨터.", "ex": ""}, {"id": "same_form_anchor", "f": "all clearly made from the same bent wire form", "when": "같은 사물의 변형을 나열할 때. 카드 A의 기본 용법이므로 사실상 항상.", "ex": ""}], "rep": "클립 4종"}, "B": {"ko": "개념 · 단일 오브젝트 · 무배경", "cap": 3, "model": "gemini", "status": "verified", "use": ["추상 원리를 한 컷으로", "대비되는 두 상태를 한 오브젝트에"], "no": [], "bg": "uniform solid light-gray seamless background, subtle floor reflection", "cp": "the object centered, lower 10% clear", "st": "premium 3D educational render, matte materials, soft key light", "ng": "text-free, no readable text, no labels, no environmental detail, no decorative HUD rings, no floating data readouts", "ex": "a balance scale, tilted, a plain gray card on the raised pan and a vivid accent-colored card with a check badge on the lowered pan", "frs": [{"id": "superseded_gray", "f": "the superseded items rendered in flat desaturated gray, clearly unused", "when": "과거/현재 대비를 그릴 때", "ex": ""}, {"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": "캡슐 커피머신"}, "C": {"ko": "조건 대조 · 좌우 분할", "cap": 3, "model": "gemini", "status": "verified_after_fix", "use": ["조건 A와 B의 결과 차이가 학습 포인트"], "no": [], "bg": "plain seamless background, environment barely visible", "cp": "both halves sit on one single continuous unbroken floor plane with no seam or line between them, identical camera angle and scale, the pair grouped within the left 60% of the frame, the right 40% is empty background", "st": "premium 3D educational render, accent glow carrying the data only", "ng": "text-free, no readable text, no labels, no decorative HUD rings", "ex": "two identical soil cross-sections side by side, exactly the same number of elements on each side, left with a smooth pile driven down showing cool stress lines, right with a rough pile showing dense friction lines", "frs": [{"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": "교통 대조 (최초본)"}, "D": {"ko": "장치 작동 · 단일 · 맥락 배경", "cap": 2, "model": "gemini", "status": "unverified", "use": ["장치의 작동 맥락이 학습 포인트일 때"], "no": [], "bg": "plain seamless background, minimal environment barely visible", "cp": "low angle close-up on the left, right 40% empty", "st": "premium 3D educational render, accent glow used only for airflow", "ng": "text-free, no readable text, no decorative HUD rings, no floating data readouts, no sci-fi interface overlays", "ex": "a vacuum cleaner head on carpet, airflow arrows drawn into the nozzle showing suction direction", "frs": [{"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": ""}, "E": {"ko": "순차 패널", "cap": null, "model": "gemini", "status": "risky", "use": ["단계가 3~4개이고 순서 자체가 내용일 때"], "no": [], "bg": "uniform solid light-gray seamless background", "cp": "four evenly spaced panels in one row, no dividers", "st": "technical illustration, consistent cutaway style across all four", "ng": "text-free, no readable text, no numbers, no step labels, no arrows between panels", "ex": "the same cylindrical filter housing shown four times in a row, identical angle and scale, differing only in internal state", "frs": [{"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": ""}, "F": {"ko": "배경 이미지 (슬라이드를 덮음)", "cap": 2, "model": "gemini_app", "status": "verified", "use": ["텍스트가 주인공이고 이미지는 무대"], "no": [], "bg": "high key, low saturation, large empty area for text overlay", "cp": "one continuous seamless background, no vertical seam, no split-screen, no panel division", "st": "soft natural light, muted palette", "ng": "text-free, no readable text, no informational elements, no charts, no diagrams, no HUD, no strong focal point in the center", "ex": "an empty office desk scene, softly out of focus", "frs": [{"id": "empty_side_explicit", "f": "the left 55% is plain empty wall with no objects", "when": "사물이 화면 전체에 퍼지는 대상(작업대·선반·공방 등) 또는 이전 시도에서 빈 자리가 안 나온 경우", "ex": "사물이 자연히 한쪽에 모이는 대상(책상·복도). 지시를 덜 넣는 쪽이 낫다."}, {"id": "blur_everything", "f": "everything softly out of focus, shallow depth of field throughout, no sharp object anywhere", "when": "앞쪽에 물체가 놓이는 대상. 사실상 대부분의 F 대상.", "ex": ""}, {"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": "작업대 · 좌측 55% 빈 벽"}}, "info_types": ["순서·절차", "분류·계층", "비교·대조", "인과·수렴", "정의", "목록"], "guards": [], "caps": {}};
-const IT={"순서·절차": {"fmt": "번호 | 명칭 | 설명", "sig": ["단계", "순서", "~후에", "프로세스"], "ex": ["1 | 문제 인식 | 스스로 일상의 비효율을 발견함", "2 | 문제 정의 | 근본 원인을 찾아 진짜 문제를 정의함", "3 | 아이디어 도출 | 대안을 만들고 제약 안에서 판별함"], "src": "1주차 · 공학적 창의성의 4단계", "tell": "순서를 바꾸면 뜻이 달라진다"}, "분류·계층": {"fmt": "대분류 | 하위항목 목록", "sig": ["상위-하위", "~로 나뉨", "유형"], "ex": ["S 대체 | 유리 → 플렉시블 / 손에 드는 방식 → 손목형", "C 결합 | 자동차 키 기능 / 온디바이스 AI"], "src": "13주차 · 스마트폰의 대체와 결합", "tell": "항목이 두 무리 이상으로 묶인다. 카드 A를 쓰면 그 경계가 사라진다"}, "비교·대조": {"fmt": "항목 | A값 | B값", "sig": ["반면", "~와 달리", "장단점"], "ex": ["질문 방식 | 일반인: 기발한 아이디어 요구 | 숙련자: S와 C 조건을 강제", "결과 경향 | 일반인: 일반적 결과 | 숙련자: 조건에 맞춘 파생 아이디어"], "src": "SCAMPER 차시 · 일반 질문과 스캠퍼 질문", "tell": "두 대상을 같은 잣대로 잰다. 잣대가 왼쪽 열이 된다"}, "인과·수렴": {"fmt": "원인 → 중간 → 결과", "sig": ["따라서", "그 결과", "~로 이어짐"], "ex": ["동전 사용의 불편", "결제 수단을 무엇으로 대체할지 질문", "신용카드로 대체한 스마트 주차 요금 징수기"], "src": "SCAMPER 차시 · 스마트 주차 요금 징수기", "tell": "앞이 뒤를 낳는다. 화살표로 이어붙이지 말고 원소로 쪼갠다"}, "정의": {"fmt": "용어 | 정의문", "sig": ["~란", "~을 의미함"], "ex": ["SCAMPER | 사물·서비스·프로세스를 새로운 것으로 변형하기 위한 9가지 아이디어 변형 기법"], "src": "SCAMPER 차시 · 스캠퍼의 의미", "tell": "용어 하나에 뜻 하나. 여러 개면 목록이다"}, "목록": {"fmt": "항목 배열", "sig": ["특징", "요소", "규칙"], "ex": ["S | Substitute · 대체하기", "C | Combine · 결합하기", "A | Adapt · 적용/응용하기"], "src": "SCAMPER 차시 · 7가지 구성 요소", "tell": "순서를 바꿔도 뜻이 그대로다. 바뀌면 순서·절차다"}};
-const WHY={"cat_a": {"t": "두 무리로 묶이면 한 줄 배치를 안 쓴다", "w": "항목이 두 무리 이상으로 묶여 있으면 한 줄 배치를 쓰지 않는다.", "e": "13주차 B4 — 대체 2개와 결합 2개를 한 줄에 놓으니 어느 게 어느 무리인지 사라졌다.", "f": "무리별로 덩어리를 나누거나, 좌우로 나누는 배치 C를 쓴다.", "src": "FT-3 · 13주차 B4"}, "cap": {"t": "개수가 넘치면 덩어리를 나눈다", "w": "일부만 그리면 PPT 텍스트와 이미지 요소가 어긋나 학습자가 대응시킬 수 없다(FT-2).", "e": "13주차 B5 — 항목 5개, 이 배치는 최대 4개", "f": "항목을 의미가 통하는 단위로 나눠 덩어리 두 개로 만든다. 각 덩어리가 자기 글과 자기 그림을 갖고, 슬라이드도 두 장이 된다.", "src": "R9 · 13주차 B5"}, "brand": {"t": "브랜드가 연상되면 문구를 항상 붙인다", "w": "브랜드가 연상되는 물건은 조건을 따지지 말고 항상 문구를 붙인다.", "e": "13주차 B4 — 스마트폰인데 문구가 빠져 특정 제조사 카메라 배열과 똑같이 나왔다.", "f": "휴대기기·웨어러블·차량·가전·컴퓨터는 무조건 붙인다.", "src": "FT-1 · 13주차 B4"}, "unver": {"t": "아직 확인이 덜 된 배치", "w": "배치 D는 실제 사례가 하나뿐이고, 배치 E는 나중에 손으로 글자를 얹은 것만 잘 나왔다.", "e": "A·B·C·F는 세 도구 비교나 열네 장 생성으로 확인했다.", "f": "써도 되지만 결과를 꼭 눈으로 본다.", "src": "카드 상태"}, "base": {"t": "바꾼 것을 그릴 때는 바뀌기 전 모습도 함께", "w": "바꾼 뒤만 그리면 무엇이 바뀌었는지 보이지 않는다.", "e": "13주차 클립(금속→플라스틱)과 스마트폰(유리→휘어지는 재질) 둘 다 이 문제가 있었다.", "f": "바뀐 모습이 3개면 바뀌기 전 모습 1개를 더해 4개로 그린다.", "src": "카드 A · N+1"}, "slots": {"t": "글 줄 수와 항목 수는 같아야 한다", "w": "슬라이드에 상자 세 개를 놓으려면 글도 세 줄이어야 한다.", "e": "원인·중간·결과를 화살표로 이어붙여 한 줄로 낸 사례가 4건.", "f": "항목 하나가 글 한 줄이다.", "src": "S-2"}, "gate": {"t": "그림에는 이유가 있어야 한다", "w": "왜 그림을 그리기로 했는지가 남아야 나중에 되짚을 수 있다.", "e": "이유만 있고 통과 여부가 빠진 사례가 5건.", "f": "통과 여부와 이유를 둘 다 적는다.", "src": "S-1"}, "it": {"t": "항목 관계 이름은 여섯 개뿐", "w": "이름을 새로 만들면 글을 어떤 형식으로 쓸지 정해지지 않는다.", "e": "제미나이가 「단일 서술」·「나열」 같은 이름을 지어낸 사례.", "f": "여섯 개 밖의 이름은 쓰지 않는다.", "src": "정보 유형"}};
+<script>(function(){
+/* ===== PPT 붙여넣기용 독립 SVG — CSS 변수 없이 색을 직접 적는다 ===== */
+const INK="#212528", MUT="#6E7379", LINE="#B9BCB8", FILL="#F2F3F1";
+let KEY="#1F6F68", KEYBG="#DDE9E7";
+function mix(hex,ratio){
+ const h=hex.replace("#",""), n=parseInt(h.length===3?h.split("").map(c=>c+c).join(""):h,16);
+ const r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+ const m=v=>Math.round(v+(255-v)*ratio);
+ return "#"+[m(r),m(g),m(b)].map(v=>v.toString(16).padStart(2,"0")).join("");
+}
+function setAccent(hex){KEY=hex;KEYBG=mix(hex,0.86)}
+const FONT="'맑은 고딕','Malgun Gothic',sans-serif";
+
+/* 한글 폭 기준 줄바꿈 — 한글 1, 영문·숫자 0.55 */
+function wrap(t,max){
+ const w=c=>/[\x00-\x7F]/.test(c)?0.55:1;
+ const out=[]; let ln="", n=0;
+ for(const c of String(t)){
+  if(c==="\n"){out.push(ln);ln="";n=0;continue}
+  const d=w(c);
+  if(n+d>max&&ln){out.push(ln);ln=c;n=d}else{ln+=c;n+=d}
+ }
+ if(ln)out.push(ln);
+ return out;
+}
+const esc=t=>String(t==null?"":t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function txt(s,x,y,size,color,anchor,weight){
+ return '<text x="'+x+'" y="'+y+'" font-family="'+FONT+'" font-size="'+size+'" fill="'+color+'"'+
+  (anchor?' text-anchor="'+anchor+'"':'')+(weight?' font-weight="'+weight+'"':'')+'>'+esc(s)+'</text>';
+}
+function block(lines,x,y,size,color,lh,anchor,weight){
+ return lines.map((l,i)=>txt(l,x,y+i*lh,size,color,anchor,weight)).join("");
+}
+function svg(w,h,body){
+ return '<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'+body+'</svg>';
+}
+/* 슬롯 "A | B | C" → ["A","B","C"] */
+const cells=s=>String(s).split("|").map(x=>x.trim());
+
+/* ===== 1. 카드 나열 (목록) ===== */
+function pCards(items){
+ const n=items.length, cols=n>5?Math.ceil(n/2):n, rows=n>5?2:1;
+ const W=900, gap=16, pad=20;
+ const cw=Math.floor((W-pad*2-gap*(cols-1))/cols), ch=rows>1?116:132;
+ const H=pad*2+ch*rows+(rows>1?gap:0);
+ let b='';
+ items.forEach((it,i)=>{
+  const r=Math.floor(i/cols), c=i%cols;
+  const x=pad+c*(cw+gap), y=pad+r*(ch+gap);
+  b+='<rect x="'+x+'" y="'+y+'" width="'+cw+'" height="'+ch+'" rx="6" fill="'+FILL+'" stroke="'+LINE+'"/>';
+  b+='<rect x="'+x+'" y="'+y+'" width="4" height="'+ch+'" rx="2" fill="'+KEY+'"/>';
+  b+=block(wrap(cells(it)[0],Math.floor(cw/15)),x+18,y+34,15,INK,22,null,600);
+ });
+ return svg(W,H,b);
+}
+
+/* ===== 2. 카드 + 사례 (분류·계층) ===== */
+function pCardsSub(items){
+ const n=items.length, cols=n>4?Math.ceil(n/2):n, rows=n>4?2:1;
+ const W=900, gap=16, pad=20;
+ const cw=Math.floor((W-pad*2-gap*(cols-1))/cols);
+ const parsed=items.map(it=>{
+  const cl=cells(it);
+  return {h:wrap(cl[0],Math.floor(cw/14)).slice(0,2),
+          s:wrap(cl.slice(1).join(" · "),Math.floor(cw/12.5)).slice(0,6)};
+ });
+ const hh=Math.max(...parsed.map(p=>p.h.length))*20+18;
+ const bh=Math.max(...parsed.map(p=>p.s.length))*19+22;
+ const ch=hh+bh;
+ const H=pad*2+ch*rows+(rows>1?gap:0);
+ let b='';
+ parsed.forEach((p,i)=>{
+  const r=Math.floor(i/cols), c=i%cols;
+  const x=pad+c*(cw+gap), y=pad+r*(ch+gap);
+  b+='<rect x="'+x+'" y="'+y+'" width="'+cw+'" height="'+ch+'" rx="6" fill="#FFFFFF" stroke="'+LINE+'"/>';
+  b+='<path d="M'+(x+6)+' '+y+' H'+(x+cw-6)+' A6 6 0 0 1 '+(x+cw)+' '+(y+6)+' V'+(y+hh)+' H'+x+' V'+(y+6)+' A6 6 0 0 1 '+(x+6)+' '+y+' Z" fill="'+KEYBG+'"/>';
+  b+=block(p.h,x+16,y+24,14,KEY,20,null,600);
+  b+=block(p.s,x+16,y+hh+20,12.5,MUT,19);
+ });
+ return svg(W,H,b);
+}
+
+/* ===== 3. 단계 흐름 (순서·절차) ===== */
+function pSteps(items){
+ const n=items.length, W=900, pad=20, gap=44;
+ const bw=Math.floor((W-pad*2-gap*(n-1))/n);
+ const parsed=items.map((it,i)=>{
+  const cl=cells(it);
+  return {num:cl.length>2?cl[0]:String(i+1),
+          name:wrap(cl.length>2?cl[1]:cl[0],Math.floor((bw-64)/14)).slice(0,2),
+          desc:wrap(cl.length>2?cl.slice(2).join(" "):(cl[1]||""),Math.floor((bw-32)/12.5)).slice(0,5)};
+ });
+ const nh=Math.max(...parsed.map(p=>p.name.length))*19;
+ const dh=Math.max(...parsed.map(p=>p.desc.length))*19;
+ const bh=Math.max(88,26+nh+14+dh+18), H=pad*2+bh;
+ let b='';
+ parsed.forEach((p,i)=>{
+  const x=pad+i*(bw+gap), y=pad;
+  b+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+bh+'" rx="6" fill="#FFFFFF" stroke="'+LINE+'"/>';
+  b+='<circle cx="'+(x+28)+'" cy="'+(y+28)+'" r="14" fill="'+KEY+'"/>';
+  b+=txt(p.num,x+28,y+33,13,"#FFFFFF","middle",600);
+  b+=block(p.name,x+50,y+33,14.5,INK,19,null,600);
+  b+=block(p.desc,x+16,y+26+nh+22,12.5,MUT,19);
+  if(i<n-1){
+   const ax=x+bw+10, ay=y+bh/2;
+   b+='<path d="M'+ax+' '+ay+' H'+(ax+18)+'" stroke="'+LINE+'" stroke-width="2"/>';
+   b+='<path d="M'+(ax+14)+' '+(ay-5)+' L'+(ax+22)+' '+ay+' L'+(ax+14)+' '+(ay+5)+'" fill="none" stroke="'+LINE+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+  }
+ });
+ return svg(W,H,b);
+}
+
+/* ===== 4. 좌우 대비 (비교·대조) ===== */
+function pContrast(items,labels){
+ const W=900, pad=20, mid=96;
+ const cw=Math.floor((W-pad*2-mid)/2), tw=Math.floor((cw-28)/13.5);
+ const parsed=items.map(it=>{
+  const cl=cells(it);
+  return {k:cl[0]||"", a:wrap(cl[1]||"",tw), b:wrap(cl[2]||"",tw)};
+ });
+ const rowH=parsed.map(p=>Math.max(p.a.length,p.b.length)*20+22);
+ const bodyH=rowH.reduce((a,c)=>a+c,0)+14;
+ const hh=40, H=pad*2+hh+bodyH;
+ const lx=pad, rx=pad+cw+mid;
+ let b='';
+ b+='<rect x="'+lx+'" y="'+pad+'" width="'+cw+'" height="'+(hh+bodyH)+'" rx="6" fill="#FFFFFF" stroke="'+LINE+'"/>';
+ b+='<rect x="'+rx+'" y="'+pad+'" width="'+cw+'" height="'+(hh+bodyH)+'" rx="6" fill="#FFFFFF" stroke="'+KEY+'"/>';
+ b+='<path d="M'+(lx+6)+' '+pad+' H'+(lx+cw-6)+' A6 6 0 0 1 '+(lx+cw)+' '+(pad+6)+' V'+(pad+hh)+' H'+lx+' V'+(pad+6)+' A6 6 0 0 1 '+(lx+6)+' '+pad+' Z" fill="'+FILL+'"/>';
+ b+='<path d="M'+(rx+6)+' '+pad+' H'+(rx+cw-6)+' A6 6 0 0 1 '+(rx+cw)+' '+(pad+6)+' V'+(pad+hh)+' H'+rx+' V'+(pad+6)+' A6 6 0 0 1 '+(rx+6)+' '+pad+' Z" fill="'+KEYBG+'"/>';
+ b+=txt(labels[0],lx+cw/2,pad+25,14,MUT,"middle",600);
+ b+=txt(labels[1],rx+cw/2,pad+25,14,KEY,"middle",600);
+ let y=pad+hh+14;
+ parsed.forEach((p,i)=>{
+  const h=rowH[i], cx=pad+cw+mid/2;
+  const kl=wrap(p.k,7);
+  b+=block(kl,cx,y+(kl.length>1?4:12),11.5,MUT,15,"middle",600);
+  b+=block(p.a,lx+14,y+12,13.5,INK,20);
+  b+=block(p.b,rx+14,y+12,13.5,INK,20);
+  if(i<parsed.length-1){
+   b+='<path d="M'+(lx+10)+' '+(y+h-8)+' H'+(lx+cw-10)+'" stroke="'+LINE+'" stroke-width="0.8" opacity="0.5"/>';
+   b+='<path d="M'+(rx+10)+' '+(y+h-8)+' H'+(rx+cw-10)+'" stroke="'+LINE+'" stroke-width="0.8" opacity="0.5"/>';
+  }
+  y+=h;
+ });
+ return svg(W,H,b);
+}
+
+/* ===== 5. 화살표 연쇄 (인과·수렴) ===== */
+function pChain(items){
+ const n=items.length, W=900, pad=20, gap=52;
+ const bw=Math.floor((W-pad*2-gap*(n-1))/n);
+ const ls=items.map(it=>wrap(cells(it).join(" "),Math.floor((bw-32)/13)));
+ const bh=Math.max(96,Math.max(...ls.map(l=>l.length))*20+40);
+ const H=pad*2+bh;
+ let b='';
+ items.forEach((it,i)=>{
+  const x=pad+i*(bw+gap), y=pad, last=i===n-1;
+  b+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+bh+'" rx="6" fill="'+(last?KEYBG:"#FFFFFF")+'" stroke="'+(last?KEY:LINE)+'"/>';
+  b+=block(ls[i],x+16,y+30,13,last?KEY:INK,20,null,last?600:400);
+  if(!last){
+   const ax=x+bw+12, ay=y+bh/2;
+   b+='<path d="M'+ax+' '+ay+' H'+(ax+22)+'" stroke="'+KEY+'" stroke-width="2"/>';
+   b+='<path d="M'+(ax+18)+' '+(ay-6)+' L'+(ax+28)+' '+ay+' L'+(ax+18)+' '+(ay+6)+'" fill="none" stroke="'+KEY+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+  }
+ });
+ return svg(W,H,b);
+}
+
+
+window.pCards=pCards;
+window.pCardsSub=pCardsSub;
+window.pSteps=pSteps;
+window.pContrast=pContrast;
+window.pChain=pChain;
+window.setAccent=setAccent;
+})();
+</script>
+<script>const RULES={"cards": {"A": {"ko": "에셋세트 · 무배경", "cap": 4, "model": "gemini", "status": "verified", "use": ["같은 것의 여러 변형", "같은 사물의 단계별 부품", "기준점 + 변형"], "no": ["정보 유형이 분류·계층이고 분류가 둘 이상일 때 — 한 줄에 놓으면 분류 경계가 사라진다(FT-3)", "서로 다른 사물을 병렬로 늘어놓을 때 — '여러 항목 병렬'을 그렇게 읽지 않습니다. 같은 사물의 변형이어야 한다(R4)."], "bg": "uniform solid light-gray seamless background", "cp": "a single row, lower 10% clear", "st": "premium 3D educational render, matte materials, soft directional key light from upper-left, no baked shadows", "ng": "text-free, no readable text, no letters, no numbers, no labels, no logos, no brand names, no overlapping objects, no environmental props", "ex": "four variations of a paper clip, all clearly made from the same bent wire form, each repurposed as a different object, evenly spaced in a single row, three-quarter angle", "frs": [{"id": "identical_scale", "f": "identical scale", "when": "형태 변화가 학습 포인트", "ex": "크기 변화가 학습 포인트"}, {"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "브랜드 연상이 강한 대상군은 항상. 휴대기기·웨어러블·차량·가전·컴퓨터.", "ex": ""}, {"id": "same_form_anchor", "f": "all clearly made from the same bent wire form", "when": "같은 사물의 변형을 나열할 때. 카드 A의 기본 용법이므로 사실상 항상.", "ex": ""}], "rep": "클립 4종"}, "B": {"ko": "개념 · 단일 오브젝트 · 무배경", "cap": 3, "model": "gemini", "status": "verified", "use": ["추상 원리를 한 컷으로", "대비되는 두 상태를 한 오브젝트에"], "no": [], "bg": "uniform solid light-gray seamless background, subtle floor reflection", "cp": "the object centered, lower 10% clear", "st": "premium 3D educational render, matte materials, soft key light", "ng": "text-free, no readable text, no labels, no environmental detail, no decorative HUD rings, no floating data readouts", "ex": "a balance scale, tilted, a plain gray card on the raised pan and a vivid accent-colored card with a check badge on the lowered pan", "frs": [{"id": "superseded_gray", "f": "the superseded items rendered in flat desaturated gray, clearly unused", "when": "과거/현재 대비를 그릴 때", "ex": ""}, {"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": "캡슐 커피머신"}, "C": {"ko": "조건 대조 · 좌우 분할", "cap": 3, "model": "gemini", "status": "verified_after_fix", "use": ["조건 A와 B의 결과 차이가 학습 포인트"], "no": [], "bg": "plain seamless background, environment barely visible", "cp": "both halves sit on one single continuous unbroken floor plane with no seam or line between them, identical camera angle and scale, the pair grouped within the left 60% of the frame, the right 40% is empty background", "st": "premium 3D educational render, accent glow carrying the data only", "ng": "text-free, no readable text, no labels, no decorative HUD rings", "ex": "two identical soil cross-sections side by side, exactly the same number of elements on each side, left with a smooth pile driven down showing cool stress lines, right with a rough pile showing dense friction lines", "frs": [{"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": "교통 대조 (최초본)"}, "D": {"ko": "장치 작동 · 단일 · 맥락 배경", "cap": 2, "model": "gemini", "status": "unverified", "use": ["장치의 작동 맥락이 학습 포인트일 때"], "no": [], "bg": "plain seamless background, minimal environment barely visible", "cp": "low angle close-up on the left, right 40% empty", "st": "premium 3D educational render, accent glow used only for airflow", "ng": "text-free, no readable text, no decorative HUD rings, no floating data readouts, no sci-fi interface overlays", "ex": "a vacuum cleaner head on carpet, airflow arrows drawn into the nozzle showing suction direction", "frs": [{"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": ""}, "E": {"ko": "순차 패널", "cap": null, "model": "gemini", "status": "risky", "use": ["단계가 3~4개이고 순서 자체가 내용일 때"], "no": [], "bg": "uniform solid light-gray seamless background", "cp": "four evenly spaced panels in one row, no dividers", "st": "technical illustration, consistent cutaway style across all four", "ng": "text-free, no readable text, no numbers, no step labels, no arrows between panels", "ex": "the same cylindrical filter housing shown four times in a row, identical angle and scale, differing only in internal state", "frs": [{"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": ""}, "F": {"ko": "배경 이미지 (슬라이드를 덮음)", "cap": 2, "model": "gemini_app", "status": "verified", "use": ["텍스트가 주인공이고 이미지는 무대"], "no": [], "bg": "high key, low saturation, large empty area for text overlay", "cp": "one continuous seamless background, no vertical seam, no split-screen, no panel division", "st": "soft natural light, muted palette", "ng": "text-free, no readable text, no informational elements, no charts, no diagrams, no HUD, no strong focal point in the center", "ex": "an empty office desk scene, softly out of focus", "frs": [{"id": "empty_side_explicit", "f": "the left 55% is plain empty wall with no objects", "when": "사물이 화면 전체에 퍼지는 대상(작업대·선반·공방 등) 또는 이전 시도에서 빈 자리가 안 나온 경우", "ex": "사물이 자연히 한쪽에 모이는 대상(책상·복도). 지시를 덜 넣는 쪽이 낫습니다."}, {"id": "blur_everything", "f": "everything softly out of focus, shallow depth of field throughout, no sharp object anywhere", "when": "앞쪽에 물체가 놓이는 대상. 사실상 대부분의 F 대상.", "ex": ""}, {"id": "unbranded", "f": "unbranded, no app icons, no screen content, no brand logos, generic design", "when": "branded_category == true", "ex": ""}], "rep": "작업대 · 좌측 55% 빈 벽"}}, "info_types": ["순서·절차", "분류·계층", "비교·대조", "인과·수렴", "정의", "목록"], "guards": [], "caps": {}};
+const IT={"순서·절차": {"fmt": "번호 | 명칭 | 설명", "sig": ["단계", "순서", "~후에", "프로세스"], "ex": ["1 | 문제 인식 | 스스로 일상의 비효율을 발견함", "2 | 문제 정의 | 근본 원인을 찾아 진짜 문제를 정의함", "3 | 아이디어 도출 | 대안을 만들고 제약 안에서 판별함"], "src": "1주차 · 공학적 창의성의 4단계", "tell": "순서를 바꾸면 뜻이 달라집니다"}, "분류·계층": {"fmt": "대분류 | 하위항목 목록", "sig": ["상위-하위", "~로 나뉨", "유형"], "ex": ["S 대체 | 유리 → 플렉시블 / 손에 드는 방식 → 손목형", "C 결합 | 자동차 키 기능 / 온디바이스 AI"], "src": "13주차 · 스마트폰의 대체와 결합", "tell": "항목이 두 무리 이상으로 묶입니다. 카드 A를 쓰면 그 경계가 사라집니다"}, "비교·대조": {"fmt": "항목 | A값 | B값", "sig": ["반면", "~와 달리", "장단점"], "ex": ["질문 방식 | 일반인: 기발한 아이디어 요구 | 숙련자: S와 C 조건을 강제", "결과 경향 | 일반인: 일반적 결과 | 숙련자: 조건에 맞춘 파생 아이디어"], "src": "SCAMPER 차시 · 일반 질문과 스캠퍼 질문", "tell": "두 대상을 같은 잣대로 잽니다. 잣대가 왼쪽 열이 됩니다"}, "인과·수렴": {"fmt": "원인 → 중간 → 결과", "sig": ["따라서", "그 결과", "~로 이어짐"], "ex": ["동전 사용의 불편", "결제 수단을 무엇으로 대체할지 질문", "신용카드로 대체한 스마트 주차 요금 징수기"], "src": "SCAMPER 차시 · 스마트 주차 요금 징수기", "tell": "앞이 뒤를 낳습니다. 화살표로 이어붙이지 말고 원소로 쪼갭니다"}, "정의": {"fmt": "용어 | 정의문", "sig": ["~란", "~을 의미함"], "ex": ["SCAMPER | 사물·서비스·프로세스를 새로운 것으로 변형하기 위한 9가지 아이디어 변형 기법"], "src": "SCAMPER 차시 · 스캠퍼의 의미", "tell": "용어 하나에 뜻 하나입니다. 여러 개면 목록입니다"}, "목록": {"fmt": "항목 배열", "sig": ["특징", "요소", "규칙"], "ex": ["S | Substitute · 대체하기", "C | Combine · 결합하기", "A | Adapt · 적용/응용하기"], "src": "SCAMPER 차시 · 7가지 구성 요소", "tell": "순서를 바꿔도 뜻이 그대로입니다. 바뀌면 순서·절차입니다"}};
+const WHY={"cat_a": {"t": "두 무리로 묶이면 한 줄 배치는 안 씁니다", "w": "항목이 두 무리 이상으로 묶여 있으면 한 줄 배치는 쓰지 않습니다.", "e": "13주차 B4 — 대체 2개와 결합 2개를 한 줄에 놓으니 어느 게 어느 무리인지 사라졌습니다.", "f": "무리별로 덩어리를 나누거나, 좌우로 나누는 배치 C를 씁니다.", "src": "FT-3 · 13주차 B4"}, "cap": {"t": "개수가 넘치면 덩어리를 나눕니다", "w": "일부만 그리면 PPT 텍스트와 이미지 요소가 어긋나 학습자가 대응시킬 수 없다(FT-2).", "e": "13주차 B5 — 항목 5개, 이 배치는 최대 4개", "f": "항목을 의미가 통하는 단위로 나눠 덩어리 두 개로 만듭니다. 각 덩어리가 자기 글과 자기 그림을 갖고, 슬라이드도 두 장이 됩니다.", "src": "R9 · 13주차 B5"}, "brand": {"t": "브랜드가 연상되면 문구를 항상 붙입니다", "w": "브랜드가 연상되는 물건은 조건을 따지지 말고 항상 문구를 붙입니다.", "e": "13주차 B4 — 스마트폰인데 문구가 빠져 특정 제조사 카메라 배열과 똑같이 나왔습니다.", "f": "휴대기기·웨어러블·차량·가전·컴퓨터는 무조건 붙입니다.", "src": "FT-1 · 13주차 B4"}, "unver": {"t": "아직 확인이 덜 된 배치입니다", "w": "배치 D는 실제 사례가 하나뿐이고, 배치 E는 나중에 손으로 글자를 얹은 것만 잘 나왔습니다.", "e": "A·B·C·F는 세 도구 비교나 열네 장 생성으로 확인했습니다.", "f": "써도 되지만 결과를 꼭 눈으로 확인해 주세요.", "src": "카드 상태"}, "base": {"t": "바꾼 것을 그릴 때는 바뀌기 전 모습도 함께 놓습니다", "w": "바꾼 뒤만 그리면 무엇이 바뀌었는지 보이지 않습니다.", "e": "13주차 클립(금속→플라스틱)과 스마트폰(유리→휘어지는 재질) 둘 다 이 문제가 있었습니다.", "f": "바뀐 모습이 3개면 바뀌기 전 모습 1개를 더해 4개로 그립니다.", "src": "카드 A · N+1"}, "slots": {"t": "글 줄 수와 항목 수는 같아야 합니다", "w": "슬라이드에 상자 세 개를 놓으려면 글도 세 줄이어야 합니다.", "e": "원인·중간·결과를 화살표로 이어붙여 한 줄로 낸 사례가 4건.", "f": "항목 하나가 글 한 줄입니다.", "src": "S-2"}, "gate": {"t": "그림에는 이유가 있어야 합니다", "w": "왜 그림을 그리기로 했는지가 남아야 나중에 되짚을 수 있습니다.", "e": "이유만 있고 통과 여부가 빠진 사례가 5건.", "f": "통과 여부와 이유를 둘 다 적습니다.", "src": "S-1"}, "it": {"t": "항목 관계 이름은 여섯 개뿐입니다", "w": "이름을 새로 만들면 글을 어떤 형식으로 쓸지 정해지지 않습니다.", "e": "제미나이가 「단일 서술」·「나열」 같은 이름을 지어낸 사례.", "f": "여섯 개 밖의 이름은 쓰지 않습니다.", "src": "정보 유형"}};
 const ICONS={"A": "<svg width=\"72\" height=\"28\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"4\" y=\"9\" width=\"15\" height=\"15\" rx=\"1.5\"/><rect x=\"23\" y=\"9\" width=\"15\" height=\"15\" rx=\"1.5\"/><rect x=\"42\" y=\"9\" width=\"15\" height=\"15\" rx=\"1.5\"/><rect x=\"61\" y=\"9\" width=\"15\" height=\"15\" rx=\"1.5\"/></svg>", "B": "<svg width=\"72\" height=\"28\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"32\" y=\"7\" width=\"20\" height=\"18\" rx=\"1.5\"/><path d=\"M28 27h28\" opacity=\".5\"/></svg>", "C": "<svg width=\"72\" height=\"28\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"36\" height=\"18\" rx=\"1.5\"/><rect x=\"45\" y=\"7\" width=\"36\" height=\"18\" rx=\"1.5\"/><path d=\"M3 27h78\" opacity=\".5\"/></svg>", "D": "<svg width=\"72\" height=\"28\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"6\" y=\"8\" width=\"40\" height=\"18\" rx=\"1.5\"/><path d=\"M50 17h24M50 17l6-4M50 17l6 4\"/></svg>", "E": "<svg width=\"72\" height=\"28\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"2\" y=\"9\" width=\"18\" height=\"15\" rx=\"1.5\"/><rect x=\"23\" y=\"9\" width=\"18\" height=\"15\" rx=\"1.5\"/><rect x=\"44\" y=\"9\" width=\"18\" height=\"15\" rx=\"1.5\"/><rect x=\"65\" y=\"9\" width=\"18\" height=\"15\" rx=\"1.5\"/></svg>", "F": "<svg width=\"72\" height=\"28\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"2\" y=\"3\" width=\"80\" height=\"26\" rx=\"1.5\" fill=\"currentColor\" opacity=\".25\" stroke=\"none\"/><rect x=\"8\" y=\"11\" width=\"40\" height=\"10\" rx=\"1.5\"/></svg>", "none": "<svg width=\"72\" height=\"28\" viewBox=\"0 0 84 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" aria-hidden=\"true\"><rect x=\"2\" y=\"3\" width=\"80\" height=\"26\" rx=\"2\" stroke-dasharray=\"3 3\" opacity=\".6\"/></svg>"};
 const SAMPLE="{\n \"blocks\": [\n  {\n   \"id\": \"B1\",\n   \"title\": \"\uc2a4\ucea0\ud37c\uc758 \uc758\ubbf8\",\n   \"track\": \"shape\",\n   \"info_type\": \"\uc815\uc758\",\n   \"item_count\": 1,\n   \"slots\": [\n    \"SCAMPER | \uc0ac\ubb3c\u00b7\uc11c\ube44\uc2a4\u00b7\ud504\ub85c\uc138\uc2a4\ub97c \uc0c8\ub85c\uc6b4 \uac83\uc73c\ub85c \ubcc0\ud615\ud558\uae30 \uc704\ud55c 9\uac00\uc9c0 \uc544\uc774\ub514\uc5b4 \ubcc0\ud615 \uae30\ubc95\"\n   ],\n   \"gate\": null,\n   \"card\": null,\n   \"subject\": null,\n   \"subject_traits\": {\n    \"branded_category\": false,\n    \"same_form_variants\": false,\n    \"replacement_type\": false,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B2\",\n   \"title\": \"\uc2a4\ucea0\ud37c\uc758 \ud0c4\uc0dd \ubc30\uacbd\",\n   \"track\": \"shape\",\n   \"info_type\": \"\uc778\uacfc\u00b7\uc218\ub834\",\n   \"item_count\": 3,\n   \"slots\": [\n    \"\uc54c\ub809\uc2a4 \uc624\uc2a4\ubcf8\uc758 \uccb4\ud06c\ub9ac\uc2a4\ud2b8\",\n    \"\ubc25 \uc5d0\ubc8c\uc774 \uae30\uc5b5\ud558\uae30 \uc27d\uac8c \uc7ac\uad6c\uc131\",\n    \"\uc544\uc774\ub514\uc5b4\ub97c \uc790\uadf9\ud558\ub294 \uc9c8\ubb38\uc73c\ub85c \uad6c\uc131\ub41c \uc2a4\ucea0\ud37c\"\n   ],\n   \"gate\": null,\n   \"card\": null,\n   \"subject\": null,\n   \"subject_traits\": {\n    \"branded_category\": false,\n    \"same_form_variants\": false,\n    \"replacement_type\": false,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B3\",\n   \"title\": \"\uc2a4\ucea0\ud37c\uc758 7\uac00\uc9c0 \uad6c\uc131 \uc694\uc18c\",\n   \"track\": \"shape\",\n   \"info_type\": \"\ubaa9\ub85d\",\n   \"item_count\": 7,\n   \"slots\": [\n    \"S | Substitute \u00b7 \ub300\uccb4\ud558\uae30\",\n    \"C | Combine \u00b7 \uacb0\ud569\ud558\uae30\",\n    \"A | Adapt \u00b7 \uc801\uc6a9/\uc751\uc6a9\ud558\uae30\",\n    \"M | Modify/Magnify \u00b7 \ubcc0\uacbd/\ud655\ub300\ud558\uae30\",\n    \"P | Put to other uses \u00b7 \uc6a9\ub3c4 \ubcc0\uacbd\ud558\uae30\",\n    \"E | Eliminate \u00b7 \uc81c\uac70\ud558\uae30\",\n    \"R | Reverse/Rearrange \u00b7 \ub4a4\uc9d1\uae30/\uc7ac\ubc30\uc5f4\ud558\uae30\"\n   ],\n   \"gate\": null,\n   \"card\": null,\n   \"subject\": null,\n   \"subject_traits\": {\n    \"branded_category\": false,\n    \"same_form_variants\": false,\n    \"replacement_type\": false,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B4\",\n   \"title\": \"\ub300\uccb4\ud558\uae30\uc758 \uc9c8\ubb38 \ud504\ub808\uc784\",\n   \"track\": \"shape\",\n   \"info_type\": \"\uc815\uc758\",\n   \"item_count\": 2,\n   \"slots\": [\n    \"\ud575\uc2ec \uc9c8\ubb38 | \uc774\uac83\uc744 \ub300\uccb4\ud560 \ub2e4\ub978 \uac83\uc740 \uc5c6\ub098?\",\n    \"\uc138\ubd80 \uc9c8\ubb38 | \ubb34\uc5c7\uc73c\ub85c, \ub204\uad6c\ub85c, \uc5b4\ub5a4 \uc7ac\uc9c8\ub85c \ub300\uccb4\ud560 \uc218 \uc788\ub294\uc9c0\"\n   ],\n   \"gate\": null,\n   \"card\": null,\n   \"subject\": null,\n   \"subject_traits\": {\n    \"branded_category\": false,\n    \"same_form_variants\": false,\n    \"replacement_type\": false,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B5\",\n   \"title\": \"\uc2a4\ub9c8\ud2b8 \uc8fc\ucc28 \uc694\uae08 \uc9d5\uc218\uae30\uc758 \ub300\uccb4\",\n   \"track\": \"image\",\n   \"info_type\": \"\uc778\uacfc\u00b7\uc218\ub834\",\n   \"item_count\": 3,\n   \"slots\": [\n    \"\ub3d9\uc804 \uc0ac\uc6a9\uc758 \ubd88\ud3b8\",\n    \"\uacb0\uc81c \uc218\ub2e8\uc778 \ub3d9\uc804\uc744 \ubb34\uc5c7\uc73c\ub85c \ub300\uccb4\ud560\uc9c0 \uc9c8\ubb38\",\n    \"\uc2e0\uc6a9\uce74\ub4dc\ub85c \ub300\uccb4\ud55c \uc2a4\ub9c8\ud2b8 \uc8fc\ucc28 \uc694\uae08 \uc9d5\uc218\uae30\"\n   ],\n   \"gate\": {\n    \"passed\": true,\n    \"reason\": \"\uc8fc\ucc28 \uc694\uae08 \uc9d5\uc218\uae30\uc758 \uacb0\uc81c \uc218\ub2e8\uc774 \ub3d9\uc804\uc5d0\uc11c \uc2e0\uc6a9\uce74\ub4dc\ub85c \ubc14\ub00c\ub294 \uac19\uc740 \uc0ac\ubb3c\uc758 \ubcc0\ud615\uc73c\ub85c \uc881\ud600\uc9d0\"\n   },\n   \"card\": \"A\",\n   \"subject\": \"two versions of the same smart parking payment meter, a baseline coin-operated meter accepting a coin and the same meter accepting a generic credit card\",\n   \"subject_traits\": {\n    \"branded_category\": false,\n    \"same_form_variants\": true,\n    \"replacement_type\": true,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B6\",\n   \"title\": \"\uacb0\ud569\ud558\uae30\uc758 \uc9c8\ubb38 \ud504\ub808\uc784\",\n   \"track\": \"shape\",\n   \"info_type\": \"\uc815\uc758\",\n   \"item_count\": 3,\n   \"slots\": [\n    \"\ud575\uc2ec \uc9c8\ubb38 | \uc11c\ub85c \uad00\ub828\uc774 \uc5c6\ub294 \uac83\ub4e4\uc744 \uacb0\ud569\ud558\uba74 \uc5b4\ub5a8\uae4c?\",\n    \"\uc801\uc6a9 \uc6d0\ub9ac | \uad00\ub828\ub418\uc9c0 \uc54a\uc558\ub358 \uc81c\ud488\u00b7\ubaa9\uc801\u00b7\uc11c\ube44\uc2a4\ub97c \uacb0\ud569\ud574 \ud601\uc2e0 \uc544\uc774\ub514\uc5b4\ub97c \ub3c4\ucd9c\",\n    \"\uc138\ubd80 \uc9c8\ubb38 | \uc5b4\ub5a4 \uc7ac\uc9c8\u00b7\uc7a5\uce58\u00b7\ubaa9\uc801\uc744 \uacb0\ud569\ud560 \uc218 \uc788\ub294\uc9c0\"\n   ],\n   \"gate\": null,\n   \"card\": null,\n   \"subject\": null,\n   \"subject_traits\": {\n    \"branded_category\": false,\n    \"same_form_variants\": false,\n    \"replacement_type\": false,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B7\",\n   \"title\": \"\uad6c\ud150\ubca0\ub974\ud06c \uc778\uc1c4\uae30\uc758 \uc774\uc885 \uacb0\ud569\",\n   \"track\": \"shape\",\n   \"info_type\": \"\uc778\uacfc\u00b7\uc218\ub834\",\n   \"item_count\": 3,\n   \"slots\": [\n    \"\uc911\uc138 \uc2dc\ub300\uc758 \ub300\ub7c9 \uc778\uc1c4 \uace0\ubbfc\",\n    \"\ub3d9\uc804 \ud380\uce58\uae30\uc640 \ud3ec\ub3c4\uc8fc \uc555\ucc29\uae30 \ubc29\uc2dd\uc744 \uacb0\ud569\",\n    \"\ucd5c\ucd08\uc758 \uae08\uc18d \ud65c\uc790 \uc778\uc1c4\uae30 \ubc1c\uba85\"\n   ],\n   \"gate\": {\n    \"passed\": false,\n    \"reason\": \"\ub3d9\uc804 \ud380\uce58\uae30\u00b7\ud3ec\ub3c4\uc8fc \uc555\ucc29\uae30\u00b7\uc778\uc1c4\uae30\ub77c\ub294 \uc11c\ub85c \ub2e4\ub978 \uc0ac\ubb3c \uc5ec\ub7ec \uac1c\uac00 \ud544\uc694\ud574 \ud558\ub098 \ub610\ub294 \uac19\uc740 \uc0ac\ubb3c\uc758 \ubcc0\ud615\uc73c\ub85c \uc881\ud600\uc9c0\uc9c0 \uc54a\uc74c\"\n   },\n   \"card\": null,\n   \"subject\": null,\n   \"subject_traits\": {\n    \"branded_category\": false,\n    \"same_form_variants\": false,\n    \"replacement_type\": false,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B8\",\n   \"title\": \"\uc544\uc774\ud3f0\uc758 \uacb0\ud569 \uc0ac\ub840\",\n   \"track\": \"shape\",\n   \"info_type\": \"\uc778\uacfc\u00b7\uc218\ub834\",\n   \"item_count\": 4,\n   \"slots\": [\n    \"\uc804\ud654\uae30\",\n    \"\uc544\uc774\ud31f\",\n    \"\uc778\ud130\ub137 \ud1b5\uc2e0 \uae30\uae30\",\n    \"\uc138 \uae30\ub2a5\uc744 \uacb0\ud569\ud55c \uc544\uc774\ud3f0\"\n   ],\n   \"gate\": {\n    \"passed\": false,\n    \"reason\": \"\uc11c\ub85c \ub2e4\ub978 \uc0ac\ubb3c \uc5ec\ub7ec \uac1c\uac00 \ud544\uc694\ud574 \ud558\ub098\ub85c \uc881\ud600\uc9c0\uc9c0 \uc54a\uc74c\"\n   },\n   \"card\": null,\n   \"subject\": null,\n   \"subject_traits\": {\n    \"branded_category\": true,\n    \"same_form_variants\": false,\n    \"replacement_type\": false,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B9\",\n   \"title\": \"\uc2e4\ubb34\uc5d0\uc11c \ub300\uccb4\uc640 \uacb0\ud569 \uc9c8\ubb38\ud558\uae30\",\n   \"track\": \"shape\",\n   \"info_type\": \"\ubaa9\ub85d\",\n   \"item_count\": 2,\n   \"slots\": [\n    \"\ub300\uccb4(S) | \ubd88\ub9cc\uc774 \ub9ce\uc740 \ubd80\ud488\uc774\ub098 \ud504\ub85c\uc138\uc2a4\ub97c \ub2e4\ub978 \uc7ac\uc9c8\ub85c \ub300\uccb4\",\n    \"\uacb0\ud569(C) | \uc606 \ubd80\uc11c\uc758 \uae30\ud68d\uc548\uc744 \uc790\uc2e0\uc758 \uae30\ud68d\uc548\uacfc \uacb0\ud569\"\n   ],\n   \"gate\": null,\n   \"card\": null,\n   \"subject\": null,\n   \"subject_traits\": {\n    \"branded_category\": false,\n    \"same_form_variants\": false,\n    \"replacement_type\": false,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B10\",\n   \"title\": \"\uc77c\ubc18 \uc9c8\ubb38\uacfc \uc2a4\ucea0\ud37c \uc9c8\ubb38\uc758 \ucc28\uc774\",\n   \"track\": \"shape\",\n   \"info_type\": \"\ube44\uad50\u00b7\ub300\uc870\",\n   \"item_count\": 2,\n   \"slots\": [\n    \"\uc9c8\ubb38 \ubc29\uc2dd | \uc77c\ubc18\uc778: \uae30\ubc1c\ud55c \uc758\uc790 \uc544\uc774\ub514\uc5b4 \uc694\uad6c | \uc219\ub828\uc790: S\uc640 C \uc870\uac74\uc744 \uac15\uc81c\",\n    \"\uacb0\uacfc \uacbd\ud5a5 | \uc77c\ubc18\uc778: \uba54\uc2dc \uc18c\uc7ac \ub4f1 \uc77c\ubc18\uc801 \uacb0\uacfc | \uc219\ub828\uc790: \uc870\uac74\uc5d0 \ub9de\ucd98 \ud30c\uc0dd \uc544\uc774\ub514\uc5b4\"\n   ],\n   \"gate\": null,\n   \"card\": null,\n   \"subject\": null,\n   \"subject_traits\": {\n    \"branded_category\": false,\n    \"same_form_variants\": false,\n    \"replacement_type\": false,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  },\n  {\n   \"id\": \"B11\",\n   \"title\": \"AI \uacb0\uacfc: S\uc640 C \uc758\uc790 \uc544\uc774\ub514\uc5b4\",\n   \"track\": \"image\",\n   \"info_type\": \"\ube44\uad50\u00b7\ub300\uc870\",\n   \"item_count\": 2,\n   \"slots\": [\n    \"\ubcc0\ud615 \ubc29\uc2dd | S: \ub2e4\ub9ac\ub97c \uc790\uc131 \ubd80\uc0c1 \ubaa8\ub4c8\ub85c \ub300\uccb4 | C: \uc88c\ud310 \ud558\ub2e8\uc5d0 \ud398\ub2ec \ubc1c\uc804\uae30 \uacb0\ud569\",\n    \"\ub3c4\ucd9c \uacb0\uacfc | S: \uce35\uac04 \uc18c\uc74c \uc81c\ub85c | C: \uc6b4\ub3d9\ud558\uba70 \ucda9\uc804\ud558\ub294 \uc758\uc790\"\n   ],\n   \"gate\": {\n    \"passed\": true,\n    \"reason\": \"\ub450 \uacb0\uacfc\uac00 \uac19\uc740 \uc0ac\ubb34\uc6a9 \uc758\uc790\uc758 \ubcc0\ud615\uc73c\ub85c \uc881\ud600\uc9c0\uace0 \ub300\uccb4 \uc804 \uae30\uc900 \uc758\uc790\ub3c4 \ud568\uaed8 \uc81c\uc2dc\ud560 \uc218 \uc788\uc74c\"\n   },\n   \"card\": \"A\",\n   \"subject\": \"three versions of the same office chair, a baseline office chair, the same chair with its legs replaced by magnetic levitation modules, and the same chair with a compact pedal generator mounted beneath the seat\",\n   \"subject_traits\": {\n    \"branded_category\": true,\n    \"same_form_variants\": true,\n    \"replacement_type\": true,\n    \"scale_is_the_point\": false,\n    \"spreads_across_frame\": false\n   }\n  }\n ]\n}";
-let blocks=[],opt={side:"left",brand:"on"},ovr={},open_={};
+let blocks=[],opt={side:"left",brand:"on",accent:"#1F6F68"},ovr={},open_={};
+const DMAP={"목록":"pCards","분류·계층":"pCardsSub","순서·절차":"pSteps","비교·대조":"pContrast","인과·수렴":"pChain","정의":null};
+const DNAME={"목록":"카드 나열","분류·계층":"카드 + 사례","순서·절차":"단계 흐름","비교·대조":"좌우 대비","인과·수렴":"화살표 연쇄"};
+function drawDiagram(b,it){
+ const fn=DMAP[it]; if(!fn||!b.slots||!b.slots.length)return null;
+ setAccent(opt.accent);
+ try{
+  if(it==="비교·대조"){
+   if(String(b.slots[0]).split("|").length<3)return null;
+   return pContrast(b.slots,["A","B"]);
+  }
+  return window[fn](b.slots);
+ }catch(e){return null}
+}
 const $=s=>document.querySelector(s);
 const esc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 /* ---------- GPT 링크 ---------- */
 function gptUrl(){try{return localStorage.getItem("vdf_gpt")||""}catch(e){return""}}
 function setGpt(){
- const v=prompt("Custom GPT 주소를 붙여넣는다","https://chatgpt.com/g/");
+ const v=prompt("Custom GPT 주소를 붙여넣어 주세요","https://chatgpt.com/g/");
  if(v===null)return;
  try{localStorage.setItem("vdf_gpt",v.trim())}catch(e){}
  paintGpt();
+}
+function loadAccent(){
+ try{const v=localStorage.getItem("vdf_accent");if(v){opt.accent=v;const el=$("#accent");if(el)el.value=v}}catch(e){}
 }
 function paintGpt(){
  const u=gptUrl(), el=$("#gpt");
@@ -150,14 +349,14 @@ function paintGpt(){
 /* ---------- 입력 ---------- */
 function load(txt){
  try{
-  const m=txt.match(/\{[\s\S]*\}/); if(!m)throw new Error("JSON을 찾지 못했다");
+  const m=txt.match(/\{[\s\S]*\}/); if(!m)throw new Error("JSON을 찾지 못했습니다");
   const d=JSON.parse(m[0]);
-  if(!d.blocks||!Array.isArray(d.blocks))throw new Error("blocks 배열이 없다");
+  if(!d.blocks||!Array.isArray(d.blocks))throw new Error("blocks 배열이 없습니다");
   blocks=d.blocks; ovr={}; open_={}; $("#err").hidden=true; render();
   $("#out").scrollIntoView({behavior:"smooth",block:"start"});
  }catch(e){
   $("#err").hidden=false;
-  $("#err").textContent="읽지 못했다 — "+e.message+". GPT 답변 뒤쪽의 JSON 전체를 넣는다.";
+  $("#err").textContent="읽지 못했습니다 — "+e.message+". GPT 답변 뒤쪽의 JSON 전체를 넣어 주세요.";
  }
 }
 function readFile(f){
@@ -182,17 +381,17 @@ function frags(b,ck){
 }
 function checks(b,ck,it){
  const w=[],t=b.subject_traits||{};
- if(!RULES.info_types.includes(it))w.push({k:"it",m:"항목 관계 이름이 여섯 개 밖이다 — "+esc(it)});
+ if(!RULES.info_types.includes(it))w.push({k:"it",m:"항목 관계 이름이 여섯 개 밖입니다 — "+esc(it)});
  if(ck){
   const c=RULES.cards[ck];
-  if(ck==="A"&&it==="분류·계층")w.push({k:"cat_a",m:"항목이 두 무리로 묶여 있으면 배치 A를 쓰지 않는다. 한 줄에 늘어놓으면 어느 게 어느 무리인지 사라진다."});
-  if(c.cap&&b.item_count>c.cap)w.push({k:"cap",m:"항목이 "+b.item_count+"개인데 이 배치는 최대 "+c.cap+"개다. 일부만 그리지 말고 덩어리를 나눈다."});
-  if(c.status!=="verified"&&c.status!=="verified_after_fix")w.push({k:"unver",m:"배치 "+ck+"는 아직 충분히 확인되지 않았다. 결과를 꼭 눈으로 본다."});
-  if(t.replacement_type&&!t.same_form_variants)w.push({k:"base",m:"무언가를 바꾼 것을 그리는데 같은 사물의 여러 모습이 아니다. 바뀌기 전 모습이 빠졌을 수 있다."});
-  if(t.branded_category&&opt.brand==="off")w.push({k:"brand",m:"브랜드가 연상되는 물건인데 설정이 꺼져 있다. 특정 제품처럼 그려질 수 있다."});
+  if(ck==="A"&&it==="분류·계층")w.push({k:"cat_a",m:"항목이 두 무리로 묶여 있어서 배치 A는 맞지 않습니다. 한 줄에 늘어놓으면 어느 게 어느 무리인지 사라집니다."});
+  if(c.cap&&b.item_count>c.cap)w.push({k:"cap",m:"항목이 "+b.item_count+"개인데 이 배치는 최대 "+c.cap+"개입니다. 일부만 그리지 마시고 덩어리를 나눠 주세요."});
+  if(c.status!=="verified"&&c.status!=="verified_after_fix")w.push({k:"unver",m:"배치 "+ck+"는 아직 충분히 확인되지 않았습니다. 결과를 꼭 눈으로 확인해 주세요."});
+  if(t.replacement_type&&!t.same_form_variants)w.push({k:"base",m:"무언가를 바꾼 것을 그리는데 같은 사물의 여러 모습이 아닙니다. 바뀌기 전 모습이 빠졌을 수 있습니다."});
+  if(t.branded_category&&opt.brand==="off")w.push({k:"brand",m:"브랜드가 연상되는 물건인데 설정이 꺼져 있습니다. 특정 제품처럼 그려질 수 있습니다."});
  }
- if(b.slots&&b.item_count&&b.slots.length!==b.item_count)w.push({k:"slots",m:"글이 "+b.slots.length+"줄인데 항목은 "+b.item_count+"개다. 수가 맞아야 한다."});
- if(b.track==="image"&&(!b.gate||b.gate.passed!==true))w.push({k:"gate",m:"그림을 그리는데 왜 그리는지 이유가 없다."});
+ if(b.slots&&b.item_count&&b.slots.length!==b.item_count)w.push({k:"slots",m:"글이 "+b.slots.length+"줄인데 항목은 "+b.item_count+"개입니다. 수가 맞아야 합니다."});
+ if(b.track==="image"&&(!b.gate||b.gate.passed!==true))w.push({k:"gate",m:"그림을 그리는데 왜 그리는지 이유가 없습니다."});
  return w;
 }
 
@@ -246,11 +445,13 @@ let filt="all";
 function setFilt(f){filt=f;render()}
 function render(){
  const root=$("#out");
- if(!blocks.length){root.innerHTML='<p class="empty">계획을 넣고 확인을 누른다.</p>';return}
+ if(!blocks.length){root.innerHTML='<p class="empty">계획을 넣고 확인하기를 눌러 주세요.</p>';return}
  const nImg=blocks.filter(b=>b.track==="image").length;
  let nW=0;
  blocks.forEach((b,i)=>{const o=ovr[i]||{};nW+=checks(b,("card" in o)?o.card:(b.card||""),o.it||b.info_type).length});
- let head='<div class="sum"><div class="tal"><span><b>'+blocks.length+'</b> 덩어리</span><span><b>'+nImg+'</b> 그림</span>'+
+ let nDg=0;
+ blocks.forEach((b,i)=>{const o=ovr[i]||{};const c=("card" in o)?o.card:(b.card||"");if(!c&&drawDiagram(b,o.it||b.info_type))nDg++});
+ let head='<div class="sum"><div class="tal"><span><b>'+blocks.length+'</b> 덩어리</span><span><b>'+nImg+'</b> 그림</span><span><b>'+nDg+'</b> 도형</span>'+
   (nW?'<span class="tw"><b>'+nW+'</b> 확인할 것</span>':'<span class="tok">확인할 것 없음</span>')+'</div>'+
   '<div class="filt"><button class="'+(filt==="all"?"on":"")+'" onclick="setFilt(\'all\')">전체</button>'+
   '<button class="'+(filt==="img"?"on":"")+'" onclick="setFilt(\'img\')">그림만</button>'+
@@ -265,13 +466,26 @@ function render(){
   h+='<div class="pathrow">'+path(b,ck)+'</div>';
   h+='<div class="lay"><div class="lno">1 글자</div><div>'+
     (b.gate?'<p class="rsn">'+(b.gate.passed?"그릴 것이 정해졌다 — ":"그림 없이 간다 — ")+esc(b.gate.reason)+'</p>'
-           :'<p class="rsn">글자를 지우면 남는 그림이 없다</p>')+'</div></div>';
+           :'<p class="rsn">글자를 지우면 남는 그림이 없습니다</p>')+'</div></div>';
   h+='<div class="lay"><div class="lno">2 관계</div><div><select onchange="setIt('+i+',this.value)">'+
     RULES.info_types.map(x=>'<option'+(x===it?" selected":"")+'>'+x+'</option>').join("")+'</select>'+
     '<span class="chip c-n" style="margin-left:8px">항목 '+b.item_count+'</span>'+
     '<div class="slots">'+(b.slots||[]).map(s=>"· "+esc(s)).join("<br>")+'</div></div></div>';
   h+='<div class="lay"><div class="lno">4 배치</div><div>'+tileRow(i,ck)+
     w.map(x=>warnBox(i,x)).join("")+'</div></div>';
+  if(!ck){
+   const dg=drawDiagram(b,it);
+   if(dg){
+    h+='<div class="lay"><div class="lno">도형</div><div>'+
+     '<span class="chip c-k">'+DNAME[it]+'</span>'+
+     '<div class="dg" id="d'+i+'">'+dg+'</div>'+
+     '<div class="dgbar"><button class="mini" onclick="cpsvg(this,'+i+')">SVG 복사</button>'+
+     '<button class="mini" onclick="dlsvg('+i+')">파일로</button>'+
+     '<span class="dghint">PPT에 붙여넣고 마우스 오른쪽 → 도형으로 변환하시면 됩니다</span></div></div></div>';
+   }else if(it==="정의"){
+    h+='<div class="lay"><div class="lno">도형</div><div><span class="chip c-n">도형은 만들지 않습니다 — 글로 둡니다</span></div></div>';
+   }
+  }
   if(ck){
    h+='<div class="lay"><div class="lno">5 문구</div><div>'+
     (fr.length?fr.map(f=>'<span class="chip c-k c-m" title="'+esc(f.w)+'">'+esc(f.f)+'</span>').join("")
@@ -285,6 +499,17 @@ function render(){
 function tog(id){open_[id]=!open_[id];render()}
 function setIt(i,v){ovr[i]=ovr[i]||{};ovr[i].it=v;render()}
 function setCard(i,v){ovr[i]=ovr[i]||{};ovr[i].card=v;render()}
+function svgOf(i){const el=$("#d"+i);return el?el.innerHTML.trim():null}
+function cpsvg(btn,i){
+ const s=svgOf(i); if(!s)return;
+ navigator.clipboard.writeText(s).then(()=>{btn.textContent="복사됨";setTimeout(()=>btn.textContent="SVG 복사",1500)});
+}
+function dlsvg(i){
+ const s=svgOf(i); if(!s)return;
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([s],{type:"image/svg+xml"}));
+ a.download=((blocks[i]&&blocks[i].id)||"diagram")+".svg"; a.click(); URL.revokeObjectURL(a.href);
+}
 function cp(btn,i){
  navigator.clipboard.writeText($("#p"+i).innerText).then(()=>{
   btn.textContent="복사됨";setTimeout(()=>btn.textContent="복사",1400);
@@ -306,5 +531,7 @@ dz.addEventListener("drop",e=>{
  if(f)readFile(f);
  else{const t=e.dataTransfer.getData("text");if(t){$("#in").value=t;load(t)}}
 });
-paintGpt();render();
+const ac=$("#accent");
+if(ac)ac.oninput=e=>{opt.accent=e.target.value;try{localStorage.setItem("vdf_accent",e.target.value)}catch(x){}render()};
+loadAccent();paintGpt();render();
 </script></body></html>
