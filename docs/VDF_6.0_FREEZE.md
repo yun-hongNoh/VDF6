@@ -1,7 +1,7 @@
 # VDF 6.0.0 — Release Freeze
 
 - Status: **STABLE / FREEZE**
-- App release: **VDF Next v0.3.0**
+- App release: **VDF Next v0.3.1**
 - Engine: **VDF 6.0.0**
 - Source of Truth: `src/domain/vdf/rules.json`
 - Canonical SHA256: `c20dae4c893d4455069b90fe2257239af69ca4cd247505b4ed5c69d3b2d5e1d5`

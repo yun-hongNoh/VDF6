@@ -1,4 +1,4 @@
-# Validation — VDF Next v0.3.0 Release
+# Validation — VDF Next v0.3.1 Release
 
 ## PASS
 

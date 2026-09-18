@@ -46,3 +46,7 @@ npm run build
 ```
 
 `dist` 폴더가 생성되면 정상이다.
+
+
+## 저장소 루트 확인
+GitHub 저장소 첫 화면에서 `package.json`, `vite.config.ts`, `src/`, `.github/`가 바로 보여야 합니다. Release 폴더가 한 단계 더 들어간 채로 올리지 마세요.

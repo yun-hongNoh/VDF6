@@ -1,3 +1,12 @@
+# v0.3.1 — Guide & Decision Flow Restore
+
+- VDF 6.0.0 Stable/Freeze 유지. 엔진 규칙 변경 없음.
+- 사용 방법 페이지에 Quick Start 4단계 복원.
+- 범위 → 블록/정보유형 → Image/Shape → Gate → Card 의사결정 구조 복원.
+- AI 제안 / 교수자 검토 / 제작 확정 역할 구분 추가.
+- 6종 정보 유형과 Card A~F 관계 안내 복원.
+- GitHub Pages 설정은 저장소명 기반 base 자동 계산을 유지.
+
 # Changelog
 
 ## v0.3.0 — Release Freeze
