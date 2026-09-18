@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+
+const repo = (process.env.GITHUB_REPOSITORY || '').split('/')[1] || '';
+const isPages = process.env.GITHUB_ACTIONS === 'true' && !!repo;
 
 export default defineConfig({
-  plugins: [react()],
-  base: '/VDF6/',
-})
+  base: isPages ? `/${repo}/` : '/'
+});
