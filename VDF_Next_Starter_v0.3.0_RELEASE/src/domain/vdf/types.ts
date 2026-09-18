@@ -1,0 +1,26 @@
+export type InfoType='순서·절차'|'분류·계층'|'비교·대조'|'인과·수렴'|'정의'|'목록';
+export type CardKey='A'|'B'|'C'|'D'|'E'|'F';
+export type Track='image'|'shape';
+export type SubjectTraits={branded_category:boolean;same_form_variants:boolean;replacement_type:boolean;scale_is_the_point:boolean;spreads_across_frame:boolean};
+export type Gate={passed:boolean;reason:string}|null;
+export type VdfSplit={id:string;title:string;item_count:number;slots:string[];subject?:string|null};
+export type VdfBlock={
+  id:string;
+  title:string;
+  track:Track;
+  info_type:InfoType;
+  item_count:number;
+  item_structure?:string;
+  slots:string[];
+  gate:Gate;
+  card:CardKey|null;
+  subject:string|null;
+  subject_traits:SubjectTraits;
+  split?:VdfSplit[];
+};
+export type VdfPlan={blocks:VdfBlock[]};
+export type WarningKey='it'|'cat_a'|'cap'|'unver'|'base'|'brand'|'slots'|'gate';
+export type VdfWarning={key:WarningKey;message:string};
+export type PromptLine={key:'subject'|'background'|'composition'|'style'|'ratio'|'negative';value:string};
+export type VdfOptions={brand:'on'|'off';emptySide:'left'|'right';accent:string};
+export type BlockEvaluation={block:VdfBlock;card:CardKey|null;infoType:string;warnings:VdfWarning[];prompt:PromptLine[]|null;diagramSvg:string|null};
