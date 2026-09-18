@@ -1,6 +1,6 @@
-# VDF Next v0.3.1 Release Checklist
+# VDF Next v0.3.1.1 Release Checklist
 
-- App: v0.3.1
+- App: v0.3.1.1
 - Engine: VDF 6.0.0 STABLE / FREEZE
 - Engine rules changed: NO
 - Quick Start restored: YES

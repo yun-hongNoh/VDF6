@@ -1,3 +1,10 @@
+# v0.3.1.1 — GitHub Pages Build Hotfix
+
+- Added `src/vite-env.d.ts` so TypeScript resolves Vite/CSS side-effect imports.
+- GitHub Pages workflow now installs devDependencies explicitly with `npm install --include=dev`.
+- Added one-command Windows deploy helper for future releases.
+- VDF Engine 6.0.0 rules are unchanged.
+
 # v0.3.1 — Guide & Decision Flow Restore
 
 - VDF 6.0.0 Stable/Freeze 유지. 엔진 규칙 변경 없음.

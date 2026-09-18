@@ -1,10 +1,10 @@
-# VDF Next v0.3.1
+# VDF Next v0.3.1.1
 
 대학 온라인 강의노트를 VDF 기준으로 블록 계획하고, AI Prompt Bridge 결과를 검사한 뒤 제작에 활용하는 정적 웹앱이다.
 
 ## Release baseline
 
-- **App:** v0.3.1
+- **App:** v0.3.1.1
 - **Engine:** VDF 6.0.0 — Reference / Stable / Freeze
 - **Source of Truth:** `src/domain/vdf/rules.json`
 - **rules.json SHA256:** `c20dae4c893d4455069b90fe2257239af69ca4cd247505b4ed5c69d3b2d5e1d5`
@@ -38,5 +38,5 @@ npm run dev
 - `docs/DEPLOY_GITHUB_PAGES.md`
 
 
-## v0.3.1 사용 안내 복원
+## v0.3.1.1 사용 안내 복원
 배포용 엔진은 VDF 6.0.0 Freeze를 유지하면서, Quick Start · VDF 의사결정 구조 · AI 제안/교수자 검토 · 관계/카드 안내를 사용 방법 화면에 복원했습니다.
