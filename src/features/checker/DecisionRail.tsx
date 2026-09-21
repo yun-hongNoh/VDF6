@@ -6,9 +6,9 @@ function gateValue(r:BlockEvaluation){
  if(r.block.gate?.passed===false)return '그림 없이';
  return r.block.track==='image'?'판단 확인':'글 중심';
 }
-function expression(r:BlockEvaluation){return r.card?'이미지':r.diagramSvg?'SVG 도형':'글 중심'}
-function layout(r:BlockEvaluation){return r.card?`${r.card} 배치`:r.diagramSvg?'관계형 도형':'배치 없음'}
-function output(r:BlockEvaluation){return r.prompt?'Prompt 6줄':r.diagramSvg?'SVG':'텍스트'}
+function expression(r:BlockEvaluation){return r.presentationTrack==='image'?'이미지':r.presentationTrack==='shape'?'SVG 도형':'글 중심'}
+function layout(r:BlockEvaluation){return r.presentationTrack==='image'?(r.card?`${r.card} 배치`:'카드 선택 필요'):r.diagramSvg?'관계형 도형':'배치 없음'}
+function output(r:BlockEvaluation){return r.presentationTrack==='image'?(r.prompt?'Prompt 6줄':'이미지 설정 확인'):r.diagramSvg?'SVG':'텍스트'}
 
 export function DecisionRail({result,adjusted}:{result:BlockEvaluation;adjusted:boolean}){
  const steps=[

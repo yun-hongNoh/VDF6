@@ -1,0 +1,18 @@
+{
+  "case_id": "R3",
+  "name": "SCAMPER 13주차 3강",
+  "status": "PRESERVATION_REGRESSION",
+  "purpose": "실제 사물 변형 Evidence 보호 및 R9 경계 비침범",
+  "must_preserve": [
+    "클립 변형 Evidence",
+    "스마트폰 변형 Evidence"
+  ],
+  "assertions": [
+    "같은 SCAMPER 사례라는 이유만으로 실제 사물 변형 Evidence를 과도하게 하나로 병합하지 않는다.",
+    "시각 용량/카드 상한 분할은 Boundary가 아니라 기존 R9가 처리한다."
+  ],
+  "fail_if": [
+    "Boundary Layer가 R9용 split 판단을 선행함",
+    "핵심 변형 Evidence가 summary/note로 흡수되어 사라짐"
+  ]
+}

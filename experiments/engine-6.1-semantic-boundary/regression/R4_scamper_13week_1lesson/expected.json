@@ -1,0 +1,28 @@
+{
+  "case_id": "R4",
+  "name": "SCAMPER 13주차 1강",
+  "status": "VISUAL_EVIDENCE_REGRESSION",
+  "purpose": "Combine 원리와 구텐베르크 Evidence를 별도 KEEP하는지 검증",
+  "must_keep": [
+    "Combine 원리",
+    "구텐베르크 인쇄기 사례"
+  ],
+  "expected_decisions": [
+    {
+      "source": "결합하기(Combine) 원리",
+      "decision": "KEEP"
+    },
+    {
+      "source": "구텐베르크 인쇄기 사례",
+      "decision": "KEEP",
+      "checks": {
+        "visual_evidence_required": true
+      }
+    }
+  ],
+  "fail_if": [
+    "구텐베르크 사례가 DROP",
+    "구텐베르크 사례가 NOTE_MERGE",
+    "구텐베르크 사례가 Combine 원리에 흡수되어 독립 Evidence 소실"
+  ]
+}

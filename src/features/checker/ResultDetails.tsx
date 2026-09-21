@@ -3,12 +3,12 @@ import type {BlockEvaluation} from '../../domain/vdf/types';
 import {StatusBadge} from '../../ui/StatusBadge';
 
 function representation(result:BlockEvaluation){
-  if(result.card)return '이미지 Prompt';
-  if(result.diagramSvg)return 'SVG 도형';
+  if(result.presentationTrack==='image')return result.prompt?'이미지 Prompt':'이미지 설정 확인';
+  if(result.presentationTrack==='shape')return result.diagramSvg?'SVG 도형':'도형 설정 확인';
   return '글 중심';
 }
 function visualization(result:BlockEvaluation){
-  return result.card||result.diagramSvg?'YES':'NO';
+  return result.presentationTrack==='text'?'NO':'YES';
 }
 function verification(result:BlockEvaluation){
   if(!result.card)return {tone:'neutral' as const,label:'카드 검증 대상 아님'};
@@ -18,6 +18,7 @@ function verification(result:BlockEvaluation){
 }
 function decisionReason(result:BlockEvaluation){
   if(result.block.gate)return result.block.gate.reason;
+  if(result.presentationTrack==='image'&&(!result.block.gate||result.block.gate.passed!==true))return 'AI Image Gate 결과를 보존한 상태에서 교수자가 이미지 사용으로 조정했습니다.';
   if(result.diagramSvg)return `${result.infoType} 관계에 따라 편집 가능한 SVG 도형으로 표현됩니다.`;
   return `${result.infoType} 관계의 글 중심 덩어리로 유지됩니다.`;
 }

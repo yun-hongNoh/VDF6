@@ -1,5 +1,5 @@
 import {diagramFor} from '../domain/vdf/evaluate';
-import type {BlockEvaluation,CardKey,PromptLine,VdfBlock,VdfOptions,VdfWarning} from '../domain/vdf/types';
+import type {BlockEvaluation,CardKey,PresentationTrack,PromptLine,VdfBlock,VdfOptions,VdfWarning} from '../domain/vdf/types';
 import type {EngineDef} from './engineRegistry';
 
 type RawCard={
@@ -42,11 +42,25 @@ function warnings(block:VdfBlock,card:CardKey|null,infoType:string,opt:VdfOption
   return w;
 }
 function fragments(block:VdfBlock,card:CardKey|null,opt:VdfOptions){if(!card)return[];const t=block.subject_traits||{};const out:string[]=[];if(card==='A'&&t.same_form_variants)out.push('all clearly made from the same base form');if(t.branded_category&&opt.brand==='on')out.push('unbranded, no app icons, no screen content, no brand logos, generic design');if(card==='F'){out.push('everything softly out of focus, shallow depth of field throughout, no sharp object anywhere');if(t.spreads_across_frame)out.push(`the ${opt.emptySide} 55 percent is plain empty wall with no objects`)}return out}
-function prompt(block:VdfBlock,card:CardKey|null,opt:VdfOptions,rr:RuntimeRules):PromptLine[]|null{
-  if(!card)return null;const c=rr.cards[card];if(!c)return null;const extra=fragments(block,card,opt);const subject=(block.subject||'')+(extra.length?`, ${extra.join(', ')}`:'');
+function assemblePrompt(block:VdfBlock,card:CardKey,opt:VdfOptions,rr:RuntimeRules,subjectValue:string):PromptLine[]|null{
+  const c=rr.cards[card];if(!c)return null;const extra=fragments(block,card,opt);const subject=subjectValue+(extra.length?`, ${extra.join(', ')}`:'');
   return [{key:'subject',value:subject},{key:'background',value:c.bg},{key:'composition',value:c.cp},{key:'style',value:c.st},{key:'ratio',value:'16:9'},{key:'negative',value:c.ng}];
 }
+function prompt(block:VdfBlock,card:CardKey|null,opt:VdfOptions,rr:RuntimeRules):PromptLine[]|null{
+  if(block.track!=='image'||!card||!block.subject?.trim())return null;
+  return assemblePrompt(block,card,opt,rr,block.subject.trim());
+}
+export function promptPreviewWithEngine(block:VdfBlock,card:CardKey|null,opt:VdfOptions,engine:EngineDef):PromptLine[]|null{
+  if(block.track!=='image'||!card)return null;
+  const subject=block.subject?.trim()||'[이미지 대상을 입력하세요]';
+  return assemblePrompt(block,card,opt,runtimeRules(engine),subject);
+}
 export function evaluateWithEngine(block:VdfBlock,opt:VdfOptions,engine:EngineDef):BlockEvaluation{
-  const rr=runtimeRules(engine);const card=(block.card||null) as CardKey|null;const infoType=block.info_type;
-  return {block,card,infoType,warnings:warnings(block,card,infoType,opt,rr),prompt:prompt(block,card,opt,rr),diagramSvg:diagramFor(block,infoType,opt.accent)};
+  const rr=runtimeRules(engine);
+  const card=(block.track==='image'?(block.card||null):null) as CardKey|null;
+  const normalizedBlock=card===block.card?block:{...block,card};
+  const infoType=normalizedBlock.info_type;
+  const diagramSvg=normalizedBlock.track==='shape'?diagramFor(normalizedBlock,infoType,opt.accent):null;
+  const presentationTrack:PresentationTrack=normalizedBlock.track==='image'?'image':diagramSvg?'shape':'text';
+  return {block:normalizedBlock,card,infoType,warnings:warnings(normalizedBlock,card,infoType,opt,rr),prompt:prompt(normalizedBlock,card,opt,rr),diagramSvg,presentationTrack};
 }

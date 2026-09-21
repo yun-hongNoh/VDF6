@@ -1,0 +1,46 @@
+{
+  "name": "VDF JSON Contract",
+  "version": "6.0",
+  "schema": {
+    "top_level": [
+      "blocks"
+    ],
+    "block_required": [
+      "id",
+      "title",
+      "track",
+      "info_type",
+      "item_count",
+      "slots",
+      "gate",
+      "card",
+      "subject",
+      "subject_traits"
+    ],
+    "block_optional": [
+      "item_structure",
+      "split"
+    ],
+    "info_types": [
+      "순서·절차",
+      "분류·계층",
+      "비교·대조",
+      "인과·수렴",
+      "정의",
+      "목록"
+    ],
+    "tracks": [
+      "image",
+      "shape"
+    ],
+    "cards": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      null
+    ]
+  }
+}

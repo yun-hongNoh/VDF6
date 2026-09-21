@@ -1,0 +1,1989 @@
+{
+  "version": "6.1.0-experimental.1",
+  "spec_ref": "VDF6_사양서_v2.md",
+  "generated": "2026-09-18",
+  "_meta": {
+    "scope": "본강의 본문 시각화만. 표지·학습목표·마음열기·평가·학습정리 제외.",
+    "status_legend": {
+      "verified": "실제 생성으로 확인됨. evidence 필드에 근거.",
+      "unverified": "논리적으로 파생했으나 관측되지 않음. 확정 전.",
+      "risky": "실패가 관측됨. 전제 조건 하에서만 사용.",
+      "retired": "5.0에서 폐기. 되살리지 않도록 근거와 함께 보존."
+    },
+    "enforcement_legend": {
+      "code": "결정론적. 코드가 판정하거나 문자열을 주입한다.",
+      "llm": "의미 판단. LLM 호출 안에서 수행하고 사람이 사후 확인.",
+      "human": "정답이 교수자에게 있음. UI에서 선택.",
+      "display_only": "화면에 표시만 하고 강제하지 않는다."
+    },
+    "consumers": {
+      "prompt_injection": [
+        "info_types",
+        "cards",
+        "rules",
+        "track"
+      ],
+      "code_lint": [
+        "lint",
+        "cards[].margin_policy",
+        "cards[].model"
+      ],
+      "ui_display": [
+        "rules[].why",
+        "open_questions",
+        "axes"
+      ]
+    },
+    "note": "전체 논증과 44장 근거는 사양서에 있다. 이 파일은 판정과 조립에 필요한 것만 담는다.",
+    "regenerate_markdown": "rules.json이 수정됐다. VDF6_규칙.md를 다시 뽑아야 Custom GPT에 반영된다.",
+    "experimental_baseline": "VDF 6.0.0",
+    "experimental_change": "Semantic Block Boundary Layer only; downstream keys are byte-semantically preserved from 6.0.",
+    "final_json_contract": "unchanged 6.0"
+  },
+  "output_contract": {
+    "unit": "블록",
+    "emits": {
+      "info_layer": [
+        "info_type",
+        "item_count",
+        "item_structure",
+        "slot_text"
+      ],
+      "background_layer": [
+        "card_id",
+        "prompt_en"
+      ],
+      "rationale": "왜 이 조합인지 한 줄"
+    },
+    "background_layer_nullable": true,
+    "layout_selection": {
+      "by": "instructor",
+      "ai_must_not_emit": true,
+      "why": "교과목·교수자마다 다르고 고르는 데 몇 초면 되므로 자동화 이득이 없다. 5.0의 SVG 좌표 생성이 여기서 폐기됐다."
+    }
+  },
+  "semantic_boundary_layer": {
+    "version": "1.0-experimental",
+    "position": "before_vdf_6_0_downstream",
+    "goal": "강의노트의 모든 의미 단위를 곧바로 Block으로 만들지 않고, 기존 VDF 6.0이 판단해야 할 Final Semantic Block만 선별한다.",
+    "principle": "Less Blocks가 아니라 Right Blocks.",
+    "flow": [
+      "SOURCE",
+      "CONTEXT + SCOPE",
+      "CANDIDATE SEGMENTATION",
+      "BLOCK DECISION: KEEP / MERGE / DROP / SPLIT",
+      "MERGE PAYLOAD: CONTENT / NOTE / SYNTHESIS",
+      "VISUAL EVIDENCE PRESERVATION",
+      "FINAL SEMANTIC BLOCKS",
+      "VDF 6.0 DOWNSTREAM"
+    ],
+    "scope": {
+      "final_block_target": [
+        "본강의 핵심 본문"
+      ],
+      "default_exclude_from_final_blocks": [
+        "표지",
+        "주차/강 제목",
+        "학습목표",
+        "학습내용 개요",
+        "마음열기/도입",
+        "평가",
+        "정답/해설",
+        "학습정리"
+      ],
+      "context_policy": "Out of output != Out of reasoning. 제외 대상도 판단 Context로 읽을 수 있다."
+    },
+    "candidate_segmentation": {
+      "candidate_roles": [
+        "정의",
+        "개념 설명",
+        "비교",
+        "분류",
+        "과정",
+        "인과",
+        "목록",
+        "사례",
+        "적용",
+        "오개념",
+        "주의",
+        "예외",
+        "확장",
+        "결론"
+      ],
+      "not_automatic_block_anchors": [
+        "소제목",
+        "표",
+        "Callout",
+        "기사 Point",
+        "비교하기",
+        "적용하기"
+      ],
+      "rule": "본문을 곧바로 Block으로 만들지 않고 먼저 Semantic Candidate로 나눈다."
+    },
+    "block_decision": {
+      "decisions": [
+        "KEEP",
+        "MERGE",
+        "DROP",
+        "SPLIT"
+      ],
+      "KEEP": [
+        "독립 학습 의미가 있음",
+        "인접 Candidate와 다른 관계를 학습함",
+        "제거하면 핵심 의미 또는 Evidence가 사라짐",
+        "사례 자체가 원리를 이해시키는 중요한 Evidence임"
+      ],
+      "MERGE": {
+        "rule": "별도 Block은 필요 없으나 의미는 보존해야 함",
+        "types": {
+          "CONTENT_MERGE": "핵심 구조의 실제 item",
+          "NOTE_MERGE": "확장, 예외, 주의, 보조 설명",
+          "SYNTHESIS_MERGE": "앞 내용을 새 관계 없이 정리하는 결론"
+        }
+      },
+      "DROP": [
+        "범위 밖",
+        "활동 지시만 있음",
+        "단순 반복",
+        "뒤에서 더 완전하게 제공",
+        "새 학습 의미 없음"
+      ],
+      "SPLIT": "Semantic Candidate 자체에 서로 다른 학습 관계가 섞였을 때만 사용. 시각 용량 문제는 여기서 처리하지 않는다."
+    },
+    "same_topic_rule": {
+      "rule": "같은 주제를 다룬다는 이유로 합치지 않는다.",
+      "assertion": [
+        "데이터 vs 정보 → 비교 관계 → KEEP",
+        "데이터 → 정보 → 통찰 → 가치 → 과정 관계 → KEEP"
+      ]
+    },
+    "visual_evidence_preservation": {
+      "question": "병합하면 학습자가 실제로 보아야 이해할 수 있는 대상·상태·변형·결합 관계가 사라지는가?",
+      "if_yes": "MERGE를 취소하고 KEEP",
+      "not_sufficient": "단순히 실제 사례라는 이유만으로 KEEP하지 않는다.",
+      "core_test": "실제 대상 간 관계 자체를 보아야 원리를 이해할 수 있는가?",
+      "regression_anchor": "동전 펀치기 + 포도주 압착기 → 구텐베르크 인쇄기 사례는 Combine의 실제 Evidence이므로 KEEP"
+    },
+    "downstream_boundary": {
+      "handoff": "FINAL SEMANTIC BLOCKS",
+      "must_remain_unchanged": [
+        "info_type 6종",
+        "R9",
+        "Image / Shape",
+        "subject traits 5종",
+        "R4",
+        "Image Gate",
+        "Card A~F",
+        "Prompt 6줄 구조"
+      ],
+      "rule": "Boundary Layer는 Final Semantic Block을 결정한 뒤 종료한다. 이후 판단에 개입하지 않는다."
+    },
+    "internal_trace": {
+      "default_visibility": "internal_only",
+      "debug_trigger": "TRACE_MODE=ON",
+      "final_json_policy": "TRACE_MODE와 무관하게 기존 2부 Final JSON contract는 변경하지 않는다. Trace는 별도 debug artifact로만 출력한다.",
+      "fields": [
+        "candidate_id",
+        "source_title",
+        "source_role",
+        "decision",
+        "merge_type",
+        "merge_target",
+        "reason",
+        "checks"
+      ],
+      "checks": [
+        "in_scope",
+        "new_meaning",
+        "activity_only",
+        "duplicate",
+        "different_relation",
+        "visual_evidence_required",
+        "summary_only"
+      ]
+    },
+    "notes": {
+      "policy": "notes는 내부 IR에서만 사용한다.",
+      "compile": "Candidate IR → slots + internal notes → 기존 Final JSON contract",
+      "public_contract_change": false
+    },
+    "acceptance": {
+      "fidelity": [
+        "핵심 내용 손실 없음",
+        "원문에 없는 내용 생성 없음"
+      ],
+      "boundary": [
+        "활동 Wrapper Block 감소",
+        "보조 설명 Block 감소",
+        "중복 Block 감소"
+      ],
+      "preservation": [
+        "다른 학습 관계 유지",
+        "핵심 Visual Evidence 유지"
+      ],
+      "regression": [
+        "기존 Engine 6.0 정상 사례 악화 없음"
+      ],
+      "compatibility": [
+        "기존 downstream 규칙 유지",
+        "기존 Checker/Web 계약 파괴 없음"
+      ]
+    },
+    "stop_conditions": [
+      "한 사례를 고치자 다른 회귀 사례가 악화됨",
+      "새 예외 규칙이 계속 필요함",
+      "기존 R4/R9/Card 변경이 필요해짐",
+      "JSON contract를 크게 바꿔야 함",
+      "동일 입력에서 핵심 Boundary가 반복적으로 뒤집힘"
+    ],
+    "verification": {
+      "same_input_runs": 2,
+      "compare": [
+        "Candidate 경계",
+        "KEEP/MERGE/DROP/SPLIT",
+        "merge type",
+        "merge target",
+        "Final Semantic Block 의미"
+      ],
+      "fail_candidates": [
+        "KEEP ↔ DROP",
+        "KEEP ↔ MERGE",
+        "핵심 Evidence 보존 ↔ 제거",
+        "다른 학습관계 별도 ↔ 병합"
+      ]
+    }
+  },
+  "track": {
+    "test": "label_test",
+    "statement": "노드의 라벨을 지웠을 때 남는 게 있으면 이미지, 없으면 도형.",
+    "enforcement": "llm",
+    "status": "verified",
+    "outcomes": {
+      "shape": {
+        "background_layer": null,
+        "identity_of_items": "텍스트 자체",
+        "examples": [
+          "브레인스토밍 8단계",
+          "39가지 6대 분류",
+          "아이디어 평가 4단계"
+        ]
+      },
+      "image": {
+        "background_layer": "카드 선택으로 진행",
+        "identity_of_items": "사물·현상·장치",
+        "examples": [
+          "항타 단면",
+          "엔진 비교",
+          "클립 4종"
+        ]
+      }
+    },
+    "hard_overrides": {
+      "always_shape": [
+        "표",
+        "수식",
+        "정의 목록"
+      ],
+      "enforcement": "code",
+      "why": "생성형으로 만들지 않는다."
+    },
+    "retired_criterion": {
+      "rule": "노드 5개 이상이면 SVG",
+      "status": "retired",
+      "why": "8단계 절차는 노드 8개인데 도형이고, 항타 단면은 노드 2개인데 이미지다. 개수는 기준이 아니었다."
+    }
+  },
+  "info_types": {
+    "_note": "레이아웃 이름이 아니라 정보의 성질. 교과목이 바뀌어도 변하지 않는다.",
+    "sequence": {
+      "ko": "순서·절차",
+      "signals": [
+        "단계",
+        "순서",
+        "~후에",
+        "프로세스"
+      ],
+      "output_format": "번호 | 명칭 | 설명",
+      "observed": true,
+      "example": {
+        "slots": [
+          "1 | 문제 인식 | 스스로 일상의 비효율을 발견함",
+          "2 | 문제 정의 | 근본 원인을 찾아 진짜 문제를 정의함",
+          "3 | 아이디어 도출 | 대안을 만들고 제약 안에서 판별함"
+        ],
+        "source": "1주차 · 공학적 창의성의 4단계",
+        "tell": "순서를 바꾸면 뜻이 달라진다"
+      }
+    },
+    "hierarchy": {
+      "ko": "분류·계층",
+      "signals": [
+        "상위-하위",
+        "~로 나뉨",
+        "유형"
+      ],
+      "output_format": "대분류 | 하위항목 목록",
+      "observed": false,
+      "note": "1주차 1강에서 미사용. Q2 참조.",
+      "example": {
+        "slots": [
+          "S 대체 | 유리 → 플렉시블 / 손에 드는 방식 → 손목형",
+          "C 결합 | 자동차 키 기능 / 온디바이스 AI"
+        ],
+        "source": "13주차 · 스마트폰의 대체와 결합",
+        "tell": "항목이 두 무리 이상으로 묶인다. 카드 A를 쓰면 그 경계가 사라진다"
+      }
+    },
+    "comparison": {
+      "ko": "비교·대조",
+      "signals": [
+        "반면",
+        "~와 달리",
+        "장단점"
+      ],
+      "output_format": "항목 | A값 | B값",
+      "observed": true,
+      "example": {
+        "slots": [
+          "질문 방식 | 일반인: 기발한 아이디어 요구 | 숙련자: S와 C 조건을 강제",
+          "결과 경향 | 일반인: 일반적 결과 | 숙련자: 조건에 맞춘 파생 아이디어"
+        ],
+        "source": "SCAMPER 차시 · 일반 질문과 스캠퍼 질문",
+        "tell": "두 대상을 같은 잣대로 잰다. 잣대가 왼쪽 열이 된다"
+      }
+    },
+    "causal": {
+      "ko": "인과·수렴",
+      "signals": [
+        "따라서",
+        "그 결과",
+        "~로 이어짐"
+      ],
+      "output_format": "원인 → 중간 → 결과",
+      "observed": false,
+      "note": "1주차 1강에서 미사용. Q2 참조.",
+      "example": {
+        "slots": [
+          "동전 사용의 불편",
+          "결제 수단을 무엇으로 대체할지 질문",
+          "신용카드로 대체한 스마트 주차 요금 징수기"
+        ],
+        "source": "SCAMPER 차시 · 스마트 주차 요금 징수기",
+        "tell": "앞이 뒤를 낳는다. 화살표로 이어붙이지 말고 원소로 쪼갠다"
+      }
+    },
+    "definition": {
+      "ko": "정의",
+      "signals": [
+        "~란",
+        "~을 의미함"
+      ],
+      "output_format": "용어 | 정의문",
+      "observed": true,
+      "example": {
+        "slots": [
+          "SCAMPER | 사물·서비스·프로세스를 새로운 것으로 변형하기 위한 9가지 아이디어 변형 기법"
+        ],
+        "source": "SCAMPER 차시 · 스캠퍼의 의미",
+        "tell": "용어 하나에 뜻 하나. 여러 개면 목록이다"
+      }
+    },
+    "list": {
+      "ko": "목록",
+      "signals": [
+        "특징",
+        "요소",
+        "규칙"
+      ],
+      "output_format": "항목 배열",
+      "note": "순서 없음",
+      "observed": true,
+      "example": {
+        "slots": [
+          "S | Substitute · 대체하기",
+          "C | Combine · 결합하기",
+          "A | Adapt · 적용/응용하기"
+        ],
+        "source": "SCAMPER 차시 · 7가지 구성 요소",
+        "tell": "순서를 바꿔도 뜻이 그대로다. 바뀌면 순서·절차다"
+      }
+    }
+  },
+  "ending_style": {
+    "rule": "대학 템플릿의 어미 규칙(명사형 ~음/~함, 마침표 없음 또는 종결형 통일)이 원문 verbatim보다 우선한다.",
+    "constraint": "어미만 바꾸고 내용어는 그대로 둔다.",
+    "enforcement": "llm",
+    "status": "unverified",
+    "open_question": "Q4"
+  },
+  "background_layer": {
+    "usage_split": {
+      "content_image": {
+        "role": "슬라이드 안의 한 요소",
+        "text_on_top": "얹지 않거나 최소",
+        "brightness": "자유",
+        "cards": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      "background_image": {
+        "role": "슬라이드를 덮음",
+        "text_on_top": "반드시 얹힘",
+        "brightness": "밝고 저채도 필수",
+        "cards": [
+          "F"
+        ],
+        "why": "템플릿 색에 맞출 필요가 없다. 어차피 덮기 때문이다. 대신 그 위에 얹힐 텍스트가 읽혀야 한다."
+      }
+    },
+    "deck_style_defaults": {
+      "background_a_scene": "soft light gradient, low saturation, high key, subtle floor reflection",
+      "background_b_asset": "uniform solid light-gray seamless background",
+      "accent": "교과목 템플릿의 대표색 1종",
+      "lighting": "soft diffused key from upper-left",
+      "ratio": "16:9",
+      "reserved_space": {
+        "right_pct": [
+          35,
+          40
+        ],
+        "right_why": "교수자 영상",
+        "bottom_pct": [
+          8,
+          10
+        ],
+        "bottom_why": "출처 캡션"
+      }
+    }
+  },
+  "negative_blocks": {
+    "_note": "정식 블록. 미검증 카드(D·E·F)와 신규 카드에 쓴다. 검증된 카드는 verbatim_locked 문자열을 유지한다.",
+    "text_free_canonical": "text-free, no readable text, no letters, no numbers, no labels, no captions, no formulas, no UI text, no logos, no brand names, no recognizable real-world products, no license plates",
+    "kill_background": "plain seamless background, background elements barely visible, no environmental detail, no crowd, no cityscape, no floating UI panels",
+    "no_decorative_glow": "no decorative HUD rings, no floating data readouts, no sci-fi interface overlays",
+    "unbranded_triplet": [
+      "unbranded",
+      "no app icons",
+      "no screen content"
+    ]
+  },
+  "cards": {
+    "A": {
+      "ko": "에셋세트 · 무배경",
+      "safest": true,
+      "use_when": [
+        "같은 것의 여러 변형",
+        "같은 사물의 단계별 부품",
+        "기준점 + 변형"
+      ],
+      "element_cap": 4,
+      "representative": [
+        "클립 4종",
+        "칫솔모 4분할",
+        "비행기+밥솥 스케치",
+        "건물·폰·게이트"
+      ],
+      "model": {
+        "primary": "gemini",
+        "alternatives_allowed": true,
+        "why": "나란한 배열이라 3사 모두 대상 구현 성공"
+      },
+      "margin_policy": {
+        "right_presenter": {
+          "in_prompt": false,
+          "handled_by": "ppt_left_align",
+          "why": "배경이 단색이라 PPT에서 좌측으로 밀면 끝난다. 3사 중 1사만 지켰고, 지켜도 안 지켜도 결과가 같았다."
+        },
+        "bottom_caption": {
+          "in_prompt": true,
+          "in_line": "composition",
+          "fragment": "lower 10% clear",
+          "why": "출처 캡션 자리. 우측 여백과 달리 삭제하지 않았다."
+        },
+        "text_overlay": {
+          "in_prompt": false
+        }
+      },
+      "verbatim_locked": true,
+      "status": "verified",
+      "evidence": "2026-08, 13주차 3강 클립 4종, 3사 비교. 의미 전달은 ChatGPT가 가장 정확(하트조차 클립 형태 유지).",
+      "prompt": {
+        "subject": "{{SUBJECT}}",
+        "subject_example": "four variations of a paper clip, all clearly made from the same bent wire form, each repurposed as a different object, evenly spaced in a single row, three-quarter angle",
+        "background": "uniform solid light-gray seamless background",
+        "composition": "a single row, lower 10% clear",
+        "style": "premium 3D educational render, matte materials, soft directional key light from upper-left, no baked shadows",
+        "ratio": "16:9",
+        "negative": "text-free, no readable text, no letters, no numbers, no labels, no logos, no brand names, no overlapping objects, no environmental props"
+      },
+      "conditional_fragments": [
+        {
+          "id": "identical_scale",
+          "fragment": "identical scale",
+          "include_when": "형태 변화가 학습 포인트",
+          "exclude_when": "크기 변화가 학습 포인트",
+          "enforcement": "llm",
+          "status": "verified",
+          "examples": {
+            "include": [
+              "S",
+              "C",
+              "A",
+              "M"
+            ],
+            "exclude": [
+              "E 축소",
+              "M 확대"
+            ]
+          }
+        },
+        {
+          "id": "baseline_plus_one",
+          "rule": "'A를 B로 대체' 유형은 A를 함께 그린다. 변형 N개면 기준점 1개를 더해 N+1개.",
+          "why": "대체 후만 그리면 무엇이 바뀌었는지 보이지 않는다.",
+          "enforcement": "llm",
+          "status": "verified",
+          "evidence": "13주차 클립(금속→플라스틱), 스마트폰(유리→플렉시블) 둘 다 이 문제가 있었다."
+        },
+        {
+          "id": "unbranded",
+          "fragment_ref": "negative_blocks.unbranded_triplet",
+          "include_when": "브랜드 연상이 강한 대상군은 항상. 휴대기기·웨어러블·차량·가전·컴퓨터.",
+          "enforcement": "code_inject",
+          "status": "verified",
+          "evidence": "2026-08, 13주차 3강 스마트폰 S. 3사 모두 무기명 기기 생성, 화면 콘텐츠 없음.",
+          "note": "조건 판단을 LLM에 맡겼더니 누락됐다(FT-1). 대상군 목록으로 강제한다.",
+          "fragment_full": "unbranded, no app icons, no screen content, no brand logos, generic design"
+        },
+        {
+          "id": "same_form_anchor",
+          "fragment": "all clearly made from the same bent wire form",
+          "template": "all clearly made from the same [기본형]",
+          "include_when": "같은 사물의 변형을 나열할 때. 카드 A의 기본 용법이므로 사실상 항상.",
+          "why": "빠지면 마지막 항목이 별개 제품이 된다(FT-1 B1).",
+          "status": "verified",
+          "n": 1,
+          "enforcement": "llm"
+        }
+      ],
+      "do_not_use_when": [
+        "정보 유형이 분류·계층이고 분류가 둘 이상일 때 — 한 줄에 놓으면 분류 경계가 사라진다(FT-3)",
+        "서로 다른 사물을 병렬로 늘어놓을 때 — '여러 항목 병렬'을 그렇게 읽지 않는다. 같은 사물의 변형이어야 한다(R4)."
+      ],
+      "element_cap_policy": "항목 수가 4를 넘으면 블록을 쪼갠다(R9). 일부만 그리지 않고, 상한도 넘기지 않는다.",
+      "element_cap_unit": "의미 단위 (element_cap_semantics 참조)",
+      "representative_image": {
+        "file": "클립 4종",
+        "note": "기준점(금속) + 변형 3. N+1 규칙이 적용된 상태.",
+        "status": "good"
+      }
+    },
+    "B": {
+      "ko": "개념 · 단일 오브젝트 · 무배경",
+      "use_when": [
+        "추상 원리를 한 컷으로",
+        "대비되는 두 상태를 한 오브젝트에"
+      ],
+      "element_cap": 3,
+      "element_min": 1,
+      "constraint": "하나하나가 의미를 가져야 함",
+      "representative": [
+        "저울+카드",
+        "파란 링 스택",
+        "반반 구체",
+        "큐브+튜브+쿠션"
+      ],
+      "model": {
+        "primary": "gemini",
+        "alternatives_allowed": false,
+        "why": "6요소 모두 준수. ChatGPT는 무게중심 쏠림, 미드저니는 대상 자체를 틀림"
+      },
+      "margin_policy": {
+        "right_presenter": {
+          "in_prompt": false,
+          "handled_by": "ppt_left_align",
+          "why": "카드 A와 동일"
+        },
+        "bottom_caption": {
+          "in_prompt": true,
+          "in_line": "composition",
+          "fragment": "lower 10% clear"
+        },
+        "text_overlay": {
+          "in_prompt": false
+        }
+      },
+      "verbatim_locked": true,
+      "status": "verified",
+      "evidence": "2026-08, 1주차 1강 캡슐 커피머신, 3사 비교.",
+      "prompt": {
+        "subject": "{{SUBJECT}}",
+        "subject_example": "a balance scale, tilted, a plain gray card on the raised pan and a vivid accent-colored card with a check badge on the lowered pan",
+        "background": "uniform solid light-gray seamless background, subtle floor reflection",
+        "composition": "the object centered, lower 10% clear",
+        "style": "premium 3D educational render, matte materials, soft key light",
+        "ratio": "16:9",
+        "negative": "text-free, no readable text, no labels, no environmental detail, no decorative HUD rings, no floating data readouts",
+        "negative_gap": "카드 B의 네거티브에는 no brand names가 없다(카드 A에만 있음). branded_category가 true인 대상을 카드 B로 그릴 때는 조각으로 보강해야 한다."
+      },
+      "conditional_fragments": [
+        {
+          "id": "superseded_gray",
+          "fragment": "the superseded items rendered in flat desaturated gray, clearly unused",
+          "include_when": "과거/현재 대비를 그릴 때",
+          "enforcement": "llm",
+          "status": "unverified",
+          "note": "테스트에서 우연히 잘 나온 것이라 명시 효과는 아직 확인되지 않았다."
+        },
+        {
+          "id": "unbranded",
+          "fragment_full": "unbranded, no app icons, no screen content, no brand logos, generic design",
+          "include_when": "branded_category == true",
+          "enforcement": "code_inject",
+          "why": "카드 A에만 있던 조각을 전 카드로 확장. B11에서 스마트폰이 카드 B로 들어오며 드러났다.",
+          "status": "derived"
+        }
+      ],
+      "element_cap_policy": "상한 초과 시 R9에 따라 블록을 쪼갠다.",
+      "element_cap_unit": "의미 단위 (element_cap_semantics 참조)",
+      "representative_image": {
+        "file": "캡슐 커피머신",
+        "note": "의미 단위 2 — 드립 도구 무더기 / 기계. 우측 40% 비어 있음.",
+        "status": "good"
+      }
+    },
+    "C": {
+      "ko": "조건 대조 · 좌우 분할",
+      "use_when": [
+        "조건 A와 B의 결과 차이가 학습 포인트"
+      ],
+      "element_cap": 3,
+      "constraint": "좌우가 같은 앵글·같은 스케일이어야 비교 성립",
+      "representative": [
+        "항타 단면",
+        "엔진 2분할",
+        "밸 스위치",
+        "하마 온천"
+      ],
+      "difficulty": "카드 중 가장 어렵다. 3사 모두 완벽하지 않았다.",
+      "model": {
+        "primary": "gemini",
+        "alternatives_allowed": false,
+        "why": "요소 간 관계가 학습 내용. 3회 모두 유일하게 여백까지 준수"
+      },
+      "margin_policy": {
+        "right_presenter": {
+          "in_prompt": true,
+          "in_line": "composition",
+          "fragment": "the right 40% is empty background",
+          "why": "배경이 이어져 후편집 불가"
+        },
+        "bottom_caption": {
+          "in_prompt": false,
+          "status": "gap",
+          "note": "덱 기본값은 하단 8~10% 비움인데 C 프롬프트에 없다. 검증된 문자열이라 임의로 넣지 않는다."
+        },
+        "text_overlay": {
+          "in_prompt": false
+        }
+      },
+      "verbatim_locked": true,
+      "status": "verified_after_fix",
+      "evidence": "2026-08, 1주차 1강 교통 대조. 반복 실패 2건을 수정해 현재 문자열이 됨.",
+      "prompt": {
+        "subject": "{{SUBJECT}}",
+        "subject_example": "two identical soil cross-sections side by side, exactly the same number of elements on each side, left with a smooth pile driven down showing cool stress lines, right with a rough pile showing dense friction lines",
+        "background": "plain seamless background, environment barely visible",
+        "composition": "both halves sit on one single continuous unbroken floor plane with no seam or line between them, identical camera angle and scale, the pair grouped within the left 60% of the frame, the right 40% is empty background",
+        "style": "premium 3D educational render, accent glow carrying the data only",
+        "ratio": "16:9",
+        "negative": "text-free, no readable text, no labels, no decorative HUD rings"
+      },
+      "mandatory_fragments": [
+        "identical camera angle and scale"
+      ],
+      "fix_log": [
+        {
+          "was": "no vertical divider bar",
+          "failure": "3사 중 2사가 분리선을 그림",
+          "now": "one single continuous unbroken floor plane",
+          "principle": "부정형 → 긍정형"
+        },
+        {
+          "was": "same number of cars",
+          "failure": "3사 모두 개수 불일치",
+          "now": "exactly N items on each side",
+          "principle": "숫자 명시"
+        }
+      ],
+      "element_cap_policy": "상한 초과 시 R9에 따라 블록을 쪼갠다.",
+      "element_cap_unit": "의미 단위 (element_cap_semantics 참조)",
+      "representative_image": {
+        "file": "교통 대조 (최초본)",
+        "note": "가운데 세로 분리선이 보인다. 이것이 fix_log의 실패 사례이며 `one single continuous unbroken floor plane`으로 고친 계기다.",
+        "status": "known_defect",
+        "use_as": "카드 C가 왜 어려운지 보여주는 반례로 함께 쓴다"
+      },
+      "conditional_fragments": [
+        {
+          "id": "unbranded",
+          "fragment_full": "unbranded, no app icons, no screen content, no brand logos, generic design",
+          "include_when": "branded_category == true",
+          "enforcement": "code_inject",
+          "why": "카드 A에만 있던 조각을 전 카드로 확장. B11에서 스마트폰이 카드 B로 들어오며 드러났다.",
+          "status": "derived"
+        }
+      ]
+    },
+    "D": {
+      "ko": "장치 작동 · 단일 · 맥락 배경",
+      "use_when": [
+        "장치의 작동 맥락이 학습 포인트일 때"
+      ],
+      "note": "배경이 정당한 유일한 경우",
+      "element_cap": 2,
+      "constraint": "장치 + 작동 표시 하나",
+      "representative": [
+        "청소기 흡입"
+      ],
+      "model": {
+        "primary": "gemini",
+        "alternatives_allowed": false,
+        "status": "unverified",
+        "why": "규칙 ⑥에서 파생. A·B·C만 테스트함. Q6 참조."
+      },
+      "margin_policy": {
+        "right_presenter": {
+          "in_prompt": true,
+          "in_line": "composition",
+          "fragment": "right 40% empty"
+        },
+        "bottom_caption": {
+          "in_prompt": false,
+          "status": "gap"
+        },
+        "text_overlay": {
+          "in_prompt": false
+        }
+      },
+      "verbatim_locked": false,
+      "status": "unverified",
+      "prompt": {
+        "subject": "{{SUBJECT}}",
+        "subject_example": "a vacuum cleaner head on carpet, airflow arrows drawn into the nozzle showing suction direction",
+        "background": "plain seamless background, minimal environment barely visible",
+        "composition": "low angle close-up on the left, right 40% empty",
+        "style": "premium 3D educational render, accent glow used only for airflow",
+        "ratio": "16:9",
+        "negative": "text-free, no readable text, no decorative HUD rings, no floating data readouts, no sci-fi interface overlays"
+      },
+      "element_cap_policy": "상한 초과 시 R9에 따라 블록을 쪼갠다.",
+      "element_cap_unit": "의미 단위 (element_cap_semantics 참조)",
+      "conditional_fragments": [
+        {
+          "id": "unbranded",
+          "fragment_full": "unbranded, no app icons, no screen content, no brand logos, generic design",
+          "include_when": "branded_category == true",
+          "enforcement": "code_inject",
+          "why": "카드 A에만 있던 조각을 전 카드로 확장. B11에서 스마트폰이 카드 B로 들어오며 드러났다.",
+          "status": "derived"
+        }
+      ]
+    },
+    "E": {
+      "ko": "순차 패널",
+      "use_when": [
+        "단계가 3~4개이고 순서 자체가 내용일 때"
+      ],
+      "representative": [
+        "필터 4단계",
+        "팽화 공정 3패널"
+      ],
+      "model": {
+        "primary": "gemini",
+        "alternatives_allowed": false,
+        "status": "unverified",
+        "why": "규칙 ⑥에서 파생. Q6 참조."
+      },
+      "margin_policy": {
+        "right_presenter": {
+          "in_prompt": false,
+          "handled_by": "ppt_left_align",
+          "status": "unverified",
+          "why": "무배경이므로 A·B에서 파생. 사양서 §6 여백 표에 E가 빠져 있다."
+        },
+        "bottom_caption": {
+          "in_prompt": false,
+          "status": "gap",
+          "note": "A·B는 lower 10% clear가 있는데 E만 없다. 같은 무배경 카드인데 불일치."
+        },
+        "text_overlay": {
+          "in_prompt": false
+        }
+      },
+      "verbatim_locked": false,
+      "status": "risky",
+      "risk": "AI 단독으로 어렵다. 잘 나온 사례는 후편집으로 라벨을 얹은 것이다.",
+      "precondition": "라벨 없는 패널만 요청하고, 번호와 설명은 PPT에서 얹는다.",
+      "open_question": "Q1",
+      "prompt": {
+        "subject": "{{SUBJECT}}",
+        "subject_example": "the same cylindrical filter housing shown four times in a row, identical angle and scale, differing only in internal state",
+        "background": "uniform solid light-gray seamless background",
+        "composition": "four evenly spaced panels in one row, no dividers",
+        "style": "technical illustration, consistent cutaway style across all four",
+        "ratio": "16:9",
+        "negative": "text-free, no readable text, no numbers, no step labels, no arrows between panels"
+      },
+      "conditional_fragments": [
+        {
+          "id": "unbranded",
+          "fragment_full": "unbranded, no app icons, no screen content, no brand logos, generic design",
+          "include_when": "branded_category == true",
+          "enforcement": "code_inject",
+          "why": "카드 A에만 있던 조각을 전 카드로 확장. B11에서 스마트폰이 카드 B로 들어오며 드러났다.",
+          "status": "derived"
+        }
+      ]
+    },
+    "F": {
+      "ko": "배경 이미지 (슬라이드를 덮음)",
+      "use_when": [
+        "텍스트가 주인공이고 이미지는 무대"
+      ],
+      "element_cap": 2,
+      "element_min": 1,
+      "constraint": "정보를 실으려 하면 안 됨. 밝고 저채도가 필수 — 위에 얹힐 텍스트가 읽혀야 한다.",
+      "representative": [
+        "복도 조명선",
+        "브레인스토밍 준비 4요소의 사무실 사진"
+      ],
+      "model": {
+        "primary": "gemini_app",
+        "alternatives_allowed": false,
+        "status": "verified",
+        "why": "같은 프롬프트·같은 대상에서 Flow보다 일관됐다. 우측 여백 3/4, 중앙 초점 회피, 흐림 준수.",
+        "evidence": "2026-08, 12장(Flow 8, 제미나이 4), 대상 3종.",
+        "retired_assumption": "'미드저니 가능'은 44장 관찰에서 나온 추정이었고 실제 대조가 없었다. 근거 없이 두지 않는다."
+      },
+      "margin_policy": {
+        "right_presenter": {
+          "in_prompt": false,
+          "note": "슬라이드를 덮으므로 교수자 영상 여백 개념이 다르게 적용된다."
+        },
+        "bottom_caption": {
+          "in_prompt": false
+        },
+        "text_overlay": {
+          "in_prompt": true,
+          "in_line": "background",
+          "fragment": "large empty area for text overlay",
+          "why": "F의 여백은 텍스트가 얹힐 자리다. C·D의 여백과 목적이 다르다."
+        }
+      },
+      "verbatim_locked": false,
+      "status": "verified",
+      "predicted_failure": {
+        "where": "composition",
+        "status": "rejected_confirmed",
+        "prediction": "부정형 구도(no vertical seam / no split-screen / no panel division)가 카드 C처럼 무시되어 화면이 갈라질 것",
+        "result": "2026-08, 2개 표면 6장. Flow/나노바나나 프로 4장(A2·B2) + 제미나이 2장(A1·B1). 분할 0/6.",
+        "interpretation": "분할 압력은 프롬프트가 아니라 대상에서 나온다. 카드 C의 대상은 좌우 두 장면이라 분할 압력이 있었고, 카드 F의 대상은 단일 장면이라 애초에 없다. 규칙 R8이 틀린 게 아니라 F에는 적용될 상황이 없었다.",
+        "action": "현재 부정형 문자열 유지. 교체 이득이 관측되지 않았고, 바꾸면 검증 기준선만 흔들린다.",
+        "open": "분할 네거티브 3종이 일하는지 사문인지는 여전히 미확인. 분할 압력이 없는 대상만 시험했다."
+      },
+      "prompt": {
+        "subject": "{{SUBJECT}}",
+        "subject_example": "an empty office desk scene, softly out of focus",
+        "background": "high key, low saturation, large empty area for text overlay",
+        "composition": "one continuous seamless background, no vertical seam, no split-screen, no panel division",
+        "style": "soft natural light, muted palette",
+        "ratio": "16:9",
+        "negative": "text-free, no readable text, no informational elements, no charts, no diagrams, no HUD, no strong focal point in the center"
+      },
+      "evidence": "2026-08, 14장(Flow 8, 제미나이 6), 대상 3종. 분할 0/14. 제미나이 고정 + 조건부 조각 2종으로 사용 가능한 결과.",
+      "findings": [
+        {
+          "id": "F-1",
+          "claim": "F의 품질 변수는 요소 수가 아니라 선명도다.",
+          "status": "unverified",
+          "n": 12,
+          "evidence": "공구 6개 이상이어도 흐리면 사용 가능. 요소가 적어도 앞쪽 물체가 선명하면 사용 불가.",
+          "conflict": "사양서 카드 F의 '요소 1~2' 상한과 어긋난다."
+        },
+        {
+          "id": "F-2",
+          "claim": "`softly out of focus`는 배경에만 적용되고 앞쪽 물체에서 깨진다.",
+          "status": "verified_and_fixed",
+          "n": 13,
+          "evidence": "Flow 사무실 1장 선명 실패, Flow 작업대 1장 경계선, 제미나이 작업대 2장 모두 앞쪽 공구가 선명. 표면 2곳·대상 2종에서 반복.",
+          "unresolved": "FIX-2(everything softly out of focus, shallow depth of field throughout, no sharp object anywhere) 미시험.",
+          "resolved_by": "conditional_fragments.blur_everything"
+        },
+        {
+          "id": "F-3",
+          "claim": "빈 영역 위치를 지정하지 않으면 결과가 표면에 좌우된다.",
+          "status": "unverified",
+          "n": 12,
+          "evidence": "제미나이 3/4가 우측을 비움. Flow 8/8이 흩어짐.",
+          "note": "FIX-1로 해소 가능함이 관측됨(n=1). 기본 문자열은 그대로 두고 조건부 조각으로 붙인다."
+        },
+        {
+          "id": "F-4",
+          "claim": "표면 차이가 실재한다. 같은 프롬프트·같은 대상에서 결과가 갈린다.",
+          "status": "verified",
+          "n": 12,
+          "evidence": "복도 — Flow 정중앙 소실점 2/2, 제미나이 좌측 비낀 앵글로 우측 50% 빔. 대상과 프롬프트가 동일했다.",
+          "implication": "카드 F의 모델을 고정해야 한다. 규칙 R6이 F에도 적용된다."
+        }
+      ],
+      "candidate_fixes": [
+        {
+          "id": "FIX-1",
+          "target": "background",
+          "current": "large empty area for text overlay",
+          "candidate": "the left 55% is plain empty wall with no objects",
+          "addresses": "F-3",
+          "tested": true,
+          "priority": "high",
+          "rationale": "F-3이 verified로 올라감. 위치를 적지 않으면 빈 영역이 대상마다 다른 곳에 생긴다.",
+          "status": "provisional_pass",
+          "n": 1,
+          "result": "2026-08 제미나이, 작업대. 좌측 55%가 빈 벽으로 나오고 공구·선반·드릴프레스가 전부 우측으로 밀렸다.",
+          "control": "직전 동일 대상·동일 표면·이전 문자열에서는 배경 선반이 화면을 채워 텍스트 자리가 없었다. 첫 줄이 같으므로 차이는 2번째 줄에서 나왔다.",
+          "caveat": "n=1. 대조군이 있어 근거는 있으나 확정은 아니다."
+        },
+        {
+          "id": "FIX-2",
+          "target": "style",
+          "candidate": "everything softly out of focus, shallow depth of field throughout, no sharp object anywhere",
+          "addresses": "F-1, F-2",
+          "tested": true,
+          "note": "요소 상한을 거는 대신 선명도를 강제하는 쪽. F-1이 맞다면 이게 옳은 방향이다.",
+          "status": "pass",
+          "n": 1,
+          "result": "2026-08 제미나이, 작업대. 앞쪽 대패·망치의 질감이 사라지고 형태만 남았다. 직전 장(동일 대상·표면·FIX-1 적용, FIX-2 없음)에서는 같은 공구가 또렷했다.",
+          "side_effect": "공구가 우측 하단으로 더 밀려 빈 영역이 좌측 55%에서 3분의 2 가까이 넓어졌다. n=1, 기록만.",
+          "interaction": "FIX-1과 충돌하지 않는다. 좌측 빈 벽이 유지됐다."
+        }
+      ],
+      "element_cap_note": "사양서의 '요소 1~2'는 F-1과 충돌한다. 다음 테스트에서 FIX-2가 통하면 상한을 선명도 조건으로 교체한다.",
+      "surface_comparison": {
+        "flow_nano_banana_pro": {
+          "n": 4,
+          "split": 0,
+          "blur_ok": 3,
+          "empty_area_consistent": false,
+          "frame_variance": "큼"
+        },
+        "gemini_app": {
+          "n": 2,
+          "split": 0,
+          "blur_ok": 2,
+          "empty_area_consistent": true,
+          "frame_variance": "작음"
+        },
+        "caveat": "모델 계열이 같을 가능성이 크다. 표면·설정(2장 동시생성, 16:9 강제) 차이일 수 있고 표본도 불균형이다.",
+        "unresolved": "제미나이 쪽 프롬프트에 네거티브 줄이 포함됐는지 미확인. 미포함이었다면 '네거티브 없이도 된다'는 별개 결과가 된다."
+      },
+      "subject_constraints": {
+        "exclude": [],
+        "note": "'복도 제외' 판정을 철회했다. §reversals 참조.",
+        "hard_cases": [
+          {
+            "pattern": "작업면에 공구·부품이 흩어지는 장면",
+            "examples": [
+              "작업대"
+            ],
+            "problem": "빈 영역이 뚜렷하게 생기지 않고 앞쪽 물체가 선명해지기 쉽다.",
+            "evidence": "Flow 2장은 우측/상단으로 갈렸고, 제미나이 1장은 빈 자리가 불명확하며 대패가 선명했다.",
+            "status": "unverified",
+            "n": 3,
+            "action": "FIX-1을 이 대상에 먼저 시험한다."
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "id": "REV-1",
+          "was": "복도·터널 등 중앙 소실점 대상은 카드 F에서 제외 (verified, n=2)",
+          "now": "철회. 제미나이 복도는 소실점이 좌측으로 비껴 우측 50%가 비었고 카드 F로 사용 가능했다.",
+          "cause": "Flow 2장만 보고 대상 속성으로 귀속했다. 표면 속성이었다.",
+          "date": "2026-08"
+        },
+        {
+          "id": "REV-2",
+          "was": "빈 영역 위치는 프롬프트가 아니라 대상이 결정한다 (F-3, verified)",
+          "now": "약화. 제미나이는 대상 3종 중 3장에서 우측을 비웠고 Flow는 8장 내내 흩어졌다. 대상보다 표면이 크다.",
+          "cause": "REV-1과 같다. Flow 8 대 제미나이 2의 불균형 표본.",
+          "date": "2026-08"
+        },
+        {
+          "meta": "두 번 다 같은 실수다. 표본이 많은 표면의 특성을 대상의 특성으로 읽었다. 이후 대상 규칙은 표면을 고정한 뒤에만 세운다."
+        }
+      ],
+      "conditional_fragments": [
+        {
+          "id": "empty_side_explicit",
+          "replaces": "large empty area for text overlay",
+          "fragment": "the left 55% is plain empty wall with no objects",
+          "in_line": "background",
+          "include_when": "사물이 화면 전체에 퍼지는 대상(작업대·선반·공방 등) 또는 이전 시도에서 빈 자리가 안 나온 경우",
+          "exclude_when": "사물이 자연히 한쪽에 모이는 대상(책상·복도). 지시를 덜 넣는 쪽이 낫다.",
+          "side_note": "left/right는 교수자 템플릿의 텍스트 위치에 맞춘다. 검증된 것은 '위치를 지정하면 지켜진다'이지 좌측이 아니다.",
+          "status": "provisional",
+          "n": 1,
+          "enforcement": "llm"
+        },
+        {
+          "id": "blur_everything",
+          "appends_to": "style",
+          "fragment": "everything softly out of focus, shallow depth of field throughout, no sharp object anywhere",
+          "include_when": "앞쪽에 물체가 놓이는 대상. 사실상 대부분의 F 대상.",
+          "why": "subject 줄의 `softly out of focus`는 배경에만 걸리고 앞쪽 물체에서 깨진다(F-2). style 줄에서 다시 강제해야 한다.",
+          "status": "verified",
+          "n": 14,
+          "enforcement": "llm"
+        },
+        {
+          "id": "unbranded",
+          "fragment_full": "unbranded, no app icons, no screen content, no brand logos, generic design",
+          "include_when": "branded_category == true",
+          "enforcement": "code_inject",
+          "why": "카드 A에만 있던 조각을 전 카드로 확장. B11에서 스마트폰이 카드 B로 들어오며 드러났다.",
+          "status": "derived"
+        }
+      ],
+      "open_items": [
+        "요소 상한 '1~2'가 F-1과 충돌한 채로 남아 있다. 흐림이 해결되면서 실무상 문제는 줄었으나 사양서 문구는 아직 그대로다."
+      ],
+      "element_cap_policy": "상한 초과 시 R9에 따라 블록을 쪼갠다.",
+      "element_cap_unit": "의미 단위 (element_cap_semantics 참조)",
+      "representative_image": {
+        "file": "작업대 · 좌측 55% 빈 벽",
+        "note": "조건부 조각 2종(위치 명시 + 전체 흐림)이 적용된 상태.",
+        "status": "good"
+      }
+    }
+  },
+  "rules": {
+    "R1_kill_background": {
+      "ko": "해석·비유 개념이면 배경을 죽인다",
+      "why": "44장 최대 발견. 밀도보다 무대가 품질을 더 크게 좌우한다.",
+      "trigger": "function == 해석·비유",
+      "action": {
+        "element_cap": 2,
+        "inject": "negative_blocks.kill_background"
+      },
+      "enforcement": "llm + code",
+      "status": "verified",
+      "evidence": "배경 죽임(저울+카드, 파란 링 스택, 반반 구체, 뇌→신경망) = 요소 1~3, 학습포인트 복원 가능. 배경 살림(저울 광장, 창문 벽, 주방+요리사모자) = 전부 요소 4+, 복원 어려움."
+    },
+    "R2_text_is_ppt_layer": {
+      "ko": "모든 텍스트는 PPT 레이어. 예외 없음",
+      "action": {
+        "inject": "negative_blocks.text_free_canonical",
+        "always": true
+      },
+      "enforcement": "code",
+      "status": "verified",
+      "evidence": "1~3주차에서 'SPAIL', 'BROOTH' 같은 깨진 글자. 한글은 애초에 불가능. 잘 나온 것들(필터 4단계, 카트 포개기)은 전부 후편집으로 라벨을 얹은 것.",
+      "sub_rule_branded_products": {
+        "ko": "그리지 않는 것은 브랜드지 사물이 아니다",
+        "test": "형태가 왜곡됐을 때 오개념이 되는가",
+        "generate_ok": {
+          "examples": [
+            "휘어지는 판형 기기",
+            "손목에 찬 기기",
+            "캡슐 커피머신"
+          ],
+          "inject": "negative_blocks.unbranded_triplet"
+        },
+        "stock_photo": {
+          "examples": [
+            "특정 모델의 내부 구조·부품 배치"
+          ],
+          "when": "특정 모델의 구조를 배우는 경우에만"
+        },
+        "enforcement": "llm_detect + code_inject",
+        "status": "verified",
+        "evidence": "2026-08, 13주차 3강 스마트폰 S. 3사 모두 무기명 기기 생성."
+      }
+    },
+    "R3_glow_carries_information": {
+      "ko": "글로우·이펙트는 정보를 전달할 때만",
+      "informational": [
+        "청소기 흡입 화살표",
+        "항타 응력장",
+        "엔진 지면 간격 치수선"
+      ],
+      "decorative": [
+        "못에 얹힌 홀로그램 링",
+        "창문 벽의 HUD"
+      ],
+      "action": {
+        "inject_when_decorative_risk": "negative_blocks.no_decorative_glow"
+      },
+      "enforcement": "llm + code",
+      "status": "verified",
+      "why": "장식 이펙트는 요소 수만 올리고 학습 포인트를 가린다."
+    },
+    "R4_analogy_gate": {
+      "ko": "비유는 그릴 사물이 좁혀질 때만 그린다",
+      "test": "그릴 대상이 (a) 구체적 사물 하나 또는 (b) 같은 사물의 변형 N개로 좁혀지는가. 둘 중 하나가 아니면 기각.",
+      "if_yes": "이미지",
+      "if_no": "정보층 텍스트로 둔다",
+      "hard_constraint": "없는 사물을 만들어내지 않는다.",
+      "enforcement": "llm",
+      "status": "verified_and_stable",
+      "priority": "highest",
+      "why": "이것이 §7 '해석·비유 + 살아있는 배경 + 요소 4+'의 원인이다. 대상이 안 좁혀지니 배경으로 도망가고, 그래서 요소가 늘어난다. 증상이 아니라 원인에서 막는다.",
+      "failure_pattern": "노트에 그릴 사물이 없는데 AI가 '투명 구체 두 개' 같은 것을 발명해내는 것. 노트 외 창작이며, 44장에서 무너진 것들이 정확히 이 패턴이다.",
+      "examples": {
+        "narrows": {
+          "cases": [
+            "클립 4종",
+            "저울+카드",
+            "칫솔모 4분할"
+          ],
+          "draws": "클립 하나 / 저울 하나"
+        },
+        "does_not_narrow": {
+          "cases": [
+            "주방+요리사모자",
+            "창문 벽",
+            "저울 광장",
+            "동전 펀치기+포도주 압착기+인쇄기",
+            "전화기+음악재생기+통신기기+스마트폰"
+          ],
+          "draws": "재료·도구·책·전구·모자 …",
+          "pattern_2": {
+            "name": "서로 다른 사물 여러 개",
+            "why": "각각은 구체적이지만 하나로 모이지 않는다. 한 컷에 넣으면 요소 수만 늘고 학습 포인트가 흩어진다.",
+            "evidence": "2026-08 동일 노트 2회 실행에서 판정이 뒤집혔다. 1회차는 기각('서로 다른 사물이 함께 필요해 좁혀지지 않음'), 2회차는 통과('세 구체 장치로 명확히 좁혀짐'). 같은 사실을 반대로 읽었다.",
+            "ruling": "기각이 옳다. 규칙 R4는 '구체적인가'가 아니라 '하나로 좁혀지는가'를 묻는다."
+          }
+        }
+      },
+      "evidence": "1주차 1강 B2('아는 것 vs 하는 것')를 처음에 이미지로 잡았다가 뺐다. 노트에 그릴 사물이 없어 AI가 대상을 발명해야 했다.",
+      "not_sufficient": "각 사물이 구체적이라는 것만으로는 통과가 아니다. 서로 다른 사물이 여러 개 필요하면 기각한다."
+    },
+    "R5_images_per_lecture": {
+      "ko": "차시당 이미지 3~4장",
+      "type": "눈금",
+      "not": "상한",
+      "guidance": "본강의 블록이 7개면 3개 안팎이 적정. 넘어가면 규칙 R4를 통과하지 못한 블록이 섞여 있을 가능성이 높다.",
+      "enforcement": "display_only",
+      "status": "leaning_delete",
+      "caveat": "44÷39로 추정한 것이지 관측된 값이 아니다. 블록 수가 차시마다 다른데 절대 개수로 눈금을 주는 것이 맞는지 아직 모른다.",
+      "resolution": "차시를 몇 개 더 돌려 유용성이 확인되면 확정, 아니면 삭제.",
+      "open_question": "Q7",
+      "diversity_quota": {
+        "enabled": false,
+        "behavior": "같은 카드가 3회 연속이면 화면에 표시만 하고, 바꾸라고 하지 않는다. 판단은 교수자가 한다.",
+        "why": "5.0의 '형태 분포 자기검증'이 시계추를 만든 지점이다. 쿼터 로직을 코드에 넣지 않음으로써 준수한다."
+      },
+      "field_data": "13주차 SCAMPER 5블록 4장, 수정 반영 시 6장. 1주차 7블록 3장. 블록 대비 비율도 차시마다 다르다."
+    },
+    "R6_model_pinning": {
+      "ko": "카드마다 모델을 고정한다",
+      "evidence": "동일 프롬프트를 3사에 3회 돌린 결과(카드 A·B·C), 구도 지시 준수에 일관된 차이가 있었다.",
+      "enforcement": "code",
+      "status": "verified_for_ABC",
+      "hard_constraint": "프롬프트에 모델을 두 개 적지 않는다. '또는 X' 금지.",
+      "midjourney_note": "약점은 배열이 아니라 관계다. 카드 B(위/아래 대응)와 C(좌/우 대응)에서는 대상 자체를 틀렸지만, 카드 A처럼 요소가 나란히 놓이는 경우는 제대로 그렸다. 44장 중 미드저니 산출물이 전부 카드 F 계열이었던 것과 일치한다.",
+      "midjourney_variance": "4프레임 중 일부만 맞는 경우가 반복됐다(클립 4종의 색·형태 편차, 손목형이 반지로 나온 프레임 2개). 고를 수 있다는 장점이자 매번 검수가 필요하다는 단점이다.",
+      "open_question": "Q6"
+    },
+    "R7_margin_by_card": {
+      "ko": "여백은 종류별로 다르게 처리한다",
+      "why": "사양서 §6은 여백을 한 덩어리로 다뤘으나 실제로는 세 종류다. 카드 A·B에서 삭제된 것은 우측(교수자 영상)뿐이고 하단 10%(출처 캡션)는 남아 있다. 목적이 다르므로 따로 판정한다.",
+      "enforcement": "code",
+      "status": "verified",
+      "margin_kinds": {
+        "right_presenter": {
+          "purpose": "교수자 영상 자리",
+          "spec_default": "우측 35~40%",
+          "in_prompt_cards": [
+            "C",
+            "D"
+          ],
+          "ppt_handled_cards": [
+            "A",
+            "B",
+            "E"
+          ],
+          "status": "verified"
+        },
+        "bottom_caption": {
+          "purpose": "출처 캡션 자리",
+          "spec_default": "하단 8~10%",
+          "in_prompt_cards": [
+            "A",
+            "B"
+          ],
+          "missing_cards": [
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "status": "gap",
+          "note": "덱 기본값과 카드 프롬프트가 어긋난다. 미해결."
+        },
+        "text_overlay": {
+          "purpose": "텍스트가 얹힐 자리",
+          "in_prompt_cards": [
+            "F"
+          ],
+          "status": "unverified"
+        }
+      }
+    },
+    "R8_prompt_grammar": {
+      "ko": "핵심 구도는 긍정형으로",
+      "why": "'하지 마라'는 무시되는 빈도가 높다.",
+      "enforcement": "lint",
+      "status": "verified",
+      "pairs": [
+        {
+          "weak": "no vertical divider bar",
+          "strong": "one single continuous unbroken floor plane"
+        },
+        {
+          "weak": "same number of cars",
+          "strong": "exactly eight cars on each side"
+        }
+      ],
+      "scope_limit": "네거티브 목록은 부정형 그대로 둔다. 지금까지 실패가 관측되지 않았고, 한 번에 다 바꾸면 무엇이 효과를 냈는지 알 수 없어진다.",
+      "scope_note": "카드 F에서는 재현되지 않았다. 부정형이 약한 게 아니라 F의 대상에 분할 압력이 없어 시험될 상황이 아니었다. 규칙은 '분할 압력이 있는 대상에서 핵심 구도는 긍정형으로'가 더 정확하다."
+    },
+    "R9_cap_overflow": {
+      "ko": "항목 수가 카드 요소 상한을 넘으면 블록을 쪼갠다",
+      "why": "일부만 그리면 PPT 텍스트와 이미지 요소가 어긋나 학습자가 대응시킬 수 없다(FT-2).",
+      "resolution": "split",
+      "rejected_alternative": "상한을 넘겨 한 줄에 다 그리는 안. 이미지 품질이 떨어지고 카드 A의 검증 조건을 벗어난다.",
+      "procedure": "항목을 의미 단위로 나눠 서브블록 N개를 만든다. 각 서브블록은 자체 슬롯 텍스트와 자체 이미지를 갖는다. 슬라이드도 나뉜다.",
+      "side_effect": "차시당 이미지 수가 늘어난다. 규칙 R5의 눈금과 부딪히는 또 하나의 근거.",
+      "enforcement": "code_detect + human_confirm",
+      "status": "decided",
+      "date": "2026-08",
+      "example": {
+        "block": "13주차 B5 A·M·P·E·R",
+        "items": 5,
+        "cap": 4,
+        "split": [
+          "B5-1 A·M·P (3항목)",
+          "B5-2 E·R (2항목)"
+        ]
+      }
+    }
+  },
+  "lint": {
+    "forbidden_prompt_words": {
+      "words": [
+        "transparent",
+        "alpha"
+      ],
+      "severity": "error",
+      "why": "모델이 가짜 체크무늬 배경을 그린다.",
+      "status": "verified"
+    },
+    "forbidden_model_disjunction": {
+      "patterns": [
+        " or midjourney",
+        " or gemini",
+        " or chatgpt",
+        "또는"
+      ],
+      "scope": "model 필드",
+      "severity": "error",
+      "why": "규칙 R6. 모델을 두 개 적지 않는다."
+    },
+    "require_explicit_count": {
+      "applies_to": [
+        "C"
+      ],
+      "pattern": "exactly {N} .* on each side",
+      "severity": "error",
+      "why": "'same number of X'는 3사 모두 개수 불일치. 숫자를 명시한다."
+    },
+    "require_mandatory_fragments": {
+      "applies_to": [
+        "C"
+      ],
+      "fragments": [
+        "identical camera angle and scale"
+      ],
+      "severity": "error",
+      "why": "좌우 대칭이 깨지면 비교가 무의미해진다."
+    },
+    "text_free_present": {
+      "applies_to": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "must_contain": "text-free",
+      "severity": "error",
+      "why": "규칙 R2. 예외 없음."
+    },
+    "margin_consistency": {
+      "check": "margin_policy의 각 종류별로 in_prompt == true 이면 in_line 이 가리키는 줄에 fragment 문자열이 실제로 있을 것. false 이면 없을 것.",
+      "severity": "warning",
+      "kinds": [
+        "right_presenter",
+        "bottom_caption",
+        "text_overlay"
+      ],
+      "note": "세 종류를 한 boolean으로 묶지 않는다. 목적이 달라 처리도 다르다."
+    },
+    "positive_form_composition": {
+      "check": "composition 줄이 전부 'no ~'로만 구성돼 있으면 경고",
+      "severity": "warning",
+      "why": "규칙 R8. 카드 C의 'no vertical divider bar'가 이 패턴으로 실패했다. 현재 카드 F가 여기 걸린다.",
+      "scope_limit": "네거티브 목록(negative 줄)은 검사 대상이 아니다."
+    },
+    "verbatim_lock": {
+      "check": "verbatim_locked == true 인 카드의 prompt 문자열 변경 시 status를 unverified로 되돌릴 것",
+      "severity": "error",
+      "why": "검증된 문자열을 고치면 검증이 무효가 된다."
+    },
+    "unverified_badge": {
+      "check": "status != verified 인 카드·규칙은 UI에 미검증 표시",
+      "severity": "info"
+    }
+  },
+  "do_not_use": [
+    {
+      "what": "해석·비유 + 살아있는 배경 + 요소 4+",
+      "why": "저울 광장, 창문 벽, 주방. 학습 포인트 복원 불가"
+    },
+    {
+      "what": "이미지 내 텍스트",
+      "why": "깨진 글자. 한글 불가"
+    },
+    {
+      "what": "만화 + 대사",
+      "why": "영문만 가능, 교정 부담 큼"
+    },
+    {
+      "what": "AI 생성 도표",
+      "why": "표·목록·수식은 도형/텍스트"
+    },
+    {
+      "what": "장식 글로우",
+      "why": "요소 수만 올림"
+    },
+    {
+      "what": "SVG 좌표 생성",
+      "why": "교수자가 템플릿에서 고르는 게 빠름"
+    },
+    {
+      "what": "노트에 없는 사물 발명",
+      "why": "규칙 R4. 무너진 이미지들의 공통 원인"
+    },
+    {
+      "what": "인물 비유 (독불장군 vs 지휘자 등)",
+      "why": "44장에 성공 사례 없음. 텍스트로"
+    }
+  ],
+  "retired_from_5": [
+    {
+      "what": "레지스터 R1/R2/R3 (정밀/개념/사람)",
+      "why": "44장 어디에도 세 갈래 톤이 없었다. 사실상 단일 스타일의 변주"
+    },
+    {
+      "what": "형태 F1~F5 배타 선택",
+      "why": "실제 슬라이드 절반이 이미지 위 텍스트. 배타가 아니었다"
+    },
+    {
+      "what": "노드 5개 이상이면 SVG",
+      "why": "개수는 기준이 아니었다. 라벨 테스트로 대체"
+    },
+    {
+      "what": "Deck Style Contract를 AI가 발행",
+      "why": "색·타이틀바·위계·어미 규칙이 대학 템플릿에 이미 있음"
+    },
+    {
+      "what": "Exemplar 트랙 (이미지 내 텍스트)",
+      "why": "1~3주차에서 깨진 글자 다수. 한글 불가"
+    },
+    {
+      "what": "게이트 G1~G11 자기채점",
+      "why": "관측 불가능한 지시였음. 코드 판정 + 사람 확인으로 대체"
+    },
+    {
+      "what": "SVG 좌표 생성 / 레이아웃 지목",
+      "why": "교수자가 템플릿에서 고르는 게 빠르고 정확"
+    }
+  ],
+  "axes": {
+    "_note": "내부 표현. 교수자에게 노출하지 않는다. 카드 선택과 규칙 파생의 근거로만 쓴다.",
+    "function": {
+      "values": [
+        "재현",
+        "조직화",
+        "해석·비유",
+        "장식·무대"
+      ],
+      "distribution_44": [
+        11,
+        10,
+        17,
+        6
+      ]
+    },
+    "stage": {
+      "values": [
+        "무배경",
+        "배경있음"
+      ],
+      "note": "배경이 품질의 최대 예측 변수"
+    },
+    "composition": {
+      "values": [
+        "단일",
+        "순차패널",
+        "대조패널",
+        "에셋세트",
+        "조감·단면"
+      ],
+      "distribution_44": [
+        15,
+        4,
+        15,
+        7,
+        3
+      ]
+    },
+    "density": {
+      "values": [
+        1,
+        2,
+        3,
+        "4+"
+      ],
+      "note": "무대에서 상한 파생"
+    },
+    "glow": {
+      "values": [
+        "없음",
+        "정보전달",
+        "장식"
+      ],
+      "note": "장식은 금지"
+    }
+  },
+  "reference_case": {
+    "id": "1주차 1강 (공학과 창의성)",
+    "blocks_total": 7,
+    "images": 3,
+    "blocks": [
+      {
+        "id": "B1",
+        "title": "공학의 본질",
+        "info_type": "definition",
+        "card": "B",
+        "subject": "캡슐 커피머신"
+      },
+      {
+        "id": "B2",
+        "title": "과학자 vs 공학자",
+        "info_type": "comparison",
+        "card": null,
+        "subject": null,
+        "note": "처음에 이미지로 잡았다가 뺐다. 규칙 R4가 여기서 나왔다."
+      },
+      {
+        "id": "B3",
+        "title": "시대별 역량",
+        "info_type": "comparison",
+        "card": null,
+        "subject": null
+      },
+      {
+        "id": "B4",
+        "title": "실무 소양",
+        "info_type": "list",
+        "card": null,
+        "subject": null
+      },
+      {
+        "id": "B5",
+        "title": "창의성의 오해",
+        "info_type": "definition",
+        "card": "B",
+        "subject": "하늘 나는 차"
+      },
+      {
+        "id": "B6",
+        "title": "창의 실용",
+        "info_type": "definition",
+        "card": "C",
+        "subject": "우회 경로 대조"
+      },
+      {
+        "id": "B7",
+        "title": "창의성 4단계",
+        "info_type": "sequence",
+        "card": null,
+        "subject": null
+      }
+    ]
+  },
+  "open_questions": [
+    {
+      "id": "Q1",
+      "q": "카드 E(순차패널)를 AI로 만들 것인가",
+      "how": "다음 차시에 한 번 시도",
+      "state": "open"
+    },
+    {
+      "id": "Q2",
+      "q": "정보 유형 6종이 실제 노트를 다 덮는가",
+      "how": "차시 누적",
+      "state": "partial",
+      "note": "13주차에서 목록·인과수렴·분류계층 사용. 6종 중 5종 관측됨.",
+      "resolution": "1주차에서 정의·비교대조·목록·순서절차, 13주차에서 목록·인과수렴·분류계층. 6종 중 6종 관측. 부족한 유형은 아직 없음."
+    },
+    {
+      "id": "Q3",
+      "q": "대표 이미지의 원본 프롬프트 확보",
+      "how": "있으면 카드 템플릿을 실제 문구로 교체",
+      "state": "open"
+    },
+    {
+      "id": "Q4",
+      "q": "어미 규칙과 verbatim 충돌 시 처리",
+      "how": "실제 사례 나오면 판단",
+      "state": "open"
+    },
+    {
+      "id": "Q5",
+      "q": "좌측 60% 그룹핑이 더 잘 먹히는가",
+      "state": "closed",
+      "resolution": "무배경 카드는 여백 지시 자체가 불필요"
+    },
+    {
+      "id": "Q6",
+      "q": "카드 D·E·F도 제미나이가 최선인가",
+      "how": "A·B·C만 테스트함",
+      "state": "open",
+      "note": "F는 제미나이로 고정 완료. D·E는 여전히 미검증."
+    },
+    {
+      "id": "Q7",
+      "q": "차시당 이미지 3~4장 눈금이 유용한가",
+      "how": "규칙 R5 참조",
+      "state": "leaning_delete",
+      "note": "13주차 SCAMPER는 5블록 중 4장. 눈금이 차시 성격에 좌우된다는 증거. R9 채택으로 이미지 수가 더 늘어난다. 눈금 삭제 근거가 하나 더.",
+      "resolution": "SCAMPER 차시는 5블록 중 4장이고, FT-2·FT-3을 반영해 블록을 쪼개면 6장이 된다. 절대 개수 눈금이 차시 성격을 못 담는다. 다음 차시에서도 어긋나면 삭제."
+    },
+    {
+      "id": "Q8",
+      "q": "카드 E의 여백 처리를 A·B와 같이 둘 것인가",
+      "how": "사양서 §6 여백 표에 E가 누락돼 있어 파생값으로 넣었다. Q1과 같이 확인.",
+      "state": "open",
+      "new_in_rules_json": true
+    },
+    {
+      "id": "Q9",
+      "q": "하단 출처 캡션 여백(lower 10% clear)을 C·D·E·F에도 넣을 것인가",
+      "how": "덱 기본값은 하단 8~10% 비움인데 A·B에만 문구가 있다. C는 검증된 문자열이라 넣으면 재검증 필요.",
+      "state": "open",
+      "new_in_rules_json": true
+    },
+    {
+      "id": "Q10",
+      "q": "카드 F의 상한을 요소 수에서 선명도로 바꿀 것인가",
+      "how": "FIX-2를 다음 F 대상에 적용해 A/B",
+      "state": "closed",
+      "new_in_rules_json": true,
+      "note": "F-2가 verified로 올라감. FIX-2 시험이 남은 마지막 F 항목.",
+      "resolution": "FIX-2 통과. 요소 상한을 흐림 조건으로 대체하는 방향이 맞았다. 사양서 §6의 '요소 1~2' 문구 수정 필요."
+    },
+    {
+      "id": "Q11",
+      "q": "카드 F의 분할 네거티브 3종이 일하고 있는가 사문인가",
+      "how": "분할 압력이 있는 F 대상이 나올 때 빼고 돌려본다",
+      "state": "open",
+      "priority": "low",
+      "new_in_rules_json": true,
+      "note": "F가 닫히므로 우선순위 유지. 분할 압력이 있는 F 대상이 나올 때만."
+    },
+    {
+      "id": "Q12",
+      "q": "카드 F에서 Flow와 제미나이 앱의 차이가 모델인가 설정인가",
+      "how": "같은 표면에서 표본을 맞춰 재시행. 제미나이 프롬프트의 네거티브 포함 여부부터 확인.",
+      "state": "closed",
+      "new_in_rules_json": true,
+      "note": "추가 4장도 Flow였다. 제미나이 앱 대조는 여전히 n=2.",
+      "resolution": "표면 차이 실재. 카드 F를 제미나이 앱으로 고정."
+    },
+    {
+      "id": "Q13",
+      "q": "사양서 §6의 카드 F 대표 사례에서 '복도 조명선'을 내릴 것인가",
+      "how": "복도 2/2가 중앙 소실점. 44장의 원본 복도 슬라이드가 어떻게 만들어졌는지 확인 필요(후편집일 수 있음).",
+      "state": "closed",
+      "new_in_rules_json": true,
+      "resolution": "복도는 F 대표 사례로 유지. 제외 판정 철회(REV-1)."
+    },
+    {
+      "id": "Q14",
+      "q": "작업대류 대상에서 FIX-1이 빈 영역을 만들어내는가",
+      "how": "제미나이 앱, 작업대, 2번째 줄만 교체해 2장",
+      "state": "closed",
+      "new_in_rules_json": true,
+      "resolution": "FIX-1 통과. 조건부 조각으로 등록."
+    },
+    {
+      "id": "Q15",
+      "q": "reference_case가 없는 차시에서도 챗GPT가 §7-1 수준으로 나오는가",
+      "how": "다음 차시 노트를 같은 Gem/GPT 구성으로 1회",
+      "state": "closed",
+      "priority": "high",
+      "new_in_rules_json": true,
+      "resolution": "reference_case 제거 후에도 챗GPT는 6종 정확·커버리지 6/6·규칙 R4 작동. 오히려 더 엄격해졌다."
+    },
+    {
+      "id": "Q16",
+      "q": "제미나이에서 rules.json을 못 읽는 것인가 안 지키는 것인가",
+      "how": "cards.A.prompt.style을 그대로 인용시켜 확인. 못 읽는 것이면 카드 프롬프트를 마크다운으로 분리.",
+      "state": "closed",
+      "note": "오팔이 제미나이 기반이라 이 답이 오팔 채택 여부를 좌우한다.",
+      "new_in_rules_json": true,
+      "resolution": "못 읽는 쪽. JSON은 미도달, 마크다운은 부분 도달(§3까지). 챗GPT는 마크다운 전체 도달."
+    },
+    {
+      "id": "Q17",
+      "q": "B1 캡슐 커피머신과 B5 우회 경로를 이미지로 둘 것인가",
+      "how": "§7-1은 이미지, 정답표 없는 챗GPT는 둘 다 텍스트로 판정. 교수자 판단 필요.",
+      "state": "open",
+      "note": "규칙이 실제 제작보다 엄격해진 것인지, §7-1이 느슨했던 것인지.",
+      "new_in_rules_json": true
+    },
+    {
+      "id": "Q18",
+      "q": "카드 C 대표 이미지를 수정된 문자열로 다시 뽑을 것인가",
+      "how": "현재 대표는 수정 전 최초본이라 분리선이 있다. 고친 문자열로 뽑으면 정상본과 반례를 나란히 둘 수 있다.",
+      "state": "open",
+      "new_in_rules_json": true
+    },
+    {
+      "id": "Q19",
+      "q": "동일 노트 재실행 시 판정이 얼마나 흔들리는가",
+      "how": "규칙 보강 후 같은 노트로 3회차. 이미지 수와 게이트 판정이 재현되는지.",
+      "state": "closed",
+      "priority": "high",
+      "new_in_rules_json": true,
+      "resolution": "3회차에서 재현됨. R4 보강 후 판정이 안정. 다만 검증 절차로 '동일 노트 2회'를 상시 채택한다."
+    }
+  ],
+  "text_model": {
+    "decision": "chatgpt",
+    "status": "confirmed",
+    "date": "2026-08",
+    "test": "1주차 1강 노트, 동일 지시문·동일 지식파일(rules.json), 제미나이 Gem(프로 extended) 대 Custom GPT(extended) 1:1.",
+    "results": {
+      "gemini_gem": {
+        "블록수": "8 (오분할)",
+        "정보유형": "6종 밖의 명칭을 지어냄(단일 서술·비교·절차/흐름)",
+        "프롬프트": "rules.json 미사용. 미드저니 템플릿을 사전지식으로 생성(--ar, --no)",
+        "모델": "rules.json에 없는 'Midjourney v6.0'",
+        "카드선택": "단일 사물에 카드 A 배정(카드 B가 맞음)",
+        "규칙R4": "작동 안 함. 인물 비유(오케스트라 지휘봉)를 이미지로 배정 — 사양서 §7 금지 항목",
+        "기타": "실존 작품(뒤샹 「샘」) 재현 지시",
+        "판정": "실패"
+      },
+      "custom_gpt": {
+        "블록수": "7 (정확)",
+        "정보유형": "6종 내에서만 선택",
+        "프롬프트": "카드 B·C 여섯 줄 문자열 일치",
+        "모델": "gemini 정확",
+        "카드선택": "§7-1과 7/7 일치",
+        "규칙R4": "작동. B2를 '대표할 구체 사물 없음'으로 기각, B4의 인물 비유를 명시적으로 배제",
+        "기타": "카드 C의 숫자 명시 규칙을 스스로 적용(exactly eight cars on each side)",
+        "판정": "통과"
+      },
+      "gemini_gem_markdown": {
+        "블록수": "8 (오분할)",
+        "정보유형": "6종 밖의 이름 계속 사용(나열·비교·순서)",
+        "프롬프트": "§5 미도달. 미드저니 템플릿 재생성(--ar, --no)",
+        "규칙R4": "부분 작동. 인물 비유(오케스트라 지휘자)는 걸러냄 — §3은 읽힘",
+        "해석": "마크다운 앞부분은 도달하고 뒷부분(§5 카드)은 도달하지 않는 것으로 보임",
+        "판정": "실패"
+      },
+      "custom_gpt_no_reference_case": {
+        "블록수": "6 (정확)",
+        "커버리지": "6/6",
+        "정보유형": "6종 이름 정확",
+        "문자열인용": "§5 카드 B의 style 줄 정확히 인용 확인",
+        "규칙R4": "강하게 작동. B5를 '학습 포인트가 자동차나 내비게이션 자체가 아니라 두 사고방식의 대조'로 판정해 배경층 없음으로 내림",
+        "note": "정답표를 뺀 뒤 §7-1보다 엄격한 판정이 나왔다. 이전 카드 C 배정은 컨닝이었을 가능성.",
+        "판정": "통과"
+      }
+    },
+    "conclusion": "텍스트 판단은 챗GPT Custom GPT + 마크다운 지식 파일로 확정. 이미지 생성은 제미나이 앱 고정. 두 표면은 별개다.",
+    "caveat": "1주차 1강은 rules.json의 reference_case에 정답이 들어 있어 컨닝 가능성이 있다. 다른 차시로 재확인 필요.",
+    "knowledge_file": {
+      "format": "markdown",
+      "file": "VDF6_규칙.md",
+      "derived_from": "rules.json",
+      "why": "제미나이 Gem이 rules.json을 '파일을 찾지 못했습니다'로 응답. JSON은 지식 파일로 도달하지 않았다. 마크다운으로 바꾸자 §3 금지 목록까지는 읽혔다.",
+      "rule": "규칙이 바뀌면 rules.json을 고치고 마크다운을 다시 뽑는다. 반대로 하지 않는다.",
+      "excluded": "reference_case는 지식 파일에서 뺀다. 정답표가 들어가면 컨닝이 된다."
+    }
+  },
+  "mvp": {
+    "decision": "custom_gpt",
+    "status": "현행 MVP",
+    "stack": [
+      "Custom GPT (지시문 + VDF6_규칙.md)",
+      "제미나이 앱 (이미지)",
+      "교수자 PPT"
+    ],
+    "cost": "없음 (기존 구독 내)",
+    "opal": {
+      "status": "보류",
+      "why": "오팔은 제미나이 기반. 제미나이가 두 차례 §5 카드 문자열에 도달하지 못했다.",
+      "revisit_when": "판단만 제미나이에 맡기고 프롬프트 조립을 오팔 단계에서 문자열로 꽂는 구조라면 유효. 여러 교수자에게 배포할 때 재검토."
+    },
+    "firebase": {
+      "status": "보류",
+      "why": "API 과금이 발생하고 지금 얻는 것이 없다. 배포 규모가 커질 때."
+    }
+  },
+  "field_test": {
+    "lecture": "13주차 SCAMPER (클립·스마트폰)",
+    "date": "2026-08",
+    "surface": {
+      "text": "chatgpt custom gpt",
+      "image": "gemini app"
+    },
+    "blocks": 5,
+    "images_planned": 4,
+    "images_generated": 4,
+    "results": [
+      {
+        "block": "B1 클립 S·C·A",
+        "verdict": "성공",
+        "note": "N+1 기준점(금속 클립)이 계획 단계에서 자동 적용됨. rules.json에 기록된 과거 실패를 규칙이 실제로 막은 첫 사례.",
+        "defect": "네 번째 머니클립이 클립 형태를 잃고 별개 제품이 됨. subject에 `all clearly made from the same bent wire form`가 누락."
+      },
+      {
+        "block": "B2 클립 M·P·E·R",
+        "verdict": "성공",
+        "note": "초소형 항목이 작게 나옴. `identical scale`을 뺀 판단이 옳았음 — 크기 변화가 학습 포인트인 경우의 실제 사례."
+      },
+      {
+        "block": "B4 스마트폰 S·C",
+        "verdict": "실패",
+        "defect": "unbranded 3종 미부착. 특정 제조사 카메라 배열과 겹침. 화면이 전부 비어 결합(C) 항목이 표현되지 않음. S 둘·C 둘을 한 줄에 놓아 분류 경계 소실."
+      },
+      {
+        "block": "B5 A·M·P·E·R",
+        "verdict": "실패",
+        "defect": "PPT 텍스트 5항목 대 이미지 4요소로 대응 불가. POS 화면에 UI가 그려짐(no screen content 미부착). eSIM 항목이 회색 판으로만 나와 표현 실패."
+      }
+    ],
+    "findings": [
+      {
+        "id": "FT-1",
+        "claim": "unbranded 3종을 조건 판단에 맡기면 누락된다.",
+        "evidence": "스마트폰·스마트워치 블록에서 미부착. 2026-08 3사 검증을 마친 규칙인데 계획 단계에서 빠졌다.",
+        "fix": "브랜드 연상이 강한 대상군(휴대기기·웨어러블·차량·가전)은 조건 판단 없이 항상 부착한다.",
+        "status": "verified",
+        "n": 2
+      },
+      {
+        "id": "FT-2",
+        "claim": "항목 수가 카드 요소 상한을 넘으면 이미지를 줄이는 것이 아니라 블록을 쪼개야 한다.",
+        "evidence": "B5에서 5항목 중 4개만 그려 텍스트와 이미지가 어긋났다. 학습자가 어느 항목이 빠졌는지 알 수 없다.",
+        "fix": "상한 초과 시 (1) 블록 분할 또는 (2) 상한 초과 허용 중 택일. 부분 표현은 금지.",
+        "status": "verified",
+        "n": 1
+      },
+      {
+        "id": "FT-3",
+        "claim": "분류가 둘 이상인 블록에 카드 A를 쓰면 분류 경계가 사라진다.",
+        "evidence": "B4의 S 둘·C 둘이 한 줄에 나란히 놓여 어느 것이 어느 분류인지 구분 불가.",
+        "fix": "정보 유형이 분류·계층이면 카드 A를 쓰지 않는다. 카드 C로 가거나 분류별로 블록을 나눈다.",
+        "status": "verified",
+        "n": 1
+      }
+    ],
+    "images_per_lecture": "5블록 중 4장. 규칙 R5의 3~4 눈금을 넘김. SCAMPER 차시는 사물 변형이 연속되는 구조라 눈금이 차시 성격에 좌우된다.",
+    "completed": "B1·B2·B4·B5 생성. B4 재시도와 블록 분할은 미실시 — 규칙 수정 근거는 확보됨."
+  },
+  "block_schema": {
+    "version": "1.0",
+    "purpose": "GPT가 사람이 읽는 계획과 함께 내는 기계 판독용 블록 배열. 검사기 화면이 이 형식을 읽는다.",
+    "why": "조건부 조각의 발동 조건을 LLM 판단에 맡겼더니 누락됐다(FT-1). 대상 속성을 값으로 내게 하면 코드가 검사할 수 있다.",
+    "fields": {
+      "id": "블록 번호. 예: B4",
+      "title": "블록 제목",
+      "track": "shape | image — 라벨 테스트 결과",
+      "info_type": "6종 중 하나. 다른 이름 금지",
+      "item_count": "정수",
+      "item_structure": "슬롯 형식 문자열",
+      "slots": "항목 하나가 원소 하나. item_count와 길이가 같아야 한다. 인과·수렴도 화살표로 이어붙이지 않는다.",
+      "gate": "{passed, reason}. image면 passed=true. 게이트에서 기각돼 shape이 된 블록은 passed=false로 남긴다. 라벨 테스트에서 이미 도형이면 null.",
+      "card": "A~F 또는 null",
+      "subject": "영문 대상 한 줄. 카드 프롬프트의 subject 슬롯에 들어간다",
+      "subject_traits": {
+        "branded_category": "true|false — 휴대기기·웨어러블·차량·가전·컴퓨터면 true",
+        "same_form_variants": "true|false — 같은 사물의 변형을 나열하는가",
+        "replacement_type": "true|false — 'A를 B로 대체' 유형인가. true면 기준점을 더해 N+1개",
+        "scale_is_the_point": "true|false — 크기 변화가 학습 포인트인가. true면 identical scale을 뺀다",
+        "spreads_across_frame": "true|false — 사물이 화면 전체에 퍼지는가. 카드 F의 여백 위치 지정에 쓴다"
+      }
+    },
+    "rules_for_gpt": [
+      "subject_traits는 판단해서 붙이는 게 아니라 항상 다섯 개를 모두 낸다. 해당 없으면 false.",
+      "조건부 조각 문자열을 직접 쓰지 않는다. 속성만 내면 코드가 붙인다.",
+      "item_count가 카드 상한을 넘으면 split 배열을 함께 낸다(R9).",
+      "slots 길이 == item_count. 인과·수렴을 한 문자열로 뭉치지 않는다.",
+      "gate는 passed와 reason 둘 다. 기각 기록을 지우지 않는다."
+    ],
+    "split_field": {
+      "split": [
+        {
+          "id": "B5-1",
+          "title": "...",
+          "item_count": 3,
+          "slots": [
+            "..."
+          ],
+          "subject": "..."
+        }
+      ]
+    },
+    "observed_failures": [
+      {
+        "id": "S-1",
+        "what": "gate.passed 누락, reason만 냄",
+        "n": "5/5 블록",
+        "fix": "표로 세 경우를 명시"
+      },
+      {
+        "id": "S-2",
+        "what": "인과·수렴의 slots를 화살표로 이어 한 문자열로 냄",
+        "n": "4/4 블록",
+        "fix": "예시 JSON 추가"
+      },
+      {
+        "id": "S-3",
+        "what": "도형 블록에 gate가 붙음",
+        "verdict": "정상. 기각 기록으로 유용하다고 판단해 규칙에 반영"
+      }
+    ]
+  },
+  "element_cap_semantics": {
+    "unit": "의미 단위",
+    "not": "물체 개수",
+    "why": "캡슐 커피머신 대표 이미지는 물체가 7~8개지만 의미 단위는 둘이다 — 드립 도구 무더기 하나, 기계 하나. 학습 포인트가 그 둘의 대비다.",
+    "cross_check": "카드 B 대표인 '저울+카드'도 물체로 세면 3개(저울·회색카드·강조카드)지만 의미로는 2개(저울, 두 선택지)다. 44장의 밀도 축이 원래 의미 단위였으나 문서화되지 않았다.",
+    "rule": "하나하나가 학습 내용을 실어야 요소로 센다. 맥락을 만드는 소품 무더기는 통틀어 하나로 센다.",
+    "status": "decided",
+    "date": "2026-08"
+  },
+  "field_test_2": {
+    "lecture": "SCAMPER S·C 차시",
+    "date": "2026-08",
+    "blocks": 11,
+    "images": 2,
+    "good": [
+      "정보 유형 6종 이름 정확 11/11",
+      "커버리지 11/11",
+      "B7 구텐베르크·B8 아이폰을 규칙 R4로 기각 — 여러 사물이 필요해 좁혀지지 않음",
+      "B8은 도형인데도 branded_category=true를 정확히 냄. 속성을 값으로 내게 한 설계가 작동",
+      "B5·B11의 subject_traits가 same_form_variants·replacement_type 둘 다 true로 정확"
+    ],
+    "defects": [
+      "gate.passed 누락",
+      "인과·수렴 slots 뭉침"
+    ]
+  },
+  "field_test_3": {
+    "lecture": "SCAMPER S·C 차시 (2회차, 지시문 개정 후)",
+    "date": "2026-08",
+    "knowledge_file": "rules.json (마크다운 미제공). 챗GPT는 JSON을 읽는다 — 제미나이와 다른 지점.",
+    "fixed": [
+      "gate.passed 5/5 부착",
+      "인과·수렴 slots 원소 분리 완료"
+    ],
+    "regression": {
+      "what": "이미지 2장 → 5장. 구텐베르크·아이폰이 기각에서 통과로 뒤집힘",
+      "cause": "R4의 기각 사례에 '서로 다른 사물 여러 개'가 없었다. 1회차는 우연히 옳게 읽었다.",
+      "fix": "R4에 not_sufficient와 pattern_2 추가, 카드 A의 use_when에서 '여러 항목 병렬' 삭제",
+      "lesson": "같은 노트를 두 번 돌리지 않았으면 못 잡았다. 판정 안정성은 1회 실행으로 확인되지 않는다."
+    },
+    "other": [
+      "B11에서 GPT가 subject에 unbranded를 직접 써넣음 — 조각을 쓰지 말라는 규칙 위반이나, 카드 B에 조각이 없어서 생긴 빈틈을 메운 것"
+    ]
+  },
+  "field_test_4": {
+    "lecture": "SCAMPER S·C 차시 (3회차, R4 보강 후)",
+    "date": "2026-08",
+    "lint": "11/11 통과",
+    "images": {
+      "B5": "성공. 같은 기계에 투입구만 다름. 기준점-변형 관계가 읽힘",
+      "B11": "성공. 같은 의자 3종, 다리와 좌판만 변경. 스마트폰 화면 비어 있음(unbranded 부착 효과)",
+      "note": "N+1 기준점 규칙이 두 장 모두에서 눈에 보이게 작동. 13주차 머니클립 같은 형태 이탈 없음"
+    },
+    "confirmed": [
+      "구텐베르크·아이폰 재기각. 근거 문장이 R4의 not_sufficient 문구를 그대로 인용 — 규칙을 읽은 것이지 우연이 아니다",
+      "gate.passed 부착 유지",
+      "인과·수렴 slots 원소 분리 유지",
+      "기각 기록(passed=false) 2건 보존"
+    ],
+    "improvement": "B11이 S·C 두 결과를 한 블록 카드 A로 통합하고 기준 의자를 더해 3개로 그림. 2회차의 분리 배치보다 낫다. replacement_type의 N+1을 스스로 적용.",
+    "remaining": "B11 subject에 unbranded 미부착. branded_category=true는 정확히 냈으므로 코드가 붙이면 된다 — 설계대로다.",
+    "stability": {
+      "run1": {
+        "images": 2,
+        "gutenberg": "기각",
+        "format_defects": 2
+      },
+      "run2": {
+        "images": 5,
+        "gutenberg": "통과",
+        "format_defects": 0
+      },
+      "run3": {
+        "images": 2,
+        "gutenberg": "기각",
+        "format_defects": 0
+      },
+      "reading": "1회차와 3회차는 결과가 같지만 이유가 다르다. 1회차는 규칙에 없는 것을 모델이 알아서 읽었고, 3회차는 규칙에 적힌 것을 읽었다. 2회차가 없었으면 이 차이를 몰랐을 것이다.",
+      "lesson": "규칙이 실제로 작동하는지는 동일 노트 재실행으로만 확인된다. 1회 성공은 규칙의 증거가 아니다."
+    }
+  },
+  "verification_protocol": {
+    "rule": "규칙을 고친 뒤에는 같은 노트를 두 번 돌린다.",
+    "why": "1회 성공은 모델이 우연히 옳게 읽은 것일 수 있다. SCAMPER 차시 1·2회차가 같은 입력에서 정반대로 갈렸다.",
+    "status": "adopted",
+    "date": "2026-08"
+  },
+  "status": {
+    "date": "2026-09-18",
+    "state": "EXPERIMENTAL · promotion blocked until independent repeated LLM runs pass",
+    "baseline": "6.0.0",
+    "change_scope": "Semantic Block Boundary Layer only",
+    "production_baseline": "6.0.0 STABLE / FREEZE"
+  },
+  "next_when_resumed": [
+    "검사기를 ChatGPT Sites에 올린다. 규칙이 굳었으므로 두 번 일하지 않는다.",
+    "카드 D는 장치 작동 블록이 실제로 나올 때, 카드 E는 순차 패널이 필요할 때 검증한다.",
+    "규칙을 고치면 같은 노트를 두 번 돌린다(verification_protocol).",
+    "새 규칙은 실패가 관측될 때만 추가한다. 손질하지 않는다."
+  ]
+}

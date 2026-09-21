@@ -1,5 +1,5 @@
 import {INFO_TYPES,RULES} from './rules';
-import type {BlockEvaluation,CardKey,PromptLine,VdfBlock,VdfOptions,VdfWarning} from './types';
+import type {BlockEvaluation,CardKey,PresentationTrack,PromptLine,VdfBlock,VdfOptions,VdfWarning} from './types';
 
 export function warningFor(block:VdfBlock,card:CardKey|null,infoType:string,opt:VdfOptions):VdfWarning[]{
  const w:VdfWarning[]=[]; const t=block.subject_traits||{};
@@ -29,7 +29,7 @@ export function fragments(block:VdfBlock,card:CardKey|null,opt:VdfOptions):strin
 }
 
 export function buildPrompt(block:VdfBlock,card:CardKey|null,opt:VdfOptions):PromptLine[]|null{
- if(!card)return null; const c=RULES.cards[card]; const extra=fragments(block,card,opt);
+ if(block.track!=='image'||!card||!block.subject?.trim())return null; const c=RULES.cards[card]; const extra=fragments(block,card,opt);
  const subject=(block.subject||'')+(extra.length?`, ${extra.join(', ')}`:'');
  return [
   {key:'subject',value:subject},{key:'background',value:c.bg},{key:'composition',value:c.cp},
@@ -38,9 +38,12 @@ export function buildPrompt(block:VdfBlock,card:CardKey|null,opt:VdfOptions):Pro
 }
 
 export function evaluateBlock(block:VdfBlock,opt:VdfOptions):BlockEvaluation{
- const card=(block.card||null) as CardKey|null;
- const infoType=block.info_type;
- return {block,card,infoType,warnings:warningFor(block,card,infoType,opt),prompt:buildPrompt(block,card,opt),diagramSvg:diagramFor(block,infoType,opt.accent)};
+ const card=(block.track==='image'?(block.card||null):null) as CardKey|null;
+ const normalizedBlock=card===block.card?block:{...block,card};
+ const infoType=normalizedBlock.info_type;
+ const diagramSvg=normalizedBlock.track==='shape'?diagramFor(normalizedBlock,infoType,opt.accent):null;
+ const presentationTrack:PresentationTrack=normalizedBlock.track==='image'?'image':diagramSvg?'shape':'text';
+ return {block:normalizedBlock,card,infoType,warnings:warningFor(normalizedBlock,card,infoType,opt),prompt:buildPrompt(normalizedBlock,card,opt),diagramSvg,presentationTrack};
 }
 
 function esc(s:string){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]!))}

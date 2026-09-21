@@ -1,0 +1,29 @@
+{
+  "case_id": "R1",
+  "name": "데이터와 빅데이터",
+  "status": "BOUNDARY_ASSERTION",
+  "purpose": "Same Topic Rule, note/synthesis merge, activity drop 검증",
+  "must_keep": [
+    "데이터 vs 정보 비교",
+    "데이터 → 정보 → 통찰 → 가치 과정"
+  ],
+  "expected_decisions": [
+    {
+      "source": "기본 5V + 확장 V 언급",
+      "decision": "MERGE",
+      "merge_type": "NOTE_MERGE"
+    },
+    {
+      "source": "적용하기 — 온라인 쇼핑몰 데이터 활동 지시",
+      "decision": "DROP"
+    },
+    {
+      "source": "온라인 쇼핑몰 해설 + 가치 결론",
+      "decision": "MERGE",
+      "merge_type": "SYNTHESIS_MERGE"
+    }
+  ],
+  "fail_if": [
+    "데이터 vs 정보와 데이터 활용 흐름이 같은 주제라는 이유로 병합됨"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "VDF 6.1 Semantic Boundary Internal IR",
+  "version": "1.0-experimental",
+  "public_final_json": false,
+  "decision_enum": [
+    "KEEP",
+    "MERGE",
+    "DROP",
+    "SPLIT"
+  ],
+  "merge_type_enum": [
+    null,
+    "CONTENT_MERGE",
+    "NOTE_MERGE",
+    "SYNTHESIS_MERGE"
+  ],
+  "candidate_trace": {
+    "candidate_id": "string",
+    "source_title": "string",
+    "source_role": "string",
+    "decision": "enum",
+    "merge_type": "enum|null",
+    "merge_target": "string|null",
+    "reason": "string",
+    "checks": {
+      "in_scope": "boolean",
+      "new_meaning": "boolean",
+      "activity_only": "boolean",
+      "duplicate": "boolean",
+      "different_relation": "boolean",
+      "visual_evidence_required": "boolean",
+      "summary_only": "boolean"
+    }
+  },
+  "notes_policy": "internal IR only; compile to existing slots/final blocks; never add notes to public final JSON before contract-safe review."
+}

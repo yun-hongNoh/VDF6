@@ -1,0 +1,30 @@
+{
+  "case_id": "R2",
+  "name": "회귀모형 평가",
+  "status": "BOUNDARY_ASSERTION",
+  "purpose": "Callout/비교/적용 wrapper 처리 검증",
+  "expected_decisions": [
+    {
+      "source": "기사 Point",
+      "decision": "MERGE",
+      "merge_type": "NOTE_MERGE"
+    },
+    {
+      "source": "MAE/MSE/RMSE/MAPE",
+      "decision": "KEEP",
+      "expected_final_relation": "공통 비교 구조"
+    },
+    {
+      "source": "비교하기",
+      "decision": "MERGE",
+      "merge_type": "NOTE_MERGE"
+    },
+    {
+      "source": "적용하기",
+      "decision": "DROP"
+    }
+  ],
+  "fail_if": [
+    "기사 Point·비교하기·적용하기가 형식만으로 독립 Block이 됨"
+  ]
+}
