@@ -17,7 +17,7 @@ export function AppShell({page,onPage,children}:{page:PageKey;onPage:(p:PageKey)
     <a className="skip-link" href="#main">본문으로 건너뛰기</a>
     <header className="topbar">
       <button className="menu-button" onClick={()=>setOpen(v=>!v)} aria-label="메뉴" aria-expanded={open} aria-controls="primary-navigation"><Menu/></button>
-      <div className="brand"><b>VDF Next</b><small>App v0.3.2.1 · Engine 6.0.0</small></div>
+      <div className="brand"><b>VDF Next</b><small>App v0.3.2.6 · Engine 6.0.0</small></div>
       <div className="top-meta"><StatusBadge tone="success">RELEASE</StatusBadge><StatusBadge tone="info">VDF 6.0 FREEZE</StatusBadge></div>
     </header>
     <aside id="primary-navigation" className={`sidebar ${open?'open':''}`} aria-label="주 메뉴">
