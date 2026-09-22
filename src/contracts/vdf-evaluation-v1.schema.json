@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VdfEvaluation Contract v1",
+  "type": "object",
+  "properties": {
+    "contractVersion": {
+      "const": "1.0"
+    },
+    "engine": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/block"
+      }
+    }
+  },
+  "required": [
+    "contractVersion",
+    "engine",
+    "blocks"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "block": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "track": {
+          "enum": [
+            "image",
+            "shape"
+          ]
+        },
+        "info_type": {
+          "enum": [
+            "순서·절차",
+            "분류·계층",
+            "비교·대조",
+            "인과·수렴",
+            "정의",
+            "목록"
+          ]
+        },
+        "item_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "item_structure": {
+          "type": "string"
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "gate": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "passed": {
+                  "type": "boolean"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "passed",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "card": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            null
+          ]
+        },
+        "subject": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subject_traits": {
+          "type": "object",
+          "properties": {
+            "branded_category": {
+              "type": "boolean"
+            },
+            "same_form_variants": {
+              "type": "boolean"
+            },
+            "replacement_type": {
+              "type": "boolean"
+            },
+            "scale_is_the_point": {
+              "type": "boolean"
+            },
+            "spreads_across_frame": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "branded_category",
+            "same_form_variants",
+            "replacement_type",
+            "scale_is_the_point",
+            "spreads_across_frame"
+          ],
+          "additionalProperties": false
+        },
+        "split": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "item_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "slots": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "subject": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "item_count",
+              "slots"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "track",
+        "info_type",
+        "item_count",
+        "slots",
+        "gate",
+        "card",
+        "subject",
+        "subject_traits"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

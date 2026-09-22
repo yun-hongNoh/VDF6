@@ -8,9 +8,11 @@
     "dev:lan": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --import tsx --test tests/*.test.ts"
+    "test": "node --import tsx --test tests/*.test.ts",
+    "package:engines": "node --import tsx scripts/package-engines.ts"
   },
   "dependencies": {
+    "ajv": "8.17.1",
     "jszip": "3.10.1",
     "lucide-react": "0.468.0",
     "react": "19.1.1",
@@ -19,6 +21,7 @@
   "devDependencies": {
     "@types/react": "19.1.10",
     "@types/react-dom": "19.1.9",
+    "fake-indexeddb": "6.2.4",
     "tsx": "4.20.5",
     "typescript": "5.9.2",
     "vite": "6.3.5"

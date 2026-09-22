@@ -1,0 +1,251 @@
+[
+  {
+    "block": {
+      "id": "B1",
+      "title": "문제의 정의",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "문제 | 현재 상태(As-Is)와 기대치 또는 목표(To-Be) 사이에 차이가 존재하며, 개선을 원하지만 당장 해법을 모르는 모든 상황"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B2",
+      "title": "문제 인식의 주관성과 실무 예시",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 3,
+      "item_structure": "항목 배열",
+      "slots": [
+        "주관성 | 개인의 성향이나 상황에 따라 기대치가 달라 문제 인식도 달라짐",
+        "진공청소기 | 현재 상태인 큰 소음과 기대치인 무소음의 차이",
+        "자동차 | 현재 연비 10km/L와 기대 연비 50km/L의 차이"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "진공청소기와 자동차라는 서로 다른 사물이 함께 필요해 하나의 구체적 대상이나 같은 사물의 변형으로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": true,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "목록",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 311\" role=\"img\" aria-label=\"문제 인식의 주관성과 실무 예시\"><title>문제 인식의 주관성과 실무 예시</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"311\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 배열</text><g data-slot-index=\"0\"><title>주관성 | 개인의 성향이나 상황에 따라 기대치가 달라 문제 인식도 달라짐</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">주관성 | 개인의 성향이나 상황에 따라 기대치가 달라 문제 인식도 달라짐</text></g><g data-slot-index=\"1\"><title>진공청소기 | 현재 상태인 큰 소음과 기대치인 무소음의 차이</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">진공청소기 | 현재 상태인 큰 소음과 기대치인 무소음의 차이</text></g><g data-slot-index=\"2\"><title>자동차 | 현재 연비 10km/L와 기대 연비 50km/L의 차이</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">자동차 | 현재 연비 10km/L와 기대 연비 50km/L의 차이</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B3",
+      "title": "잘 정의된 문제와 잘 정의되지 않은 문제",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "명확성 | 조건·목표·해결 단계가 명확함 | 현재 상태나 목표 상태가 명확하지 않음",
+        "해결책 | 정답이 정해져 있음 | 여러 가지 해결책이 존재할 수 있음",
+        "요구 사고 | 논리적·분석적 사고로 해결 가능함 | 창의적 사고가 반드시 요구됨"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 311\" role=\"img\" aria-label=\"잘 정의된 문제와 잘 정의되지 않은 문제\"><title>잘 정의된 문제와 잘 정의되지 않은 문제</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"311\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 | A값 | B값</text><g data-slot-index=\"0\"><title>명확성 | 조건·목표·해결 단계가 명확함 | 현재 상태나 목표 상태가 명확하지 않음</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">명확성 | 조건·목표·해결 단계가 명확함 | 현재 상태나 목표 상태가 명확하지 않음</text></g><g data-slot-index=\"1\"><title>해결책 | 정답이 정해져 있음 | 여러 가지 해결책이 존재할 수 있음</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">해결책 | 정답이 정해져 있음 | 여러 가지 해결책이 존재할 수 있음</text></g><g data-slot-index=\"2\"><title>요구 사고 | 논리적·분석적 사고로 해결 가능함 | 창의적 사고가 반드시 요구됨</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">요구 사고 | 논리적·분석적 사고로 해결 가능함 | 창의적 사고가 반드시 요구됨</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B4",
+      "title": "최소 문제와 최대 문제의 접근법",
+      "track": "image",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "시스템 변화 | 최소 문제: 현재 시스템을 유지하며 단점만 개선함 | 최대 문제: 완전히 새로운 차세대 시스템을 개발함",
+        "자원과 방법 | 최소 문제: 최소 자원, 5Whys와 단점 나열법을 활용함 | 최대 문제: 최대 자원, 타 분야 융합과 미래 기술·트렌드 예측을 활용함",
+        "배 사례 | 최소 문제: 배의 돛을 구동하는 기어를 부드럽게 개선함 | 최대 문제: 돛을 없애고 엔진이나 다른 방법으로 움직이는 배를 만듦"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "노트의 같은 배가 기존 돛 시스템 개선과 엔진 기반 차세대 시스템이라는 두 상태로 구체화됨"
+      },
+      "card": "C",
+      "subject": "two boats side by side, exactly one boat on each side, left with its existing sail and drive gear improved, right with the sail removed and an engine providing propulsion",
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": true,
+        "replacement_type": true,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": "C",
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": [
+      {
+        "key": "subject",
+        "value": "two boats side by side, exactly one boat on each side, left with its existing sail and drive gear improved, right with the sail removed and an engine providing propulsion"
+      },
+      {
+        "key": "background",
+        "value": "plain seamless background, environment barely visible"
+      },
+      {
+        "key": "composition",
+        "value": "both halves sit on one single continuous unbroken floor plane with no seam or line between them, identical camera angle and scale, the pair grouped within the left 60% of the frame, the right 40% is empty background"
+      },
+      {
+        "key": "style",
+        "value": "premium 3D educational render, accent glow carrying the data only"
+      },
+      {
+        "key": "ratio",
+        "value": "16:9"
+      },
+      {
+        "key": "negative",
+        "value": "text-free, no readable text, no labels, no decorative HUD rings"
+      }
+    ],
+    "diagramSvg": null,
+    "presentationTrack": "image"
+  },
+  {
+    "block": {
+      "id": "B5",
+      "title": "문제 정의서의 4대 요소",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 4,
+      "item_structure": "항목 배열",
+      "slots": [
+        "발생 상황 | 문제가 언제, 어디서 발생했는지",
+        "문제 대상 | 무엇이 문제인지",
+        "문제 특성 | As-Is와 To-Be의 갭이 무엇인지",
+        "기대 효과 | 해결되었을 때 얻게 되는 이익"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "목록",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 395\" role=\"img\" aria-label=\"문제 정의서의 4대 요소\"><title>문제 정의서의 4대 요소</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"395\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 배열</text><g data-slot-index=\"0\"><title>발생 상황 | 문제가 언제, 어디서 발생했는지</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">발생 상황 | 문제가 언제, 어디서 발생했는지</text></g><g data-slot-index=\"1\"><title>문제 대상 | 무엇이 문제인지</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">문제 대상 | 무엇이 문제인지</text></g><g data-slot-index=\"2\"><title>문제 특성 | As-Is와 To-Be의 갭이 무엇인지</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">문제 특성 | As-Is와 To-Be의 갭이 무엇인지</text></g><g data-slot-index=\"3\"><title>기대 효과 | 해결되었을 때 얻게 되는 이익</title><rect x=\"32\" y=\"311\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"336\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">기대 효과 | 해결되었을 때 얻게 되는 이익</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B6",
+      "title": "현상과 진짜 문제의 분리",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 2,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "표현 | 현상: 매출이 떨어짐 | 문제: 목표 매출 100과 현재 매출 80 사이의 차이 20",
+        "판단 기준 | 현상만 보고함 | 현재 상태와 기대 상태를 나누어 갭을 정의함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 227\" role=\"img\" aria-label=\"현상과 진짜 문제의 분리\"><title>현상과 진짜 문제의 분리</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"227\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 | A값 | B값</text><g data-slot-index=\"0\"><title>표현 | 현상: 매출이 떨어짐 | 문제: 목표 매출 100과 현재 매출 80 사이의 차이 20</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">표현 | 현상: 매출이 떨어짐 | 문제: 목표 매출 100과 현재 매출 80 사이의 차이 20</text></g><g data-slot-index=\"1\"><title>판단 기준 | 현상만 보고함 | 현재 상태와 기대 상태를 나누어 갭을 정의함</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">판단 기준 | 현상만 보고함 | 현재 상태와 기대 상태를 나누어 갭을 정의함</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B7",
+      "title": "일반인의 질문과 숙련자의 질문",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "질문 방식 | 환불률이 높다는 현상만 제시하고 해결책을 요구함 | As-Is 15%와 To-Be 5%를 정의하고 시스템 사고 적용을 요구함",
+        "접근 방향 | 최소 문제와 최대 문제를 구분하지 않음 | 기존 반품 프로세스 개선안 2가지와 새로운 비즈니스·물류 시스템 혁신안 2가지를 분리함",
+        "결과 | 쿠폰 제공·배송 단축 등 맥락 없는 산발적 답변 | 사이즈 추천 AI 추가와 가상 피팅 앱 개발처럼 투자 규모와 방향성이 구분된 기획안"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "질문 문장과 결과의 구조적 차이가 핵심이며 서로 다른 여러 사물을 그려야 해 하나의 대상으로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 359\" role=\"img\" aria-label=\"일반인의 질문과 숙련자의 질문\"><title>일반인의 질문과 숙련자의 질문</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"359\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 | A값 | B값</text><g data-slot-index=\"0\"><title>질문 방식 | 환불률이 높다는 현상만 제시하고 해결책을 요구함 | As-Is 15%와 To-Be 5%를 정의하고 시스템 사고 적용을 요구함</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">질문 방식 | 환불률이 높다는 현상만 제시하고 해결책을 요구함 | As-Is 15%와 </text><text x=\"46\" y=\"107\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">To-Be 5%를 정의하고 시스템 사고 적용을 요구함</text></g><g data-slot-index=\"1\"><title>접근 방향 | 최소 문제와 최대 문제를 구분하지 않음 | 기존 반품 프로세스 개선안 2가지와 새로운 비즈니스·물류 시스템 혁신안 2가지를 분리함</title><rect x=\"32\" y=\"159\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"184\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">접근 방향 | 최소 문제와 최대 문제를 구분하지 않음 | 기존 반품 프로세스 개선안 </text><text x=\"46\" y=\"207\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">2가지와 새로운 비즈니스·물류 시스템 혁신안 2가지를 분리함</text></g><g data-slot-index=\"2\"><title>결과 | 쿠폰 제공·배송 단축 등 맥락 없는 산발적 답변 | 사이즈 추천 AI 추가와 가상 피팅 앱 개발처럼 투자 규모와 방향성이 구분된 기획안</title><rect x=\"32\" y=\"259\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"284\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">결과 | 쿠폰 제공·배송 단축 등 맥락 없는 산발적 답변 | 사이즈 추천 AI 추가와 </text><text x=\"46\" y=\"307\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">가상 피팅 앱 개발처럼 투자 규모와 방향성이 구분된 기획안</text></g></svg>",
+    "presentationTrack": "shape"
+  }
+]

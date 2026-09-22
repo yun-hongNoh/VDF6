@@ -1,0 +1,310 @@
+[
+  {
+    "block": {
+      "id": "B1",
+      "title": "확률변수의 의미",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "확률변수 | 우연한 결과에 수치를 대응한 변수이며, 불량품 개수·하루 방문자 수·학습시간 등이 해당함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B2",
+      "title": "확률분포의 의미",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "확률분포 | 확률변수가 어떤 값을 얼마나 자주 가질 가능성이 있는지를 나타내며 이산형과 연속형으로 나뉨"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B3",
+      "title": "이산형과 연속형 확률분포",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 2,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "값의 성격 | 이산형: 셀 수 있는 값을 가짐 | 연속형: 일정 구간의 연속적인 값을 가짐",
+        "대표 사례 | 이산형: 불량품 개수·하루 방문자 수 | 연속형: 학습시간·키처럼 연속적으로 측정되는 값"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 166\" role=\"img\"><rect width=\"900\" height=\"166\" fill=\"#fff\"/><rect x=\"30\" y=\"28\" width=\"390\" height=\"110\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><rect x=\"480\" y=\"28\" width=\"390\" height=\"110\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"225\" y=\"58\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"18\" fill=\"#212528\">값의 성격</text><text x=\"675\" y=\"58\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"18\" fill=\"#212528\">대표 사례</text><text x=\"225\" y=\"100\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\">이산형: 셀 수 있는 값을 가짐 · 연속형: 일정 구간의 연속적인 값을 가짐</text><text x=\"675\" y=\"100\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\">이산형: 불량품 개수·하루 방문자 수 · 연속형: 학습시간·키처럼 연속적으로 측정되는 값</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B4",
+      "title": "대표적인 확률분포",
+      "track": "shape",
+      "info_type": "분류·계층",
+      "item_count": 6,
+      "item_structure": "대분류 | 하위항목 목록",
+      "slots": [
+        "이항분포 | 성공/실패의 두 결과·일정한 성공확률의 독립 시행 반복에서 성공횟수를 나타내는 이산분포 / 제품 20개 중 불량품 수·고객 10명 중 구매자 수",
+        "정규분포 | 평균 중심의 좌우 대칭 종 모양 연속분포 / 평균과 분산이 형태를 결정 / 통계적 추론의 기준분포",
+        "표준정규분포 | 평균 0·표준편차 1인 정규분포 / 서로 다른 정규분포의 값을 표준점수로 비교",
+        "t분포 | 모집단 분산을 모르고 표본이 비교적 작을 때 평균 추론에 활용 / 정규분포보다 꼬리가 두껍고 자유도가 커질수록 표준정규분포에 가까워짐",
+        "카이제곱분포 | 0 이상의 값을 갖는 비대칭 분포 / 분산 추론과 범주형 자료의 적합도·독립성 검정에 활용 / 자유도에 따라 모양이 달라짐",
+        "F분포 | 두 분산의 비와 관련된 양의 값의 분포 / 분산 비교와 분산분석에 활용 / 두 자유도가 형태를 결정"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "분류·계층",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 246\" role=\"img\"><rect width=\"900\" height=\"246\" fill=\"#fff\"/><rect x=\"24\" y=\"24\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"123.75\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">이항분포</text><rect x=\"241.5\" y=\"24\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"341.25\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">정규분포</text><rect x=\"459\" y=\"24\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"558.75\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">표준정규분포</text><rect x=\"676.5\" y=\"24\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"776.25\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">t분포</text><rect x=\"24\" y=\"132\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"123.75\" y=\"184\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">카이제곱분포</text><rect x=\"241.5\" y=\"132\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"341.25\" y=\"184\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">F분포</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B5",
+      "title": "데이터 생성과정에 따른 분포 선택",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 2,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "관찰값 | 구매 여부 100명 중 구매자 수 | 측정오차나 여러 요인이 합쳐진 연속형 값",
+        "대응 분포 | 이항분포 관점 | 정규분포가 근사적으로 나타날 수 있음"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 166\" role=\"img\"><rect width=\"900\" height=\"166\" fill=\"#fff\"/><rect x=\"30\" y=\"28\" width=\"390\" height=\"110\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><rect x=\"480\" y=\"28\" width=\"390\" height=\"110\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"225\" y=\"58\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"18\" fill=\"#212528\">관찰값</text><text x=\"675\" y=\"58\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"18\" fill=\"#212528\">대응 분포</text><text x=\"225\" y=\"100\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\">구매 여부 100명 중 구매자 수 · 측정오차나 여러 요인이 합쳐진 연속형 값</text><text x=\"675\" y=\"100\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\">이항분포 관점 · 정규분포가 근사적으로 나타날 수 있음</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B6",
+      "title": "표본분포의 의미",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "표본분포 | 같은 모집단에서 여러 표본을 반복해 뽑을 때 매번 조금씩 달라지는 표본평균처럼 통계량 자체가 갖는 분포"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B7",
+      "title": "표준오차",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "표준오차 | 표본통계량이 표본마다 얼마나 변하는지를 나타내며, 표본평균의 표준오차는 일반적으로 표본크기가 커질수록 작아짐"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B8",
+      "title": "중심극한정리",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 3,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "일정한 조건에서 표본크기가 충분히 커짐",
+        "모집단 분포 형태와 무관하게 표본평균의 분포가 정규분포에 가까워짐",
+        "평균에 대한 여러 추론방법의 중요한 근거가 됨"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "인과·수렴",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 156\" role=\"img\"><rect width=\"900\" height=\"156\" fill=\"#fff\"/><rect x=\"24\" y=\"30\" width=\"254.66666666666666\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"151.33333333333331\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">일정한 조건에서 표본크기가 충분히 커짐</text><path d=\"M286.66666666666663 78 H314.66666666666663\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M306.66666666666663 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"322.66666666666663\" y=\"30\" width=\"254.66666666666666\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"449.99999999999994\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">모집단 분포 형태와 무관하게 표본평균의 분포가 정규분포에 가까워짐</text><path d=\"M585.3333333333333 78 H613.3333333333333\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M605.3333333333333 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"621.3333333333333\" y=\"30\" width=\"254.66666666666666\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"748.6666666666666\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">평균에 대한 여러 추론방법의 중요한 근거가 됨</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B9",
+      "title": "중심극한정리의 오개념",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "정규분포에 가까워지는 대상 | 원자료가 항상 정규분포가 됨 | 주로 표본평균의 표본분포가 정규분포에 가까워짐",
+        "표본 확대의 효과 | 모든 편향이 사라짐 | 표준오차는 작아질 수 있으나 모든 편향이 사라지는 것은 아님",
+        "정리의 초점 | 원자료 자체의 모양 | 표본평균의 표본분포"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 166\" role=\"img\"><rect width=\"900\" height=\"166\" fill=\"#fff\"/><rect x=\"30\" y=\"28\" width=\"390\" height=\"110\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><rect x=\"480\" y=\"28\" width=\"390\" height=\"110\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"225\" y=\"58\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"18\" fill=\"#212528\">정규분포에 가까워지는 대상</text><text x=\"675\" y=\"58\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"18\" fill=\"#212528\">표본 확대의 효과</text><text x=\"225\" y=\"100\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\">원자료가 항상 정규분포가 됨 · 주로 표본평균의 표본분포가 정규분포에 가까워짐</text><text x=\"675\" y=\"100\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\">모든 편향이 사라짐 · 표준오차는 작아질 수 있으나 모든 편향이 사라지는 것은 아님</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B10",
+      "title": "표본분포 적용 시나리오",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 5,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "약간 치우친 주간 학습시간 분포를 가진 재학생 모집단",
+        "모집단에서 무작위로 표본을 뽑아 주간 학습시간 평균을 계산함",
+        "100명 표본의 평균 계산을 50번 반복해 서로 다른 50개의 표본평균을 얻음",
+        "조건과 표본크기가 충분하면 표본평균의 분포가 정규분포에 가까워짐",
+        "표본크기를 20명에서 200명으로 늘리면 표준오차가 작아짐"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "반복 표집과 분포 변화가 핵심이며 그릴 대상이 구체적 사물 하나나 같은 사물의 변형으로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "인과·수렴",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 156\" role=\"img\"><rect width=\"900\" height=\"156\" fill=\"#fff\"/><rect x=\"24\" y=\"30\" width=\"135.2\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"91.6\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">약간 치우친 주간 학습시간 분포를 가진 재학생 모집단</text><path d=\"M167.2 78 H195.2\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M187.2 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"203.2\" y=\"30\" width=\"135.2\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"270.79999999999995\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">모집단에서 무작위로 표본을 뽑아 주간 학습시간 평균을 계산함</text><path d=\"M346.4 78 H374.4\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M366.4 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"382.4\" y=\"30\" width=\"135.2\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"450\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">100명 표본의 평균 계산을 50번 반복해 서로 다른 50개의 표본평균을 얻음</text><path d=\"M525.5999999999999 78 H553.5999999999999\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M545.5999999999999 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"561.5999999999999\" y=\"30\" width=\"135.2\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"629.1999999999999\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">조건과 표본크기가 충분하면 표본평균의 분포가 정규분포에 가까워짐</text><path d=\"M704.8 78 H732.8\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M724.8 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"740.8\" y=\"30\" width=\"135.2\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"808.4\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">표본크기를 20명에서 200명으로 늘리면 표준오차가 작아짐</text></svg>",
+    "presentationTrack": "shape"
+  }
+]

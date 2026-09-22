@@ -1,0 +1,151 @@
+{
+  "contractVersion": "1.0",
+  "engine": {
+    "id": "vdf-6.0.0",
+    "version": "6.0.0"
+  },
+  "blocks": [
+    {
+      "id": "B1",
+      "title": "문제의 정의와 주관성",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 3,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "문제 | 현재 상태(As-Is)와 기대치 또는 목표(To-Be) 사이에 차이가 있고, 개선을 원하지만 당장 해법을 모르는 모든 상황",
+        "문제 인식의 주관성 | 개인의 성향이나 상황에 따라 기대치가 달라지므로 무엇을 문제로 인식하는지도 달라짐",
+        "문제의 실무 예시 | 진공청소기의 큰 소음과 무소음 기대 사이의 차이, 자동차의 현재 연비 10km/L와 기대 연비 50km/L 사이의 차이"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B2",
+      "title": "닫힌 문제와 열린 문제",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "상태·목표·단계 | 잘 정의된 문제: 조건과 목표 및 해결 단계가 명확함 | 잘 정의되지 않은 문제: 현재 상태나 목표 상태가 명확하지 않음",
+        "정답과 사고 방식 | 잘 정의된 문제: 정답이 정해져 있고 논리적·분석적 사고로 해결함 | 잘 정의되지 않은 문제: 해결책이 여러 가지이며 창의적 사고가 필요함",
+        "사례 | 잘 정의된 문제: 수학 문제, 퍼즐 | 잘 정의되지 않은 문제: 새로운 기계 설계, 신제품 디자인, 효율적인 팀 관리"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B3",
+      "title": "최소 문제와 최대 문제",
+      "track": "image",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "시스템 방향 | 최소 문제: 현재 시스템을 유지하면서 단점만 개선함 | 최대 문제: 완전히 새로운 차세대 시스템을 개발함",
+        "투입과 접근 | 최소 문제: 최소 자원과 5Whys·단점 나열법을 활용함 | 최대 문제: 최대 자원과 타 분야 융합 지식 및 미래 기술·트렌드 예측을 활용함",
+        "사례 | 최소 문제: 배의 돛을 구동하는 기어를 부드럽게 개선함 | 최대 문제: 돛을 없애고 엔진이나 다른 방법으로 움직이는 배를 만듦"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "노트가 같은 배의 두 변화 상태를 구체적으로 제시함"
+      },
+      "card": "C",
+      "subject": "two identical boats side by side, exactly one boat on each side, left retaining its sail with a smoother drive gear, right with the sail removed and an engine installed",
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": true,
+        "replacement_type": true,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B4",
+      "title": "문제 정의서의 기록 요소",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 4,
+      "item_structure": "항목 배열",
+      "slots": [
+        "발생 상황 | 문제가 언제, 어디서 발생했는지",
+        "문제 대상 | 무엇이 문제인지",
+        "문제 특성 | 현재 상태(As-Is)와 기대 상태(To-Be)의 갭이 무엇인지",
+        "기대 효과 | 해결되었을 때 얻게 되는 이익"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B5",
+      "title": "현상과 진짜 문제 분리",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "구분 기준 | 현상: 나타난 결과만 말함 | 진짜 문제: 현재 상태와 기대 상태 및 그 차이를 정의함",
+        "보고 예시 | 현상: 매출이 떨어짐 | 진짜 문제: 목표 매출 100과 현재 매출 80 사이의 차이 20을 채워야 함",
+        "실무 적용 문장 | 현재 상태: 나의 현재 상태(As-Is)는 OOO임 | 기대 상태: 내가 진짜로 원하는 기대 상태(To-Be)는 OOO임"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B6",
+      "title": "일반인의 질문과 숙련자의 질문",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "질문 방식 | 일반인: 환불률이 높다는 현상만 말하고 해결책을 요구함 | 숙련자: 현재 환불률 15%와 기대 환불률 5%를 명시함",
+        "접근 구조 | 일반인: 최소·최대 문제를 구분하지 않음 | 숙련자: 기존 반품 프로세스 개선안 2가지와 새로운 비즈니스 모델·물류 시스템 혁신안 2가지를 분리함",
+        "결과 | 일반인: 쿠폰 제공·배송 단축 같은 산발적 답변 | 숙련자: 사이즈 추천 AI 추가와 가상 피팅 메타버스 앱 개발처럼 투자 규모와 방향이 구분된 기획안"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    }
+  ]
+}

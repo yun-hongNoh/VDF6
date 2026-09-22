@@ -82,9 +82,3 @@ Engine rules.json은 변경하지 않았다.
 - `최초의` 같은 성취/서수 수식어는 개체 식별에 불필요한 경우 제거.
 - 교수자 subject > 기존 AI subject > normalized bootstrap 우선순위 유지.
 - Engine 6.0/6.1, Card A–F, 6-line Prompt 구조, track/card/gate 로직 변경 없음.
-## 2026-09-21 — v0.3.2.6 Build Hotfix 1
-
-- Fixed TypeScript control-flow narrowing error in `src/features/checker/ResultDetails.tsx` (`TS2339: Property 'passed' does not exist on type 'never'`).
-- No Engine 6.0/6.1 rules, Card definitions, Prompt structure, or Professor Override behavior changed.
-- Deployment status remains pending until `npm run build` passes in GitHub Actions/local environment.
-

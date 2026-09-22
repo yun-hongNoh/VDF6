@@ -1,0 +1,273 @@
+{
+  "contractVersion": "1.0",
+  "engine": {
+    "id": "vdf-6.0.0",
+    "version": "6.0.0"
+  },
+  "blocks": [
+    {
+      "id": "B1",
+      "title": "스캠퍼의 의미",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "SCAMPER | 사물·서비스·프로세스를 새로운 것으로 변형하기 위한 9가지 아이디어 변형 기법을 담은 창의적 발상 도구"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B2",
+      "title": "스캠퍼의 탄생 배경",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 3,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "알렉스 오스본의 체크리스트",
+        "밥 에벌이 기억하기 쉽게 간단하게 재구성함",
+        "아이디어를 자극하는 질문으로 구성된 SCAMPER가 됨"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B3",
+      "title": "스캠퍼의 7가지 구성 요소",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 7,
+      "item_structure": "항목 배열",
+      "slots": [
+        "S | Substitute · 대체하기",
+        "C | Combine · 결합하기",
+        "A | Adapt · 적용/응용하기",
+        "M | Modify/Magnify · 변경/확대하기",
+        "P | Put to other uses · 용도 변경하기",
+        "E | Eliminate · 제거하기",
+        "R | Reverse/Rearrange · 뒤집기/재배열하기"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B4",
+      "title": "대체하기의 질문 프레임",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 2,
+      "item_structure": "항목 배열",
+      "slots": [
+        "핵심 질문 | 이것을 대체할 다른 것은 없나?",
+        "세부 질문 | 무엇으로, 누구로, 어떤 재질로, 어떤 다른 방법·소리·장소로 대체할 수 있는가?"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B5",
+      "title": "스마트 주차 요금 징수기",
+      "track": "image",
+      "info_type": "인과·수렴",
+      "item_count": 3,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "주차 요금 징수기에서 동전을 사용하는 불편",
+        "결제 수단인 동전을 무엇으로 대체할지 질문함",
+        "동전을 신용카드로 대체한 스마트 주차 요금 징수기"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "같은 주차 요금 징수기의 결제 수단 전후 변형으로 그릴 대상이 좁혀짐"
+      },
+      "card": "A",
+      "subject": "two parking fee collection machines, one accepting coins and the other accepting a credit card, evenly spaced in a single row, three-quarter angle",
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": true,
+        "replacement_type": true,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B6",
+      "title": "결합하기의 질문 프레임",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 3,
+      "item_structure": "항목 배열",
+      "slots": [
+        "핵심 질문 | 서로 관련이 없는 것들을 결합하면 어떨까?",
+        "적용 원리 | 관련되지 않았던 제품·목적·아이디어·서비스를 결합해 혁신 아이디어를 도출함",
+        "세부 질문 | 어떤 재질·장치·서로 다른 목적을 결합하고 다양한 용도를 위해 무엇을 섞을 수 있는가?"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B7",
+      "title": "구텐베르크 인쇄기의 이종 결합",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 3,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "중세 시대의 대량 인쇄 과제",
+        "동전 펀치기의 글자 새김 방식과 포도주 압착기의 누름 방식을 결합함",
+        "최초의 금속 활자 인쇄기를 발명함"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "동전 펀치기·포도주 압착기·인쇄기라는 서로 다른 사물이 필요해 하나의 사물이나 같은 사물의 변형으로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B8",
+      "title": "아이폰의 결합",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 4,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "전화기 기능",
+        "아이팟의 음악 재생 기능",
+        "인터넷 통신 기기 기능",
+        "세 기능을 결합한 아이폰"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "전화기·음악 재생기·인터넷 통신 기기·스마트폰이라는 서로 다른 사물이 필요해 하나로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": true,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B9",
+      "title": "실무에 적용하는 대체와 결합",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 2,
+      "item_structure": "항목 배열",
+      "slots": [
+        "S 대체 | 불만이 많은 부품이나 프로세스 하나를 다른 사람이나 재질로 대체함",
+        "C 결합 | 옆 부서에서 버린 기획안을 자신의 기획안과 결합함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": true,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B10",
+      "title": "일반 질문과 스캠퍼 질문",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 2,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "질문 방식 | 일반인: 기발한 사무용 의자 아이디어 요구 | 숙련자: 기존 의자에 S와 C 조건을 구체적으로 강제",
+        "결과 경향 | 일반인: 메시 소재·인체공학 등 일반적 디자인 | 숙련자: 조건에 맞춘 구체적인 파생 아이디어"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B11",
+      "title": "스캠퍼로 도출한 사무용 의자 아이디어",
+      "track": "image",
+      "info_type": "목록",
+      "item_count": 2,
+      "item_structure": "항목 배열",
+      "slots": [
+        "S | 의자 다리를 자성 부상 모듈로 대체해 층간 소음을 없앤 의자",
+        "C | 좌판 하단에 소형 페달 발전기를 결합해 운동하며 스마트폰을 충전하는 의자"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "기준 사무용 의자와 같은 의자의 S·C 변형으로 그릴 대상이 좁혀짐"
+      },
+      "card": "A",
+      "subject": "three office chairs, an ordinary baseline chair, one variant with magnetic levitation modules replacing the legs, and one variant with a compact pedal generator integrated beneath the seat, evenly spaced in a single row, three-quarter angle",
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": true,
+        "replacement_type": true,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    }
+  ]
+}

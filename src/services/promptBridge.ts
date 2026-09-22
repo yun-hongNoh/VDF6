@@ -29,10 +29,11 @@ function assertVdfKnowledge(label:string,value:string,required:string[]){
 export function buildVdfBridgePrompt(lectureNotes:string,instruction:string,rulesMarkdown:string,engine:EngineDef){
   const notes=lectureNotes.trim();
   if(!notes)throw new Error('강의노트를 입력해 주세요.');
-  assertVdfKnowledge('VDF 실행 지시문',instruction,['블록마다 순서대로 판정','"track"','"info_type"','"item_structure"','"gate"','"subject_traits"']);
-  assertVdfKnowledge('VDF 규칙 원본',rulesMarkdown,['정보 유형 6종','프리셋 카드']);
+  assertVdfKnowledge('VDF 실행 지시문',instruction,[]);
+  assertVdfKnowledge('VDF 규칙 원본',rulesMarkdown,[]);
+  if(instruction.trim()!==extractVdfInstruction(engine.instruction)||rulesMarkdown!==engine.rules)throw new Error('Prompt knowledge must come from the selected Engine Package');
   const e=engine;
-  return `# ${e.label} 블록 계획 실행\n\n현재 ACTIVE VDF Engine은 ${e.version} (${e.status})입니다. 아래 지시문과 규칙 원본만 사용하고 JSON 키를 바꾸지 마세요.\n\n## VDF 실행 지시문\n\n${instruction.trim()}\n\n## VDF 규칙 원본\n\n${rulesMarkdown.trim()}\n\n## 이번 강의노트\n\n${notes}`;
+  return `# ${e.label} 블록 계획 실행\n\n현재 ACTIVE VDF Engine은 ${e.version} (${e.status})입니다. 아래 지시문과 규칙 원본만 사용하고 JSON 키를 바꾸지 마세요.\n판단 규칙의 사실원천은 이 패키지의 rules.json입니다. 2부 JSON의 정확한 출력 형식은 output.schema.json을 따르세요. rules.json 내부 설명용 output_contract나 예시를 출력 schema로 대신하지 마세요. Adapter와 App은 판단을 추가하지 않고 결과를 VdfEvaluation Contract v1으로 전달합니다.\n\n## VDF 실행 지시문\n\n${instruction.trim()}\n\n## VDF 규칙 원본\n\n${rulesMarkdown.trim()}\n\n## Active Engine rules.json\n\n\`\`\`json\n${e.rulesJsonText||JSON.stringify(e.rulesJson,null,2)}\n\`\`\`\n\n## Active Engine output.schema.json\n\n\`\`\`json\n${JSON.stringify(e.outputSchema,null,2)}\n\`\`\`\n\n## 이번 강의노트\n\n${notes}`;
 }
 
 export async function createVdfBridgePrompt(lectureNotes:string){

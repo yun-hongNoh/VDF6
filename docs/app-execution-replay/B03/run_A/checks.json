@@ -1,0 +1,110 @@
+{
+  "case_id": "B03",
+  "run": "A",
+  "contract": "PASS",
+  "before_success": true,
+  "after_success": true,
+  "runtime_exceptions_after": 0,
+  "frozen_blocks_unchanged": true,
+  "blocks": [
+    {
+      "id": "B1",
+      "info_type": "정의",
+      "slot_count": 1,
+      "svg_slots_preserved": null,
+      "review_slots_preserved": null,
+      "neutral_relation": false,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B2",
+      "info_type": "인과·수렴",
+      "slot_count": 3,
+      "svg_slots_preserved": true,
+      "review_slots_preserved": true,
+      "neutral_relation": true,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B3",
+      "info_type": "목록",
+      "slot_count": 7,
+      "svg_slots_preserved": true,
+      "review_slots_preserved": true,
+      "neutral_relation": false,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B4",
+      "info_type": "목록",
+      "slot_count": 2,
+      "svg_slots_preserved": true,
+      "review_slots_preserved": true,
+      "neutral_relation": false,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B5",
+      "info_type": "인과·수렴",
+      "slot_count": 3,
+      "svg_slots_preserved": null,
+      "review_slots_preserved": null,
+      "neutral_relation": false,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B6",
+      "info_type": "목록",
+      "slot_count": 3,
+      "svg_slots_preserved": true,
+      "review_slots_preserved": true,
+      "neutral_relation": false,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B7",
+      "info_type": "인과·수렴",
+      "slot_count": 3,
+      "svg_slots_preserved": true,
+      "review_slots_preserved": true,
+      "neutral_relation": true,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B8",
+      "info_type": "인과·수렴",
+      "slot_count": 4,
+      "svg_slots_preserved": true,
+      "review_slots_preserved": true,
+      "neutral_relation": true,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B9",
+      "info_type": "목록",
+      "slot_count": 2,
+      "svg_slots_preserved": true,
+      "review_slots_preserved": true,
+      "neutral_relation": false,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B10",
+      "info_type": "비교·대조",
+      "slot_count": 2,
+      "svg_slots_preserved": true,
+      "review_slots_preserved": true,
+      "neutral_relation": false,
+      "prompt_unchanged": true
+    },
+    {
+      "id": "B11",
+      "info_type": "목록",
+      "slot_count": 2,
+      "svg_slots_preserved": null,
+      "review_slots_preserved": null,
+      "neutral_relation": false,
+      "prompt_unchanged": true
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import {RotateCcw} from 'lucide-react';
-import {CARD_KEYS,INFO_TYPES,RULES} from '../../domain/vdf/rules';
+import {CARD_KEYS,INFO_TYPES} from '../../contracts/constants';
+import type {RuntimeRules} from '../../services/engineEvaluation';
 import type {BlockEvaluation,CardKey,InfoType,PresentationTrack,SubjectTraits} from '../../domain/vdf/types';
 import type {VdfReviewOverride} from '../../services/vdfService';
 import {CardLayoutIcon} from '../vdf/CardLayoutIcon';
@@ -14,8 +15,8 @@ const TRAITS:{key:keyof SubjectTraits;label:string;hint:string}[]=[
 ];
 function trackLabel(track:PresentationTrack){return track==='image'?'이미지':track==='shape'?'도형':'글 중심'}
 
-export function DecisionReview({base,current,override,onChange,onReset}:{
- base:BlockEvaluation;current:BlockEvaluation;override:VdfReviewOverride|undefined;
+export function DecisionReview({base,current,override,onChange,onReset,rules}:{
+ rules:RuntimeRules;base:BlockEvaluation;current:BlockEvaluation;override:VdfReviewOverride|undefined;
  onChange:(next:VdfReviewOverride)=>void;onReset:()=>void;
 }){
  const relationChanged=current.infoType!==base.block.info_type;
@@ -41,8 +42,8 @@ export function DecisionReview({base,current,override,onChange,onReset}:{
    {image&&<label className="review-field image-subject-field"><span>이미지 대상</span><textarea rows={3} value={current.block.subject??''} onChange={e=>setSubject(e.target.value)} placeholder="이미지에 실제로 그릴 대상을 입력하세요"/><small>{subjectBootstrapped?'원문 항목에서 대상·상태 중심으로 추출한 자동 초안입니다. 실제로 그릴 대상에 맞게 확인·수정하세요. · ':''}이 값이 최종 6줄 Prompt의 subject 원본이 됩니다.{subjectOverrideExplicit?' · 교수자 조정됨':''}</small></label>}
    {image&&<div className="review-field card-review"><span>배치 카드</span><div className="layout-tiles" role="group" aria-label="배치 카드 선택">
     <button type="button" className={`layout-tile ${current.card===null?'selected':''}`} aria-pressed={current.card===null} onClick={()=>setCard(null)}><CardLayoutIcon card={null}/><b>없음</b><small>카드 선택 필요</small></button>
-    {CARD_KEYS.map(k=>{const rule=RULES.cards[k];const verified=rule.status==='verified'||rule.status==='verified_after_fix';return <button type="button" key={k} className={`layout-tile ${current.card===k?'selected':''} ${verified?'':'unverified'}`} aria-pressed={current.card===k} onClick={()=>setCard(k)}><CardLayoutIcon card={k}/><b>{k} · {rule.ko.split(' · ')[0]}</b><small>{verified?'검증됨':'미검증 · 결과 확인'}</small></button>})}
-   </div><small>자동: {base.block.card?`${base.block.card} · ${RULES.cards[base.block.card].ko}`:'배치 없음'}{cardChanged?' → 교수자 조정됨':''}</small></div>}
+    {CARD_KEYS.map(k=>{const rule=rules.cards[k];const verified=rule.status==='verified'||rule.status==='verified_after_fix';return <button type="button" key={k} className={`layout-tile ${current.card===k?'selected':''} ${verified?'':'unverified'}`} aria-pressed={current.card===k} onClick={()=>setCard(k)}><CardLayoutIcon card={k}/><b>{k} · {rule.ko.split(' · ')[0]}</b><small>{verified?'검증됨':'미검증 · 결과 확인'}</small></button>})}
+   </div><small>자동: {base.block.card?`${base.block.card} · ${rules.cards[base.block.card].ko}`:'배치 없음'}{cardChanged?' → 교수자 조정됨':''}</small></div>}
    {image&&<details className="review-advanced"><summary>고급 설정 · 이미지 대상 특성</summary><div className="trait-grid">{TRAITS.map(t=><label key={t.key} className="trait-toggle"><input type="checkbox" checked={!!current.block.subject_traits[t.key]} onChange={e=>setTrait(t.key,e.target.checked)}/><span><b>{t.label}</b><small>{t.hint}</small></span></label>)}</div>{traitsChanged&&<small className="changed-note">대상 특성이 교수자 판단으로 조정되었습니다. Prompt 관련 조각을 현재 상태 기준으로 다시 계산합니다.</small>}</details>}
    {gateNeedsOverride&&<div className="professor-gate-note"><b>Image Gate 확인</b><p>AI 규칙상 이미지 권장 조건을 충족하지 않았습니다. 현재는 교수자가 이미지 사용으로 변경한 상태이며, Gate 결과는 삭제하지 않고 그대로 보존합니다.</p></div>}
   </div>

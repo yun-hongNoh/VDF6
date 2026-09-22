@@ -1,0 +1,115 @@
+{
+  "contractVersion": "1.0",
+  "engine": {
+    "id": "vdf-6.0.0",
+    "version": "6.0.0"
+  },
+  "blocks": [
+    {
+      "id": "B1",
+      "title": "세포의 두 가지 주요 유형",
+      "track": "image",
+      "info_type": "분류·계층",
+      "item_count": 2,
+      "item_structure": "대분류 | 하위항목 목록",
+      "slots": [
+        "원핵세포 | 핵이 없는 단순하고 작은 세포 / 박테리아 / 고세균",
+        "진핵세포 | 핵과 세포 소기관을 가진 세포 / 식물 / 동물 / 곰팡이 / 원생동물"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "두 유형이 같은 세포의 구체적인 변형으로 좁혀짐"
+      },
+      "card": "C",
+      "subject": "two cell cross-sections side by side, exactly one cell on each side, left a small simple prokaryotic cell without a nucleus, right a eukaryotic cell with a nucleus and specialized organelles",
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": true,
+        "replacement_type": false,
+        "scale_is_the_point": true,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B2",
+      "title": "주요 세포 구성 요소",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 6,
+      "item_structure": "항목 배열",
+      "slots": [
+        "세포막 | 세포를 환경으로부터 분리하고 세포 안팎으로 물질의 이동을 제어하는 지질 이중층",
+        "핵 | 세포의 제어 센터로 DNA를 보관함",
+        "미토콘드리아 | 세포 호흡을 통해 ATP를 생성함",
+        "엽록체 | 식물에서 햇빛을 화학 에너지로 변환하는 광합성 장소",
+        "소포체 | 단백질과 지질 합성에 관여함",
+        "골지 장치 | 분비를 위해 단백질을 수정·분류·포장함"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "서로 다른 여러 세포 구성 요소가 필요해 하나의 사물이나 같은 사물의 변형으로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B3",
+      "title": "세포의 기능",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 4,
+      "item_structure": "항목 배열",
+      "slots": [
+        "신진대사",
+        "에너지 전환",
+        "환경 신호에 대한 반응",
+        "생식"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "여러 추상 기능을 함께 그릴 구체적 사물이 노트에서 하나로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B4",
+      "title": "세포 번식의 두 과정",
+      "track": "image",
+      "info_type": "분류·계층",
+      "item_count": 2,
+      "item_structure": "대분류 | 하위항목 목록",
+      "slots": [
+        "유사 분열 | 다세포 유기체의 성장과 회복",
+        "감수 분열 | 성 생식"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "두 과정이 같은 세포 분열 현상의 구체적인 변형으로 좁혀짐"
+      },
+      "card": "C",
+      "subject": "two cell division processes side by side, exactly one process on each side, left mitosis in a multicellular organism for growth and repair, right meiosis for sexual reproduction",
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": true,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    }
+  ]
+}

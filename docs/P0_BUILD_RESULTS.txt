@@ -1,0 +1,18 @@
+
+> vdf-next-starter@0.3.2.6 build
+> tsc --noEmit && vite build
+
+vite v6.3.5 building for production...
+transforming...
+✓ 1749 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.50 kB │ gzip:   0.36 kB
+dist/assets/index-X6a29Q3t.css   30.35 kB │ gzip:   6.51 kB
+dist/assets/index-CbK7TLcB.js   722.09 kB │ gzip: 229.15 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.73s

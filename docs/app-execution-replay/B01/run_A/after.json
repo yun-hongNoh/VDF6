@@ -1,0 +1,445 @@
+[
+  {
+    "block": {
+      "id": "B1",
+      "title": "데이터의 정의와 형태",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "데이터 | 관찰·측정·조사·기록 등을 통해 얻은 사실이나 값으로, 숫자·문자·이미지·음성·영상·위치·센서 기록 등 다양한 형태로 존재하며 분석과 활용의 출발점이 되는 자료"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B2",
+      "title": "데이터와 정보의 차이",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "의미 | 데이터: 사실이나 관찰 결과를 기록한 원자료 | 정보: 데이터를 목적에 맞게 정리·가공·분석하여 의미를 부여한 결과",
+        "학습 사례 | 데이터: 강의 접속시간·학습시간·과제 제출 여부 | 정보: 비교·분석하여 학습참여가 낮은 학생을 파악한 결과",
+        "활용 조건 | 데이터 보유만으로는 충분하지 않음 | 의미를 발견하여 판단과 행동으로 연결해야 함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 359\" role=\"img\" aria-label=\"데이터와 정보의 차이\"><title>데이터와 정보의 차이</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"359\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 | A값 | B값</text><g data-slot-index=\"0\"><title>의미 | 데이터: 사실이나 관찰 결과를 기록한 원자료 | 정보: 데이터를 목적에 맞게 정리·가공·분석하여 의미를 부여한 결과</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">의미 | 데이터: 사실이나 관찰 결과를 기록한 원자료 | 정보: 데이터를 목적에 맞게 </text><text x=\"46\" y=\"107\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">정리·가공·분석하여 의미를 부여한 결과</text></g><g data-slot-index=\"1\"><title>학습 사례 | 데이터: 강의 접속시간·학습시간·과제 제출 여부 | 정보: 비교·분석하여 학습참여가 낮은 학생을 파악한 결과</title><rect x=\"32\" y=\"159\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"184\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">학습 사례 | 데이터: 강의 접속시간·학습시간·과제 제출 여부 | 정보: </text><text x=\"46\" y=\"207\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">비교·분석하여 학습참여가 낮은 학생을 파악한 결과</text></g><g data-slot-index=\"2\"><title>활용 조건 | 데이터 보유만으로는 충분하지 않음 | 의미를 발견하여 판단과 행동으로 연결해야 함</title><rect x=\"32\" y=\"259\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"284\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">활용 조건 | 데이터 보유만으로는 충분하지 않음 | 의미를 발견하여 판단과 행동으로 </text><text x=\"46\" y=\"307\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">연결해야 함</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B3",
+      "title": "데이터 활용의 기본 흐름",
+      "track": "shape",
+      "info_type": "순서·절차",
+      "item_count": 4,
+      "item_structure": "번호 | 명칭 | 설명",
+      "slots": [
+        "1 | 데이터 | 관찰·측정·기록으로 얻은 원자료",
+        "2 | 정보 | 목적에 맞게 정리·가공·분석하여 의미를 부여한 결과",
+        "3 | 통찰 | 정보에서 판단에 필요한 의미를 발견한 결과",
+        "4 | 의사결정·가치 | 통찰을 실제 판단과 행동에 연결한 결과"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "순서·절차",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"explicit\" viewBox=\"0 0 900 395\" role=\"img\" aria-label=\"데이터 활용의 기본 흐름\"><title>데이터 활용의 기본 흐름</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"395\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">번호 | 명칭 | 설명</text><g data-slot-index=\"0\"><title>1 | 데이터 | 관찰·측정·기록으로 얻은 원자료</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">1 | 데이터 | 관찰·측정·기록으로 얻은 원자료</text></g><g data-slot-index=\"1\"><title>2 | 정보 | 목적에 맞게 정리·가공·분석하여 의미를 부여한 결과</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">2 | 정보 | 목적에 맞게 정리·가공·분석하여 의미를 부여한 결과</text></g><g data-slot-index=\"2\"><title>3 | 통찰 | 정보에서 판단에 필요한 의미를 발견한 결과</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">3 | 통찰 | 정보에서 판단에 필요한 의미를 발견한 결과</text></g><g data-slot-index=\"3\"><title>4 | 의사결정·가치 | 통찰을 실제 판단과 행동에 연결한 결과</title><rect x=\"32\" y=\"311\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"336\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">4 | 의사결정·가치 | 통찰을 실제 판단과 행동에 연결한 결과</text></g><path data-edge=\"0:1\" d=\"M436 113 V140\" stroke=\"#1F6F68\" fill=\"none\" marker-end=\"url(#arrow)\"/><path data-edge=\"1:2\" d=\"M436 197 V224\" stroke=\"#1F6F68\" fill=\"none\" marker-end=\"url(#arrow)\"/><path data-edge=\"2:3\" d=\"M436 281 V308\" stroke=\"#1F6F68\" fill=\"none\" marker-end=\"url(#arrow)\"/></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B4",
+      "title": "빅데이터의 정의",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "빅데이터 | 기존의 데이터 관리·처리 방식만으로 효율적인 수집·저장·처리·분석이 어려운 규모·속도·다양성을 가진 데이터와, 그 데이터에서 가치를 만드는 기술 및 활용 환경을 포괄하는 개념"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B5",
+      "title": "빅데이터의 기본 5V",
+      "track": "shape",
+      "info_type": "분류·계층",
+      "item_count": 5,
+      "item_structure": "대분류 | 하위항목 목록",
+      "slots": [
+        "Volume | 데이터의 규모 / 얼마나 많은 데이터인가 / 저장공간·처리시간·분석환경·비용 고려",
+        "Variety | 데이터 형태의 다양성 / 어떤 형태의 데이터가 있는가 / 표·문서·로그·JSON·XML·이미지·음성·영상·SNS·센서 기록",
+        "Velocity | 데이터 생성·처리 속도 / 얼마나 빠르게 생성되고 처리되어야 하는가 / 실시간·준실시간 수집·처리·분석",
+        "Veracity | 데이터의 정확성·신뢰성 / 믿고 사용할 수 있는 데이터인가 / 오류·중복·누락·편향과 품질·출처·수집방법·최신성 확인",
+        "Value | 데이터의 활용 가치 / 무엇을 개선하거나 결정할 수 있는가 / 문제 해결과 의사결정에 활용"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "분류·계층",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 559\" role=\"img\" aria-label=\"빅데이터의 기본 5V\"><title>빅데이터의 기본 5V</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"559\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">대분류 | 하위항목 목록</text><g data-slot-index=\"0\"><title>Volume | 데이터의 규모 / 얼마나 많은 데이터인가 / 저장공간·처리시간·분석환경·비용 고려</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">Volume | 데이터의 규모 / 얼마나 많은 데이터인가 / </text><text x=\"46\" y=\"107\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">저장공간·처리시간·분석환경·비용 고려</text></g><g data-slot-index=\"1\"><title>Variety | 데이터 형태의 다양성 / 어떤 형태의 데이터가 있는가 / 표·문서·로그·JSON·XML·이미지·음성·영상·SNS·센서 기록</title><rect x=\"32\" y=\"159\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"184\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">Variety | 데이터 형태의 다양성 / 어떤 형태의 데이터가 있는가 / </text><text x=\"46\" y=\"207\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">표·문서·로그·JSON·XML·이미지·음성·영상·SNS·센서 기록</text></g><g data-slot-index=\"2\"><title>Velocity | 데이터 생성·처리 속도 / 얼마나 빠르게 생성되고 처리되어야 하는가 / 실시간·준실시간 수집·처리·분석</title><rect x=\"32\" y=\"259\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"284\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">Velocity | 데이터 생성·처리 속도 / 얼마나 빠르게 생성되고 처리되어야 하는가 / </text><text x=\"46\" y=\"307\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">실시간·준실시간 수집·처리·분석</text></g><g data-slot-index=\"3\"><title>Veracity | 데이터의 정확성·신뢰성 / 믿고 사용할 수 있는 데이터인가 / 오류·중복·누락·편향과 품질·출처·수집방법·최신성 확인</title><rect x=\"32\" y=\"359\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"384\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">Veracity | 데이터의 정확성·신뢰성 / 믿고 사용할 수 있는 데이터인가 / </text><text x=\"46\" y=\"407\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">오류·중복·누락·편향과 품질·출처·수집방법·최신성 확인</text></g><g data-slot-index=\"4\"><title>Value | 데이터의 활용 가치 / 무엇을 개선하거나 결정할 수 있는가 / 문제 해결과 의사결정에 활용</title><rect x=\"32\" y=\"459\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"484\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">Value | 데이터의 활용 가치 / 무엇을 개선하거나 결정할 수 있는가 / 문제 해결과 </text><text x=\"46\" y=\"507\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">의사결정에 활용</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B6",
+      "title": "빅데이터의 확장 V",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 1,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "분류 범위 | 기본: Volume·Variety·Velocity·Veracity·Value | 확장: Validity·Volatility·Visualization 등을 추가하기도 함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 159\" role=\"img\" aria-label=\"빅데이터의 확장 V\"><title>빅데이터의 확장 V</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"159\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 | A값 | B값</text><g data-slot-index=\"0\"><title>분류 범위 | 기본: Volume·Variety·Velocity·Veracity·Value | 확장: Validity·Volatility·Visualization 등을 추가하기도 함</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">분류 범위 | 기본: Volume·Variety·Velocity·Veracity·Value | 확장: </text><text x=\"46\" y=\"107\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">Validity·Volatility·Visualization 등을 추가하기도 함</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B7",
+      "title": "데이터의 구조화 유형",
+      "track": "shape",
+      "info_type": "분류·계층",
+      "item_count": 3,
+      "item_structure": "대분류 | 하위항목 목록",
+      "slots": [
+        "정형 데이터 | 행과 열 등 일정한 규칙과 구조 / 검색·정렬·집계가 비교적 쉬움 / 거래내역·성적표·고객 DB·재고 데이터",
+        "반정형 데이터 | 고정된 표 구조는 없지만 태그나 키 등 구조정보 포함 / 관계와 항목 구분 가능 / JSON·XML·웹 로그·일부 이벤트 데이터",
+        "비정형 데이터 | 일정한 행과 열 구조로 바로 표현하기 어려움 / 목적에 따른 별도 처리 필요 / 텍스트·이미지·음성·영상·상품평·상담 녹음·SNS 게시물"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "분류·계층",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 359\" role=\"img\" aria-label=\"데이터의 구조화 유형\"><title>데이터의 구조화 유형</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"359\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">대분류 | 하위항목 목록</text><g data-slot-index=\"0\"><title>정형 데이터 | 행과 열 등 일정한 규칙과 구조 / 검색·정렬·집계가 비교적 쉬움 / 거래내역·성적표·고객 DB·재고 데이터</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">정형 데이터 | 행과 열 등 일정한 규칙과 구조 / 검색·정렬·집계가 비교적 쉬움 / </text><text x=\"46\" y=\"107\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">거래내역·성적표·고객 DB·재고 데이터</text></g><g data-slot-index=\"1\"><title>반정형 데이터 | 고정된 표 구조는 없지만 태그나 키 등 구조정보 포함 / 관계와 항목 구분 가능 / JSON·XML·웹 로그·일부 이벤트 데이터</title><rect x=\"32\" y=\"159\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"184\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">반정형 데이터 | 고정된 표 구조는 없지만 태그나 키 등 구조정보 포함 / 관계와 항목 </text><text x=\"46\" y=\"207\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">구분 가능 / JSON·XML·웹 로그·일부 이벤트 데이터</text></g><g data-slot-index=\"2\"><title>비정형 데이터 | 일정한 행과 열 구조로 바로 표현하기 어려움 / 목적에 따른 별도 처리 필요 / 텍스트·이미지·음성·영상·상품평·상담 녹음·SNS 게시물</title><rect x=\"32\" y=\"259\" width=\"808\" height=\"70\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"284\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">비정형 데이터 | 일정한 행과 열 구조로 바로 표현하기 어려움 / 목적에 따른 별도 </text><text x=\"46\" y=\"307\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">처리 필요 / 텍스트·이미지·음성·영상·상품평·상담 녹음·SNS 게시물</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B8",
+      "title": "데이터 유형과 가치의 관계",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "데이터 가치 | 정형·반정형·비정형 중 특정 유형에 자동으로 귀속되지 않고 분석 목적·품질·접근 가능성·활용 방법에 따라 달라지는 것"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B9",
+      "title": "데이터에서 가치로의 전환",
+      "track": "shape",
+      "info_type": "순서·절차",
+      "item_count": 6,
+      "item_structure": "번호 | 명칭 | 설명",
+      "slots": [
+        "1 | 데이터 수집 | 활용 목적에 필요한 데이터를 확보함",
+        "2 | 저장 | 수집한 데이터를 이용 가능한 형태로 보관함",
+        "3 | 전처리 | 오류·중복·누락 등을 다루어 분석 가능한 상태로 만듦",
+        "4 | 분석 | 목적에 맞는 방법으로 데이터의 의미와 패턴을 찾음",
+        "5 | 결과 해석 | 분석 결과를 문제와 맥락에 맞게 이해함",
+        "6 | 의사결정 및 서비스 활용 | 결과를 실제 행동·판단·서비스에 연결함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "순서·절차",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"explicit\" viewBox=\"0 0 900 563\" role=\"img\" aria-label=\"데이터에서 가치로의 전환\"><title>데이터에서 가치로의 전환</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"563\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">번호 | 명칭 | 설명</text><g data-slot-index=\"0\"><title>1 | 데이터 수집 | 활용 목적에 필요한 데이터를 확보함</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">1 | 데이터 수집 | 활용 목적에 필요한 데이터를 확보함</text></g><g data-slot-index=\"1\"><title>2 | 저장 | 수집한 데이터를 이용 가능한 형태로 보관함</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">2 | 저장 | 수집한 데이터를 이용 가능한 형태로 보관함</text></g><g data-slot-index=\"2\"><title>3 | 전처리 | 오류·중복·누락 등을 다루어 분석 가능한 상태로 만듦</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">3 | 전처리 | 오류·중복·누락 등을 다루어 분석 가능한 상태로 만듦</text></g><g data-slot-index=\"3\"><title>4 | 분석 | 목적에 맞는 방법으로 데이터의 의미와 패턴을 찾음</title><rect x=\"32\" y=\"311\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"336\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">4 | 분석 | 목적에 맞는 방법으로 데이터의 의미와 패턴을 찾음</text></g><g data-slot-index=\"4\"><title>5 | 결과 해석 | 분석 결과를 문제와 맥락에 맞게 이해함</title><rect x=\"32\" y=\"395\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"420\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">5 | 결과 해석 | 분석 결과를 문제와 맥락에 맞게 이해함</text></g><g data-slot-index=\"5\"><title>6 | 의사결정 및 서비스 활용 | 결과를 실제 행동·판단·서비스에 연결함</title><rect x=\"32\" y=\"479\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"504\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">6 | 의사결정 및 서비스 활용 | 결과를 실제 행동·판단·서비스에 연결함</text></g><path data-edge=\"0:1\" d=\"M436 113 V140\" stroke=\"#1F6F68\" fill=\"none\" marker-end=\"url(#arrow)\"/><path data-edge=\"1:2\" d=\"M436 197 V224\" stroke=\"#1F6F68\" fill=\"none\" marker-end=\"url(#arrow)\"/><path data-edge=\"2:3\" d=\"M436 281 V308\" stroke=\"#1F6F68\" fill=\"none\" marker-end=\"url(#arrow)\"/><path data-edge=\"3:4\" d=\"M436 365 V392\" stroke=\"#1F6F68\" fill=\"none\" marker-end=\"url(#arrow)\"/><path data-edge=\"4:5\" d=\"M436 449 V476\" stroke=\"#1F6F68\" fill=\"none\" marker-end=\"url(#arrow)\"/></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B10",
+      "title": "빅데이터 활용의 오개념",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 3,
+      "item_structure": "항목 배열",
+      "slots": [
+        "빅데이터를 무조건 아주 큰 데이터라고만 보는 것은 적절하지 않음",
+        "비정형 데이터가 정형 데이터보다 항상 더 가치 있는 것은 아님",
+        "데이터가 많을수록 분석 결과가 자동으로 더 정확해지는 것은 아님"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "목록",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 311\" role=\"img\" aria-label=\"빅데이터 활용의 오개념\"><title>빅데이터 활용의 오개념</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"311\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 배열</text><g data-slot-index=\"0\"><title>빅데이터를 무조건 아주 큰 데이터라고만 보는 것은 적절하지 않음</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">빅데이터를 무조건 아주 큰 데이터라고만 보는 것은 적절하지 않음</text></g><g data-slot-index=\"1\"><title>비정형 데이터가 정형 데이터보다 항상 더 가치 있는 것은 아님</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">비정형 데이터가 정형 데이터보다 항상 더 가치 있는 것은 아님</text></g><g data-slot-index=\"2\"><title>데이터가 많을수록 분석 결과가 자동으로 더 정확해지는 것은 아님</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">데이터가 많을수록 분석 결과가 자동으로 더 정확해지는 것은 아님</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B11",
+      "title": "빅데이터의 주요 활용 가치",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 5,
+      "item_structure": "항목 배열",
+      "slots": [
+        "이해 | 고객·학습자·시장·시스템의 현재 상태와 특성을 파악함",
+        "예측 | 과거와 현재 데이터로 수요·위험·행동·고장 가능성 등을 예측함",
+        "의사결정 지원 | 여러 선택지 중 더 적절한 대안을 찾도록 도움을 줌",
+        "운영 효율화 | 생산·물류·재고·에너지·인력 등의 운영을 개선함",
+        "새로운 서비스 | 추천·개인화·맞춤형 지원 등 데이터 기반 서비스를 제공함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "목록",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 479\" role=\"img\" aria-label=\"빅데이터의 주요 활용 가치\"><title>빅데이터의 주요 활용 가치</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"479\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 배열</text><g data-slot-index=\"0\"><title>이해 | 고객·학습자·시장·시스템의 현재 상태와 특성을 파악함</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">이해 | 고객·학습자·시장·시스템의 현재 상태와 특성을 파악함</text></g><g data-slot-index=\"1\"><title>예측 | 과거와 현재 데이터로 수요·위험·행동·고장 가능성 등을 예측함</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">예측 | 과거와 현재 데이터로 수요·위험·행동·고장 가능성 등을 예측함</text></g><g data-slot-index=\"2\"><title>의사결정 지원 | 여러 선택지 중 더 적절한 대안을 찾도록 도움을 줌</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">의사결정 지원 | 여러 선택지 중 더 적절한 대안을 찾도록 도움을 줌</text></g><g data-slot-index=\"3\"><title>운영 효율화 | 생산·물류·재고·에너지·인력 등의 운영을 개선함</title><rect x=\"32\" y=\"311\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"336\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">운영 효율화 | 생산·물류·재고·에너지·인력 등의 운영을 개선함</text></g><g data-slot-index=\"4\"><title>새로운 서비스 | 추천·개인화·맞춤형 지원 등 데이터 기반 서비스를 제공함</title><rect x=\"32\" y=\"395\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"420\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">새로운 서비스 | 추천·개인화·맞춤형 지원 등 데이터 기반 서비스를 제공함</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B12",
+      "title": "빅데이터 활용 사례",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 6,
+      "item_structure": "항목 배열",
+      "slots": [
+        "고객 분석 | 구매이력과 행동 데이터로 고객 특성과 선호를 파악함",
+        "추천 서비스 | 이용기록으로 상품·콘텐츠·강의 등을 추천함",
+        "수요 예측 | 판매량이나 이용량으로 향후 수요를 예측하여 재고와 자원을 계획함",
+        "이상 탐지 | 평소와 다른 거래나 시스템 상태를 탐지하여 위험과 장애에 대응함",
+        "공공서비스 | 교통·안전·복지·재난 데이터를 분석하여 정책과 서비스를 개선함",
+        "교육 분야 | 접속·출석·과제·성적 데이터로 참여 상태를 파악하고 학습지원을 제공함"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "서로 다른 여러 사례가 필요해 하나의 구체적 사물이나 같은 사물의 변형으로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "목록",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 563\" role=\"img\" aria-label=\"빅데이터 활용 사례\"><title>빅데이터 활용 사례</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"563\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 배열</text><g data-slot-index=\"0\"><title>고객 분석 | 구매이력과 행동 데이터로 고객 특성과 선호를 파악함</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">고객 분석 | 구매이력과 행동 데이터로 고객 특성과 선호를 파악함</text></g><g data-slot-index=\"1\"><title>추천 서비스 | 이용기록으로 상품·콘텐츠·강의 등을 추천함</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">추천 서비스 | 이용기록으로 상품·콘텐츠·강의 등을 추천함</text></g><g data-slot-index=\"2\"><title>수요 예측 | 판매량이나 이용량으로 향후 수요를 예측하여 재고와 자원을 계획함</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">수요 예측 | 판매량이나 이용량으로 향후 수요를 예측하여 재고와 자원을 계획함</text></g><g data-slot-index=\"3\"><title>이상 탐지 | 평소와 다른 거래나 시스템 상태를 탐지하여 위험과 장애에 대응함</title><rect x=\"32\" y=\"311\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"336\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">이상 탐지 | 평소와 다른 거래나 시스템 상태를 탐지하여 위험과 장애에 대응함</text></g><g data-slot-index=\"4\"><title>공공서비스 | 교통·안전·복지·재난 데이터를 분석하여 정책과 서비스를 개선함</title><rect x=\"32\" y=\"395\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"420\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">공공서비스 | 교통·안전·복지·재난 데이터를 분석하여 정책과 서비스를 개선함</text></g><g data-slot-index=\"5\"><title>교육 분야 | 접속·출석·과제·성적 데이터로 참여 상태를 파악하고 학습지원을 제공함</title><rect x=\"32\" y=\"479\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"504\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">교육 분야 | 접속·출석·과제·성적 데이터로 참여 상태를 파악하고 학습지원을 제공함</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B13",
+      "title": "온라인 쇼핑몰 데이터의 유형과 활용",
+      "track": "shape",
+      "info_type": "분류·계층",
+      "item_count": 5,
+      "item_structure": "대분류 | 하위항목 목록",
+      "slots": [
+        "구매내역 | 정형 / 상품 선호도·구매패턴 분석",
+        "상품정보 JSON | 반정형 / 상품정보 통합·검색",
+        "상품평 | 비정형 / 고객 의견·감정 분석",
+        "상담 녹음 | 비정형 / 불편사항·문의 유형 파악",
+        "배송 위치기록 | 저장구조에 따라 달라질 수 있음 / 배송상태 확인·경로 최적화"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "분류·계층",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 479\" role=\"img\" aria-label=\"온라인 쇼핑몰 데이터의 유형과 활용\"><title>온라인 쇼핑몰 데이터의 유형과 활용</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"479\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">대분류 | 하위항목 목록</text><g data-slot-index=\"0\"><title>구매내역 | 정형 / 상품 선호도·구매패턴 분석</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">구매내역 | 정형 / 상품 선호도·구매패턴 분석</text></g><g data-slot-index=\"1\"><title>상품정보 JSON | 반정형 / 상품정보 통합·검색</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">상품정보 JSON | 반정형 / 상품정보 통합·검색</text></g><g data-slot-index=\"2\"><title>상품평 | 비정형 / 고객 의견·감정 분석</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">상품평 | 비정형 / 고객 의견·감정 분석</text></g><g data-slot-index=\"3\"><title>상담 녹음 | 비정형 / 불편사항·문의 유형 파악</title><rect x=\"32\" y=\"311\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"336\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">상담 녹음 | 비정형 / 불편사항·문의 유형 파악</text></g><g data-slot-index=\"4\"><title>배송 위치기록 | 저장구조에 따라 달라질 수 있음 / 배송상태 확인·경로 최적화</title><rect x=\"32\" y=\"395\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"420\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">배송 위치기록 | 저장구조에 따라 달라질 수 있음 / 배송상태 확인·경로 최적화</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B14",
+      "title": "빅데이터 활용의 핵심",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 4,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "필요한 데이터를 목적에 맞게 확보함",
+        "여러 유형의 데이터를 결합하고 신뢰할 수 있는 상태로 만듦",
+        "목적에 맞게 분석함",
+        "의미 있는 판단과 서비스·운영의 가치로 연결함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "인과·수렴",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"unspecified\" viewBox=\"0 0 900 395\" role=\"img\" aria-label=\"빅데이터 활용의 핵심\"><title>빅데이터 활용의 핵심</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"395\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">연결 관계 미지정 · 항목 원문 보존</text><g data-slot-index=\"0\"><title>필요한 데이터를 목적에 맞게 확보함</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">필요한 데이터를 목적에 맞게 확보함</text></g><g data-slot-index=\"1\"><title>여러 유형의 데이터를 결합하고 신뢰할 수 있는 상태로 만듦</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">여러 유형의 데이터를 결합하고 신뢰할 수 있는 상태로 만듦</text></g><g data-slot-index=\"2\"><title>목적에 맞게 분석함</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">목적에 맞게 분석함</text></g><g data-slot-index=\"3\"><title>의미 있는 판단과 서비스·운영의 가치로 연결함</title><rect x=\"32\" y=\"311\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"336\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">의미 있는 판단과 서비스·운영의 가치로 연결함</text></g></svg>",
+    "presentationTrack": "shape"
+  }
+]

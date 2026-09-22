@@ -1,0 +1,762 @@
+Browser tab: 3, Title: "VDF Next — Starter Prototype", URL: "http://127.0.0.1:5174/".
+1 AXWebArea VDF Next — Starter Prototype, URL: 127.0.0.1:5174/
+	2 container root
+		3 link Description: 본문으로 건너뛰기, Value: 127.0.0.1:5174/#main
+		4 container
+			5 text VDF Next App v0.3.2.1 · Engine 6.0.0 RELEASE VDF 6.0 FREEZE
+		6 container Description: 주 메뉴, ID: primary-navigation
+			7 text VDF
+			8 button VDF 작업
+				9 image
+				10 text VDF 작업
+			11 button 사용 방법
+				12 image
+				13 text 사용 방법
+			14 button VDF 엔진 관리
+				15 image
+				16 text VDF 엔진 관리
+			17 button 배포 안내
+				18 image
+				19 text 배포 안내
+			20 text Engine Package Registry
+		21 container main
+			22 container
+				23 text VDF WORKFLOW
+				24 heading 강의노트를 VDF 계획으로 만들고, 검사하고, 제작에 활용합니다, Value: 1
+					25 text 강의노트를 VDF 계획으로 만들고, 검사하고, 제작에 활용합니다
+				26 text 현재 ACTIVE 엔진:  VDF 6.0 Reference / Stable
+			27 content list VDF 사용 단계
+				28 button 1 계획 만들기
+					44 image
+					30 text 1
+					31 text 계획 만들기
+				32 button 2 계획 검사
+					45 image
+					34 text 2
+					35 text 계획 검사
+				36 button 3 결과 확인
+					37 image
+					38 text 3
+					39 text 결과 확인
+				40 button 4 제작 활용
+					41 image
+					42 text 4
+					43 text 제작 활용
+			46 container
+				47 text STEP 3
+				48 heading 결과 확인, Value: 2
+					49 text 결과 확인
+				50 text 블록별 시각화 결과와 관계·카드를 확인하고 필요한 곳만 교수자가 조정합니다. VDF 6.0 Reference / Stable
+			51 container
+				52 text 브랜드 보호
+				53 pop up button (collapsed, settable) 브랜드 보호, Value: 켜기, Secondary Actions: Expand
+					54 menu
+						55 (selected) 켜기
+						56 끄기
+				57 text 배경 빈쪽
+				58 pop up button (collapsed, settable) 배경 빈쪽, Value: 왼쪽, Secondary Actions: Expand
+					59 menu
+						60 (selected) 왼쪽
+						61 오른쪽
+				62 text 강조색
+				63 color well (settable) 강조색, Value: #1f6f68
+			64 container
+				65 text 14  덩어리 0  그림 11  도형 0  확인할 것
+				66 button 전체
+				67 button 그림만
+				68 button 확인할 것만
+			69 container
+				70 text B1
+				71 heading 데이터의 정의와 형태, Value: 3
+					72 text 데이터의 정의와 형태
+				73 text 글 중심
+				74 container VDF 판단 경로
+					75 text 판단 경로
+					76 text 자동 판정
+					77 text 글자 지우기
+					78 text 글 중심
+					79 text 관계
+					80 text 정의
+					81 text 표현
+					82 text 글 중심
+					83 text 배치
+					84 text 배치 없음
+					85 text 결과
+					86 text 텍스트
+				87 text 관계 정의 항목 1
+				88 container 교수자 검토 및 조정
+					89 text 교수자 검토·조정
+					90 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					91 container
+						92 text 관계
+						93 pop up button (collapsed, settable) 관계 자동: 정의, Value: 정의, Secondary Actions: Expand
+							94 menu
+								95 순서·절차
+								96 분류·계층
+								97 비교·대조
+								98 인과·수렴
+								99 (selected) 정의
+								100 목록
+						101 text 자동:  정의
+					102 text 표현 방식
+					103 container 표현 방식 선택
+						104 checkbox 글 중심, Value: 1
+						105 checkbox 도형, Value: 0
+						106 checkbox 이미지, Value: 0
+					107 container
+						108 text 자동:  글 중심
+				109 button (expanded) 판단 근거 펼쳐보기, Secondary Actions: Collapse
+					110 text 판단 근거 펼쳐보기
+				730 text 원문 항목
+				731 text 용어 | 정의문
+				732 content list
+					733 container
+						734 AXListMarker 1. 
+						735 text 데이터 | 관찰·측정·조사·기록 등을 통해 얻은 사실이나 값으로, 숫자·문자·이미지·음성·영상·위치·센서 기록 등 다양한 형태로 존재하며 분석과 활용의 출발점이 되는 자료
+				736 definition list
+					737 container 관계
+						738 text 관계
+					739 text 정의
+					740 container 시각화 필요
+						741 text 시각화 필요
+					742 text NO
+					743 container 표현 방식
+						744 text 표현 방식
+					745 text 글 중심
+					746 container 선택 카드
+						747 text 선택 카드
+					748 text 없음
+					749 container 검증 상태
+						750 text 검증 상태
+					751 text 카드 검증 대상 아님
+					752 container 판정 이유
+						753 text 판정 이유
+					754 text 정의 관계의 글 중심 덩어리로 유지됩니다.
+					755 container 확인할 것
+						756 text 확인할 것
+					757 text 없음
+					758 container 대안 카드
+						759 text 대안 카드
+					760 container
+						761 text 이미지 카드 선택 없음 현재 결과는 기존 Domain 판정에 따라 SVG 또는 글 중심 경로를 사용합니다.
+			111 container
+				112 text B2
+				113 heading 데이터와 정보의 차이, Value: 3
+					114 text 데이터와 정보의 차이
+				115 text 글 + 도형
+				116 container VDF 판단 경로
+					117 text 판단 경로
+					118 text 자동 판정
+					119 text 글자 지우기
+					120 text 글 중심
+					121 text 관계
+					122 text 비교·대조
+					123 text 표현
+					124 text SVG 도형
+					125 text 배치
+					126 text 관계형 도형
+					127 text 결과
+					128 text SVG
+				129 text 관계 비교·대조 항목 3
+				130 container 교수자 검토 및 조정
+					131 text 교수자 검토·조정
+					132 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					133 container
+						134 text 관계
+						135 pop up button (collapsed, settable) 관계 자동: 비교·대조, Value: 비교·대조, Secondary Actions: Expand
+							136 menu
+								137 순서·절차
+								138 분류·계층
+								139 (selected) 비교·대조
+								140 인과·수렴
+								141 정의
+								142 목록
+						143 text 자동:  비교·대조
+					144 text 표현 방식
+					145 container 표현 방식 선택
+						146 checkbox 글 중심, Value: 0
+						147 checkbox 도형, Value: 1
+						148 checkbox 이미지, Value: 0
+					149 container
+						150 text 자동:  도형
+				151 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					152 text 판단 근거 펼쳐보기
+				153 container 데이터와 정보의 차이
+				154 button SVG 복사
+				155 button SVG 파일 저장
+					156 image
+					157 text SVG 파일 저장
+				158 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			159 container
+				160 text B3
+				161 heading 데이터 활용의 기본 흐름, Value: 3
+					162 text 데이터 활용의 기본 흐름
+				163 text 글 + 도형
+				164 container VDF 판단 경로
+					165 text 판단 경로
+					166 text 자동 판정
+					167 text 글자 지우기
+					168 text 글 중심
+					169 text 관계
+					170 text 순서·절차
+					171 text 표현
+					172 text SVG 도형
+					173 text 배치
+					174 text 관계형 도형
+					175 text 결과
+					176 text SVG
+				177 text 관계 순서·절차 항목 4
+				178 container 교수자 검토 및 조정
+					179 text 교수자 검토·조정
+					180 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					181 container
+						182 text 관계
+						183 pop up button (collapsed, settable) 관계 자동: 순서·절차, Value: 순서·절차, Secondary Actions: Expand
+							184 menu
+								185 (selected) 순서·절차
+								186 분류·계층
+								187 비교·대조
+								188 인과·수렴
+								189 정의
+								190 목록
+						191 text 자동:  순서·절차
+					192 text 표현 방식
+					193 container 표현 방식 선택
+						194 checkbox 글 중심, Value: 0
+						195 checkbox 도형, Value: 1
+						196 checkbox 이미지, Value: 0
+					197 container
+						198 text 자동:  도형
+				199 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					200 text 판단 근거 펼쳐보기
+				201 container 데이터 활용의 기본 흐름
+				202 button SVG 복사
+				203 button SVG 파일 저장
+					204 image
+					205 text SVG 파일 저장
+				206 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			207 container
+				208 text B4
+				209 heading 빅데이터의 정의, Value: 3
+					210 text 빅데이터의 정의
+				211 text 글 중심
+				212 container VDF 판단 경로
+					213 text 판단 경로
+					214 text 자동 판정
+					215 text 글자 지우기
+					216 text 글 중심
+					217 text 관계
+					218 text 정의
+					219 text 표현
+					220 text 글 중심
+					221 text 배치
+					222 text 배치 없음
+					223 text 결과
+					224 text 텍스트
+				225 text 관계 정의 항목 1
+				226 container 교수자 검토 및 조정
+					227 text 교수자 검토·조정
+					228 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					229 container
+						230 text 관계
+						231 pop up button (collapsed, settable) 관계 자동: 정의, Value: 정의, Secondary Actions: Expand
+							232 menu
+								233 순서·절차
+								234 분류·계층
+								235 비교·대조
+								236 인과·수렴
+								237 (selected) 정의
+								238 목록
+						239 text 자동:  정의
+					240 text 표현 방식
+					241 container 표현 방식 선택
+						242 checkbox 글 중심, Value: 1
+						243 checkbox 도형, Value: 0
+						244 checkbox 이미지, Value: 0
+					245 container
+						246 text 자동:  글 중심
+				247 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					248 text 판단 근거 펼쳐보기
+			249 container
+				250 text B5
+				251 heading 빅데이터의 기본 5V, Value: 3
+					252 text 빅데이터의 기본 5V
+				253 text 글 + 도형
+				254 container VDF 판단 경로
+					255 text 판단 경로
+					256 text 자동 판정
+					257 text 글자 지우기
+					258 text 글 중심
+					259 text 관계
+					260 text 분류·계층
+					261 text 표현
+					262 text SVG 도형
+					263 text 배치
+					264 text 관계형 도형
+					265 text 결과
+					266 text SVG
+				267 text 관계 분류·계층 항목 5
+				268 container 교수자 검토 및 조정
+					269 text 교수자 검토·조정
+					270 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					271 container
+						272 text 관계
+						273 pop up button (collapsed, settable) 관계 자동: 분류·계층, Value: 분류·계층, Secondary Actions: Expand
+							274 menu
+								275 순서·절차
+								276 (selected) 분류·계층
+								277 비교·대조
+								278 인과·수렴
+								279 정의
+								280 목록
+						281 text 자동:  분류·계층
+					282 text 표현 방식
+					283 container 표현 방식 선택
+						284 checkbox 글 중심, Value: 0
+						285 checkbox 도형, Value: 1
+						286 checkbox 이미지, Value: 0
+					287 container
+						288 text 자동:  도형
+				289 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					290 text 판단 근거 펼쳐보기
+				291 container 빅데이터의 기본 5V
+				292 button SVG 복사
+				293 button SVG 파일 저장
+					294 image
+					295 text SVG 파일 저장
+				296 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			297 container
+				298 text B6
+				299 heading 빅데이터의 확장 V, Value: 3
+					300 text 빅데이터의 확장 V
+				301 text 글 + 도형
+				302 container VDF 판단 경로
+					303 text 판단 경로
+					304 text 자동 판정
+					305 text 글자 지우기
+					306 text 글 중심
+					307 text 관계
+					308 text 비교·대조
+					309 text 표현
+					310 text SVG 도형
+					311 text 배치
+					312 text 관계형 도형
+					313 text 결과
+					314 text SVG
+				315 text 관계 비교·대조 항목 1
+				316 container 교수자 검토 및 조정
+					317 text 교수자 검토·조정
+					318 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					319 container
+						320 text 관계
+						321 pop up button (collapsed, settable) 관계 자동: 비교·대조, Value: 비교·대조, Secondary Actions: Expand
+							322 menu
+								323 순서·절차
+								324 분류·계층
+								325 (selected) 비교·대조
+								326 인과·수렴
+								327 정의
+								328 목록
+						329 text 자동:  비교·대조
+					330 text 표현 방식
+					331 container 표현 방식 선택
+						332 checkbox 글 중심, Value: 0
+						333 checkbox 도형, Value: 1
+						334 checkbox 이미지, Value: 0
+					335 container
+						336 text 자동:  도형
+				337 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					338 text 판단 근거 펼쳐보기
+				339 container 빅데이터의 확장 V
+				340 button SVG 복사
+				341 button SVG 파일 저장
+					342 image
+					343 text SVG 파일 저장
+				344 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			345 container
+				346 text B7
+				347 heading 데이터의 구조화 유형, Value: 3
+					348 text 데이터의 구조화 유형
+				349 text 글 + 도형
+				350 container VDF 판단 경로
+					351 text 판단 경로
+					352 text 자동 판정
+					353 text 글자 지우기
+					354 text 글 중심
+					355 text 관계
+					356 text 분류·계층
+					357 text 표현
+					358 text SVG 도형
+					359 text 배치
+					360 text 관계형 도형
+					361 text 결과
+					362 text SVG
+				363 text 관계 분류·계층 항목 3
+				364 container 교수자 검토 및 조정
+					365 text 교수자 검토·조정
+					366 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					367 container
+						368 text 관계
+						369 pop up button (collapsed, settable) 관계 자동: 분류·계층, Value: 분류·계층, Secondary Actions: Expand
+							370 menu
+								371 순서·절차
+								372 (selected) 분류·계층
+								373 비교·대조
+								374 인과·수렴
+								375 정의
+								376 목록
+						377 text 자동:  분류·계층
+					378 text 표현 방식
+					379 container 표현 방식 선택
+						380 checkbox 글 중심, Value: 0
+						381 checkbox 도형, Value: 1
+						382 checkbox 이미지, Value: 0
+					383 container
+						384 text 자동:  도형
+				385 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					386 text 판단 근거 펼쳐보기
+				387 container 데이터의 구조화 유형
+				388 button SVG 복사
+				389 button SVG 파일 저장
+					390 image
+					391 text SVG 파일 저장
+				392 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			393 container
+				394 text B8
+				395 heading 데이터 유형과 가치의 관계, Value: 3
+					396 text 데이터 유형과 가치의 관계
+				397 text 글 중심
+				398 container VDF 판단 경로
+					399 text 판단 경로
+					400 text 자동 판정
+					401 text 글자 지우기
+					402 text 글 중심
+					403 text 관계
+					404 text 정의
+					405 text 표현
+					406 text 글 중심
+					407 text 배치
+					408 text 배치 없음
+					409 text 결과
+					410 text 텍스트
+				411 text 관계 정의 항목 1
+				412 container 교수자 검토 및 조정
+					413 text 교수자 검토·조정
+					414 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					415 container
+						416 text 관계
+						417 pop up button (collapsed, settable) 관계 자동: 정의, Value: 정의, Secondary Actions: Expand
+							418 menu
+								419 순서·절차
+								420 분류·계층
+								421 비교·대조
+								422 인과·수렴
+								423 (selected) 정의
+								424 목록
+						425 text 자동:  정의
+					426 text 표현 방식
+					427 container 표현 방식 선택
+						428 checkbox 글 중심, Value: 1
+						429 checkbox 도형, Value: 0
+						430 checkbox 이미지, Value: 0
+					431 container
+						432 text 자동:  글 중심
+				433 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					434 text 판단 근거 펼쳐보기
+			435 container
+				436 text B9
+				437 heading 데이터에서 가치로의 전환, Value: 3
+					438 text 데이터에서 가치로의 전환
+				439 text 글 + 도형
+				440 container VDF 판단 경로
+					441 text 판단 경로
+					442 text 자동 판정
+					443 text 글자 지우기
+					444 text 글 중심
+					445 text 관계
+					446 text 순서·절차
+					447 text 표현
+					448 text SVG 도형
+					449 text 배치
+					450 text 관계형 도형
+					451 text 결과
+					452 text SVG
+				453 text 관계 순서·절차 항목 6
+				454 container 교수자 검토 및 조정
+					455 text 교수자 검토·조정
+					456 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					457 container
+						458 text 관계
+						459 pop up button (collapsed, settable) 관계 자동: 순서·절차, Value: 순서·절차, Secondary Actions: Expand
+							460 menu
+								461 (selected) 순서·절차
+								462 분류·계층
+								463 비교·대조
+								464 인과·수렴
+								465 정의
+								466 목록
+						467 text 자동:  순서·절차
+					468 text 표현 방식
+					469 container 표현 방식 선택
+						470 checkbox 글 중심, Value: 0
+						471 checkbox 도형, Value: 1
+						472 checkbox 이미지, Value: 0
+					473 container
+						474 text 자동:  도형
+				475 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					476 text 판단 근거 펼쳐보기
+				477 container 데이터에서 가치로의 전환
+				478 button SVG 복사
+				479 button SVG 파일 저장
+					480 image
+					481 text SVG 파일 저장
+				482 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			483 container
+				484 text B10
+				485 heading 빅데이터 활용의 오개념, Value: 3
+					486 text 빅데이터 활용의 오개념
+				487 text 글 + 도형
+				488 container VDF 판단 경로
+					489 text 판단 경로
+					490 text 자동 판정
+					491 text 글자 지우기
+					492 text 글 중심
+					493 text 관계
+					494 text 목록
+					495 text 표현
+					496 text SVG 도형
+					497 text 배치
+					498 text 관계형 도형
+					499 text 결과
+					500 text SVG
+				501 text 관계 목록 항목 3
+				502 container 교수자 검토 및 조정
+					503 text 교수자 검토·조정
+					504 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					505 container
+						506 text 관계
+						507 pop up button (collapsed, settable) 관계 자동: 목록, Value: 목록, Secondary Actions: Expand
+							508 menu
+								509 순서·절차
+								510 분류·계층
+								511 비교·대조
+								512 인과·수렴
+								513 정의
+								514 (selected) 목록
+						515 text 자동:  목록
+					516 text 표현 방식
+					517 container 표현 방식 선택
+						518 checkbox 글 중심, Value: 0
+						519 checkbox 도형, Value: 1
+						520 checkbox 이미지, Value: 0
+					521 container
+						522 text 자동:  도형
+				523 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					524 text 판단 근거 펼쳐보기
+				525 container 빅데이터 활용의 오개념
+				526 button SVG 복사
+				527 button SVG 파일 저장
+					528 image
+					529 text SVG 파일 저장
+				530 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			531 container
+				532 text B11
+				533 heading 빅데이터의 주요 활용 가치, Value: 3
+					534 text 빅데이터의 주요 활용 가치
+				535 text 글 + 도형
+				536 container VDF 판단 경로
+					537 text 판단 경로
+					538 text 자동 판정
+					539 text 글자 지우기
+					540 text 글 중심
+					541 text 관계
+					542 text 목록
+					543 text 표현
+					544 text SVG 도형
+					545 text 배치
+					546 text 관계형 도형
+					547 text 결과
+					548 text SVG
+				549 text 관계 목록 항목 5
+				550 container 교수자 검토 및 조정
+					551 text 교수자 검토·조정
+					552 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					553 container
+						554 text 관계
+						555 pop up button (collapsed, settable) 관계 자동: 목록, Value: 목록, Secondary Actions: Expand
+							556 menu
+								557 순서·절차
+								558 분류·계층
+								559 비교·대조
+								560 인과·수렴
+								561 정의
+								562 (selected) 목록
+						563 text 자동:  목록
+					564 text 표현 방식
+					565 container 표현 방식 선택
+						566 checkbox 글 중심, Value: 0
+						567 checkbox 도형, Value: 1
+						568 checkbox 이미지, Value: 0
+					569 container
+						570 text 자동:  도형
+				571 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					572 text 판단 근거 펼쳐보기
+				573 container 빅데이터의 주요 활용 가치
+				574 button SVG 복사
+				575 button SVG 파일 저장
+					576 image
+					577 text SVG 파일 저장
+				578 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			579 container
+				580 text B12
+				581 heading 빅데이터 활용 사례, Value: 3
+					582 text 빅데이터 활용 사례
+				583 text 글 + 도형
+				584 container VDF 판단 경로
+					585 text 판단 경로
+					586 text 자동 판정
+					587 text 글자 지우기
+					588 text 그림 없이
+					589 text 관계
+					590 text 목록
+					591 text 표현
+					592 text SVG 도형
+					593 text 배치
+					594 text 관계형 도형
+					595 text 결과
+					596 text SVG
+				597 text 관계 목록 항목 6 그림 없이 간다  —  서로 다른 여러 사례가 필요해 하나의 구체적 사물이나 같은 사물의 변형으로 좁혀지지 않음
+				598 container 교수자 검토 및 조정
+					599 text 교수자 검토·조정
+					600 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					601 container
+						602 text 관계
+						603 pop up button (collapsed, settable) 관계 자동: 목록, Value: 목록, Secondary Actions: Expand
+							604 menu
+								605 순서·절차
+								606 분류·계층
+								607 비교·대조
+								608 인과·수렴
+								609 정의
+								610 (selected) 목록
+						611 text 자동:  목록
+					612 text 표현 방식
+					613 container 표현 방식 선택
+						614 checkbox 글 중심, Value: 0
+						615 checkbox 도형, Value: 1
+						616 checkbox 이미지, Value: 0
+					617 container
+						618 text 자동:  도형
+				619 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					620 text 판단 근거 펼쳐보기
+				621 container 빅데이터 활용 사례
+				622 button SVG 복사
+				623 button SVG 파일 저장
+					624 image
+					625 text SVG 파일 저장
+				626 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			627 container
+				628 text B13
+				629 heading 온라인 쇼핑몰 데이터의 유형과 활용, Value: 3
+					630 text 온라인 쇼핑몰 데이터의 유형과 활용
+				631 text 글 + 도형
+				632 container VDF 판단 경로
+					633 text 판단 경로
+					634 text 자동 판정
+					635 text 글자 지우기
+					636 text 글 중심
+					637 text 관계
+					638 text 분류·계층
+					639 text 표현
+					640 text SVG 도형
+					641 text 배치
+					642 text 관계형 도형
+					643 text 결과
+					644 text SVG
+				645 text 관계 분류·계층 항목 5
+				646 container 교수자 검토 및 조정
+					647 text 교수자 검토·조정
+					648 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					649 container
+						650 text 관계
+						651 pop up button (collapsed, settable) 관계 자동: 분류·계층, Value: 분류·계층, Secondary Actions: Expand
+							652 menu
+								653 순서·절차
+								654 (selected) 분류·계층
+								655 비교·대조
+								656 인과·수렴
+								657 정의
+								658 목록
+						659 text 자동:  분류·계층
+					660 text 표현 방식
+					661 container 표현 방식 선택
+						662 checkbox 글 중심, Value: 0
+						663 checkbox 도형, Value: 1
+						664 checkbox 이미지, Value: 0
+					665 container
+						666 text 자동:  도형
+				667 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					668 text 판단 근거 펼쳐보기
+				669 container 온라인 쇼핑몰 데이터의 유형과 활용
+				670 button SVG 복사
+				671 button SVG 파일 저장
+					672 image
+					673 text SVG 파일 저장
+				674 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			675 container
+				676 text B14
+				677 heading 빅데이터 활용의 핵심, Value: 3
+					678 text 빅데이터 활용의 핵심
+				679 text 글 + 도형
+				680 container VDF 판단 경로
+					681 text 판단 경로
+					682 text 자동 판정
+					683 text 글자 지우기
+					684 text 글 중심
+					685 text 관계
+					686 text 인과·수렴
+					687 text 표현
+					688 text SVG 도형
+					689 text 배치
+					690 text 관계형 도형
+					691 text 결과
+					692 text SVG
+				693 text 관계 인과·수렴 항목 4
+				694 container 교수자 검토 및 조정
+					695 text 교수자 검토·조정
+					696 text AI 제안을 출발점으로 두고, 교수자의 최종 판단을 기준으로 SVG와 Image Prompt를 다시 계산합니다.
+					697 container
+						698 text 관계
+						699 pop up button (collapsed, settable) 관계 자동: 인과·수렴, Value: 인과·수렴, Secondary Actions: Expand
+							700 menu
+								701 순서·절차
+								702 분류·계층
+								703 비교·대조
+								704 (selected) 인과·수렴
+								705 정의
+								706 목록
+						707 text 자동:  인과·수렴
+					708 text 표현 방식
+					709 container 표현 방식 선택
+						710 checkbox 글 중심, Value: 0
+						711 checkbox 도형, Value: 1
+						712 checkbox 이미지, Value: 0
+					713 container
+						714 text 자동:  도형
+				715 button (collapsed) 판단 근거 펼쳐보기, Secondary Actions: Expand
+					716 text 판단 근거 펼쳐보기
+				717 container 빅데이터 활용의 핵심
+				718 button SVG 복사
+				719 button SVG 파일 저장
+					720 image
+					721 text SVG 파일 저장
+				722 text 긴 문장은 화면·파일에서 읽기 쉽도록 줄바꿈만 정리합니다. 판정 내용은 바뀌지 않습니다.
+			723 container
+				724 button 계획 검사로
+					725 image
+					726 text 계획 검사로
+				727 button 4단계 제작 활용
+					728 image
+					729 text 4단계 제작 활용
+
+The focused UI element is 109 button (expanded) 판단 근거 펼쳐보기, Secondary Actions: Collapse

@@ -1,3 +1,4 @@
+import {renderDiagram as diagramFor} from './diagram';
 import {INFO_TYPES,RULES} from './rules';
 import type {BlockEvaluation,CardKey,PresentationTrack,PromptLine,VdfBlock,VdfOptions,VdfWarning} from './types';
 
@@ -46,29 +47,6 @@ export function evaluateBlock(block:VdfBlock,opt:VdfOptions):BlockEvaluation{
  return {block:normalizedBlock,card,infoType,warnings:warningFor(normalizedBlock,card,infoType,opt),prompt:buildPrompt(normalizedBlock,card,opt),diagramSvg,presentationTrack};
 }
 
-function esc(s:string){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]!))}
-function cells(s:string){return String(s).split('|').map(x=>x.trim())}
-function svgBox(body:string,h=170){return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 ${h}" role="img"><rect width="900" height="${h}" fill="#fff"/>${body}</svg>`}
-function text(x:number,y:number,s:string,size=20,anchor='middle'){return `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="Malgun Gothic, sans-serif" font-size="${size}" fill="#212528">${esc(s)}</text>`}
-function rect(x:number,y:number,w:number,h:number,stroke:string,fill='#f6f7f6'){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="${fill}" stroke="${stroke}"/>`}
-
-export function diagramFor(block:VdfBlock,infoType:string,accent:string):string|null{
- const slots=block.slots||[]; if(!slots.length||infoType==='정의')return null;
- if(infoType==='목록'||infoType==='분류·계층'){
-  const cols=Math.min(slots.length,4), rows=Math.ceil(slots.length/cols), gap=18,pad=24,w=(900-pad*2-gap*(cols-1))/cols,h=90;
-  let body=''; slots.forEach((s,i)=>{const x=pad+(i%cols)*(w+gap),y=pad+Math.floor(i/cols)*(h+gap);body+=rect(x,y,w,h,accent)+text(x+w/2,y+52,cells(s)[0]||s,17)});
-  return svgBox(body,pad*2+rows*h+(rows-1)*gap);
- }
- if(infoType==='순서·절차'||infoType==='인과·수렴'){
-  const n=slots.length,gap=44,pad=24,w=(900-pad*2-gap*(n-1))/n,h=96; let body='';
-  slots.forEach((s,i)=>{const x=pad+i*(w+gap);body+=rect(x,30,w,h,accent)+text(x+w/2,85,cells(s)[0]||s,16);if(i<n-1){const ax=x+w+8;body+=`<path d="M${ax} 78 H${ax+gap-16}" stroke="${accent}" stroke-width="3"/><path d="M${ax+gap-24} 70 l10 8 -10 8" fill="none" stroke="${accent}" stroke-width="3"/>`}});
-  return svgBox(body,156);
- }
- if(infoType==='비교·대조'){
-  const a=cells(slots[0]||''), b=cells(slots[1]||'');
-  return svgBox(rect(30,28,390,110,accent)+rect(480,28,390,110,accent)+text(225,58,a[0]||'A',18)+text(675,58,b[0]||'B',18)+text(225,100,a.slice(1).join(' · ')||slots[0],15)+text(675,100,b.slice(1).join(' · ')||slots[1],15),166);
- }
- return null;
-}
+export {renderDiagram as diagramFor} from './diagram';
 
 export function promptText(lines:PromptLine[]){return lines.map(x=>`${x.key}: ${x.value}`).join('\n')}

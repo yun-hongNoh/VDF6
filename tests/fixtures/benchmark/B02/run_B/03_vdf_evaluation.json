@@ -1,0 +1,242 @@
+{
+  "contractVersion": "1.0",
+  "engine": {
+    "id": "vdf-6.0.0",
+    "version": "6.0.0"
+  },
+  "blocks": [
+    {
+      "id": "B1",
+      "title": "학습데이터 적합과 일반화 성능",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 3,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "관측값과 예측값의 차이를 줄이도록 학습함",
+        "학습데이터에 잘 맞아도 새로운 데이터에서 잘 맞는 것은 아님",
+        "새로운 데이터에 대한 일반화 성능을 평가함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B2",
+      "title": "문제에 따라 달라지는 평가기준",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 4,
+      "item_structure": "항목 배열",
+      "slots": [
+        "평균적인 오차의 중요성",
+        "큰 오차를 더 강하게 벌점화할 필요성",
+        "오차를 원래 단위로 해석할 필요성",
+        "설명력과 변수 수를 함께 고려할 필요성"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B3",
+      "title": "오차 기반 평가척도",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 4,
+      "item_structure": "항목 | 특징 | 해석 포인트",
+      "slots": [
+        "MAE | 절대오차의 평균, 원래 변수와 같은 단위, 극단적 오차의 영향이 상대적으로 작음 | 평균적인 오차크기",
+        "MSE | 오차를 제곱한 뒤 평균하여 큰 오차에 더 큰 벌점을 줌 | 큰 예측오차에 민감",
+        "RMSE | MSE의 제곱근으로 원래 목표변수와 같은 단위를 유지함 | 원래 단위로 큰 오차를 반영",
+        "MAPE | 실제값 대비 절대오차 비율의 평균을 백분율로 나타냄 | 상대오차 해석, 실제값이 0 또는 0에 가까울 때 주의"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B4",
+      "title": "오차 특성에 따른 척도 선택",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 2,
+      "item_structure": "항목 | MAE | MSE·RMSE",
+      "slots": [
+        "전형적인 오차크기 | 직관적으로 확인하는 데 유용함 | 큰 오차에 더 큰 벌점을 부여함",
+        "배송시간의 큰 오차 | 10분짜리 오차 여러 개의 평균적 크기를 파악함 | 3시간짜리 치명적 오차를 더 강하게 반영함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B5",
+      "title": "결정계수와 수정 결정계수",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 3,
+      "item_structure": "항목 | 결정계수(R²) | 수정 결정계수(Adjusted R²)",
+      "slots": [
+        "의미 | 목표변수의 변동을 모형이 얼마나 설명하는지 나타냄 | 설명력에 변수 수를 함께 고려함",
+        "변수 추가의 영향 | 변수 수가 늘면 쉽게 증가할 수 있음 | 불필요한 변수 추가의 영향을 보완함",
+        "해석 용도 | 일반적으로 값이 클수록 설명력이 높다고 봄 | 변수 수가 다른 모형을 비교할 때 유용함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B6",
+      "title": "회귀모형 평가의 주의점",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 4,
+      "item_structure": "항목 배열",
+      "slots": [
+        "R²가 높아도 모든 면에서 좋은 모형이라고 단정할 수 없음",
+        "R²가 높아도 잔차에 구조적 패턴이 남을 수 있음",
+        "RMSE가 작아도 잔차 확인이 필요함",
+        "오차척도·설명력·잔차·일반화성능을 함께 봐야 함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B7",
+      "title": "잔차의 의미",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "잔차 | 실제값과 예측값의 차이이며 무작위로 흩어지는지 특정 패턴을 보이는지 확인하는 값"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B8",
+      "title": "잔차에서 확인할 패턴",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 4,
+      "item_structure": "항목 배열",
+      "slots": [
+        "예측값이 커질수록 잔차의 폭이 커지는지 확인함",
+        "곡선형 패턴이 남아 있는지 확인함",
+        "특정 집단에 오차가 집중되는지 확인함",
+        "극단적인 잔차가 존재하는지 확인함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B9",
+      "title": "잔차가 알려주는 모형 문제",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 4,
+      "item_structure": "항목 배열",
+      "slots": [
+        "비선형 관계 누락",
+        "등분산성 문제 가능성",
+        "이상값·영향점",
+        "중요한 변수 누락 가능성"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    {
+      "id": "B10",
+      "title": "조기지원 모형의 평가정보 비교",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 4,
+      "item_structure": "항목 | 모형 A | 모형 B",
+      "slots": [
+        "MAE | 더 작음 | 제시되지 않음",
+        "RMSE | 모형 B와 비슷함 | 모형 A와 비슷함",
+        "R² | 제시되지 않음 | 더 높음",
+        "일부 학생의 매우 큰 오차 | 제시되지 않음 | 발생함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    }
+  ]
+}

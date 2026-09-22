@@ -1,0 +1,184 @@
+[
+  {
+    "block": {
+      "id": "B1",
+      "title": "세포의 두 가지 주요 유형",
+      "track": "image",
+      "info_type": "분류·계층",
+      "item_count": 2,
+      "item_structure": "대분류 | 하위항목 목록",
+      "slots": [
+        "원핵세포 | 핵 없음 / 단순함 / 작음 / 박테리아 / 고세균",
+        "진핵세포 | 핵 / 세포 소기관 / 식물 / 동물 / 곰팡이 / 원생동물"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "두 세포 유형의 구조적 차이가 구체적인 세포 단면 두 개로 좁혀짐"
+      },
+      "card": "C",
+      "subject": "two cell cross-sections side by side, exactly one cell on each side, left a small simple prokaryotic cell without a nucleus, right a eukaryotic cell with a distinct nucleus and organelles",
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": true,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": "C",
+    "infoType": "분류·계층",
+    "warnings": [],
+    "prompt": [
+      {
+        "key": "subject",
+        "value": "two cell cross-sections side by side, exactly one cell on each side, left a small simple prokaryotic cell without a nucleus, right a eukaryotic cell with a distinct nucleus and organelles"
+      },
+      {
+        "key": "background",
+        "value": "plain seamless background, environment barely visible"
+      },
+      {
+        "key": "composition",
+        "value": "both halves sit on one single continuous unbroken floor plane with no seam or line between them, identical camera angle and scale, the pair grouped within the left 60% of the frame, the right 40% is empty background"
+      },
+      {
+        "key": "style",
+        "value": "premium 3D educational render, accent glow carrying the data only"
+      },
+      {
+        "key": "ratio",
+        "value": "16:9"
+      },
+      {
+        "key": "negative",
+        "value": "text-free, no readable text, no labels, no decorative HUD rings"
+      }
+    ],
+    "diagramSvg": null,
+    "presentationTrack": "image"
+  },
+  {
+    "block": {
+      "id": "B2",
+      "title": "주요 세포 구성 요소",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 6,
+      "item_structure": "항목 배열",
+      "slots": [
+        "세포막 | 세포를 환경으로부터 분리하고 세포 안팎의 물질 이동을 제어하는 지질 이중층",
+        "핵 | 세포의 제어 센터로 DNA를 보관함",
+        "미토콘드리아 | 세포 호흡을 통해 ATP를 생성함",
+        "엽록체 | 식물에서 햇빛을 화학 에너지로 변환하는 광합성 장소임",
+        "소포체 | 단백질과 지질 합성에 관여함",
+        "골지 장치 | 분비를 위해 단백질을 수정·분류·포장함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "목록",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 563\" role=\"img\" aria-label=\"주요 세포 구성 요소\"><title>주요 세포 구성 요소</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"563\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 배열</text><g data-slot-index=\"0\"><title>세포막 | 세포를 환경으로부터 분리하고 세포 안팎의 물질 이동을 제어하는 지질 이중층</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">세포막 | 세포를 환경으로부터 분리하고 세포 안팎의 물질 이동을 제어하는 지질 이중층</text></g><g data-slot-index=\"1\"><title>핵 | 세포의 제어 센터로 DNA를 보관함</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">핵 | 세포의 제어 센터로 DNA를 보관함</text></g><g data-slot-index=\"2\"><title>미토콘드리아 | 세포 호흡을 통해 ATP를 생성함</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">미토콘드리아 | 세포 호흡을 통해 ATP를 생성함</text></g><g data-slot-index=\"3\"><title>엽록체 | 식물에서 햇빛을 화학 에너지로 변환하는 광합성 장소임</title><rect x=\"32\" y=\"311\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"336\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">엽록체 | 식물에서 햇빛을 화학 에너지로 변환하는 광합성 장소임</text></g><g data-slot-index=\"4\"><title>소포체 | 단백질과 지질 합성에 관여함</title><rect x=\"32\" y=\"395\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"420\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">소포체 | 단백질과 지질 합성에 관여함</text></g><g data-slot-index=\"5\"><title>골지 장치 | 분비를 위해 단백질을 수정·분류·포장함</title><rect x=\"32\" y=\"479\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"504\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">골지 장치 | 분비를 위해 단백질을 수정·분류·포장함</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B3",
+      "title": "세포 기능",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 4,
+      "item_structure": "항목 배열",
+      "slots": [
+        "신진대사",
+        "에너지 전환",
+        "환경 신호에 대한 반응",
+        "생식"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "목록",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" data-vdf-lossless=\"1\" data-relation=\"rows\" viewBox=\"0 0 900 395\" role=\"img\" aria-label=\"세포 기능\"><title>세포 기능</title><defs><marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0 0 L10 5 L0 10\" fill=\"#1F6F68\"/></marker></defs><rect width=\"900\" height=\"395\" fill=\"#fff\"/><text x=\"32\" y=\"41\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">항목 배열</text><g data-slot-index=\"0\"><title>신진대사</title><rect x=\"32\" y=\"59\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"84\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">신진대사</text></g><g data-slot-index=\"1\"><title>에너지 전환</title><rect x=\"32\" y=\"143\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"168\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">에너지 전환</text></g><g data-slot-index=\"2\"><title>환경 신호에 대한 반응</title><rect x=\"32\" y=\"227\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"252\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">환경 신호에 대한 반응</text></g><g data-slot-index=\"3\"><title>생식</title><rect x=\"32\" y=\"311\" width=\"808\" height=\"54\" rx=\"10\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"46\" y=\"336\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\" xml:space=\"preserve\">생식</text></g></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B4",
+      "title": "세포 번식",
+      "track": "image",
+      "info_type": "분류·계층",
+      "item_count": 2,
+      "item_structure": "대분류 | 하위항목 목록",
+      "slots": [
+        "유사 분열 | 다세포 유기체의 성장과 회복",
+        "감수 분열 | 성 생식"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "같은 세포의 두 번식 과정과 용도 차이가 구체적인 좌우 장면으로 좁혀짐"
+      },
+      "card": "C",
+      "subject": "two cell division scenes side by side, exactly one parent cell on each side, left undergoing mitosis for growth and repair, right undergoing meiosis for sexual reproduction",
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": true,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": "C",
+    "infoType": "분류·계층",
+    "warnings": [],
+    "prompt": [
+      {
+        "key": "subject",
+        "value": "two cell division scenes side by side, exactly one parent cell on each side, left undergoing mitosis for growth and repair, right undergoing meiosis for sexual reproduction"
+      },
+      {
+        "key": "background",
+        "value": "plain seamless background, environment barely visible"
+      },
+      {
+        "key": "composition",
+        "value": "both halves sit on one single continuous unbroken floor plane with no seam or line between them, identical camera angle and scale, the pair grouped within the left 60% of the frame, the right 40% is empty background"
+      },
+      {
+        "key": "style",
+        "value": "premium 3D educational render, accent glow carrying the data only"
+      },
+      {
+        "key": "ratio",
+        "value": "16:9"
+      },
+      {
+        "key": "negative",
+        "value": "text-free, no readable text, no labels, no decorative HUD rings"
+      }
+    ],
+    "diagramSvg": null,
+    "presentationTrack": "image"
+  }
+]

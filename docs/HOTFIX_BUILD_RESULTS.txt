@@ -1,0 +1,15 @@
+
+> vdf-next-starter@0.3.2.6 build
+> tsc --noEmit && vite build
+
+vite v6.3.5 building for production...
+transforming...
+
+✓ 1750 modules transformed.
+dist/index.html 0.50 kB
+dist/assets/index-X6a29Q3t.css 30.35 kB
+dist/assets/index-Bi9uE5Iy.js 723.45 kB
+Warning: bundle chunk larger than 500 kB.
+✓ built in 7.42s
+Process exit code: 0
+

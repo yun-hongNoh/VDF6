@@ -1,0 +1,402 @@
+[
+  {
+    "block": {
+      "id": "B1",
+      "title": "스캠퍼의 의미",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "스캠퍼(SCAMPER) | 사물·서비스·프로세스를 새로운 것으로 변형하기 위한 9가지 아이디어 변형 기법을 담은 창의적 발상 도구임"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B2",
+      "title": "스캠퍼의 탄생 배경",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 3,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "알렉스 오스본의 체크리스트",
+        "밥 에벌이 기억하기 쉽게 간단하게 재구성함",
+        "아이디어를 자극하는 질문으로 구성된 스캠퍼가 됨"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "인과·수렴",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 156\" role=\"img\"><rect width=\"900\" height=\"156\" fill=\"#fff\"/><rect x=\"24\" y=\"30\" width=\"254.66666666666666\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"151.33333333333331\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">알렉스 오스본의 체크리스트</text><path d=\"M286.66666666666663 78 H314.66666666666663\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M306.66666666666663 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"322.66666666666663\" y=\"30\" width=\"254.66666666666666\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"449.99999999999994\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">밥 에벌이 기억하기 쉽게 간단하게 재구성함</text><path d=\"M585.3333333333333 78 H613.3333333333333\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M605.3333333333333 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"621.3333333333333\" y=\"30\" width=\"254.66666666666666\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"748.6666666666666\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">아이디어를 자극하는 질문으로 구성된 스캠퍼가 됨</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B3",
+      "title": "스캠퍼의 7가지 구성 요소",
+      "track": "shape",
+      "info_type": "목록",
+      "item_count": 7,
+      "item_structure": "항목 배열",
+      "slots": [
+        "S | Substitute · 대체하기",
+        "C | Combine · 결합하기",
+        "A | Adapt · 적용/응용하기",
+        "M | Modify/Magnify · 변경/확대하기",
+        "P | Put to other uses · 용도 변경하기",
+        "E | Eliminate · 제거하기",
+        "R | Reverse/Rearrange · 뒤집기/재배열하기"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "목록",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 246\" role=\"img\"><rect width=\"900\" height=\"246\" fill=\"#fff\"/><rect x=\"24\" y=\"24\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"123.75\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">S</text><rect x=\"241.5\" y=\"24\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"341.25\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">C</text><rect x=\"459\" y=\"24\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"558.75\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">A</text><rect x=\"676.5\" y=\"24\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"776.25\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">M</text><rect x=\"24\" y=\"132\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"123.75\" y=\"184\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">P</text><rect x=\"241.5\" y=\"132\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"341.25\" y=\"184\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">E</text><rect x=\"459\" y=\"132\" width=\"199.5\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"558.75\" y=\"184\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">R</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B4",
+      "title": "대체하기의 원리",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "대체하기(Substitute) | 무엇으로, 누구로, 어떤 재질로, 어떤 다른 방법·소리·장소로 대체할 수 있는지 묻는 원리임"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B5",
+      "title": "스마트 주차 요금 징수기의 대체",
+      "track": "image",
+      "info_type": "인과·수렴",
+      "item_count": 3,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "동전 사용의 불편",
+        "결제 수단인 동전을 무엇으로 대체할지 질문함",
+        "신용카드로 대체한 스마트 주차 요금 징수기"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "같은 주차 요금 징수기에서 결제 수단만 바뀌는 기준점과 변형으로 대상이 좁혀짐"
+      },
+      "card": "A",
+      "subject": "a coin-operated parking meter and the same parking meter with a credit-card payment slot, evenly spaced in a single row, three-quarter angle",
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": true,
+        "replacement_type": true,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": "A",
+    "infoType": "인과·수렴",
+    "warnings": [],
+    "prompt": [
+      {
+        "key": "subject",
+        "value": "a coin-operated parking meter and the same parking meter with a credit-card payment slot, evenly spaced in a single row, three-quarter angle, all clearly made from the same base form"
+      },
+      {
+        "key": "background",
+        "value": "uniform solid light-gray seamless background"
+      },
+      {
+        "key": "composition",
+        "value": "a single row, lower 10% clear"
+      },
+      {
+        "key": "style",
+        "value": "premium 3D educational render, matte materials, soft directional key light from upper-left, no baked shadows"
+      },
+      {
+        "key": "ratio",
+        "value": "16:9"
+      },
+      {
+        "key": "negative",
+        "value": "text-free, no readable text, no letters, no numbers, no labels, no logos, no brand names, no overlapping objects, no environmental props"
+      }
+    ],
+    "diagramSvg": null,
+    "presentationTrack": "image"
+  },
+  {
+    "block": {
+      "id": "B6",
+      "title": "결합하기의 원리",
+      "track": "shape",
+      "info_type": "정의",
+      "item_count": 1,
+      "item_structure": "용어 | 정의문",
+      "slots": [
+        "결합하기(Combine) | 이전에는 관련되지 않았던 제품·목적·아이디어·서비스를 결합하여 혁신 아이디어를 도출하는 원리임"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "정의",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": null,
+    "presentationTrack": "text"
+  },
+  {
+    "block": {
+      "id": "B7",
+      "title": "구텐베르크 인쇄기의 이종 결합",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 4,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "중세 시대의 대량 인쇄 과제",
+        "동전 펀치기의 글자를 새기는 방식",
+        "포도주 압착기의 강하게 누르는 방식",
+        "두 방식을 결합한 금속 활자 인쇄기"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "동전 펀치기·포도주 압착기·인쇄기라는 서로 다른 사물이 함께 필요해 하나의 사물이나 같은 사물의 변형으로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "인과·수렴",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 156\" role=\"img\"><rect width=\"900\" height=\"156\" fill=\"#fff\"/><rect x=\"24\" y=\"30\" width=\"180\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"114\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">중세 시대의 대량 인쇄 과제</text><path d=\"M212 78 H240\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M232 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"248\" y=\"30\" width=\"180\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"338\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">동전 펀치기의 글자를 새기는 방식</text><path d=\"M436 78 H464\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M456 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"472\" y=\"30\" width=\"180\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"562\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">포도주 압착기의 강하게 누르는 방식</text><path d=\"M660 78 H688\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M680 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"696\" y=\"30\" width=\"180\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"786\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">두 방식을 결합한 금속 활자 인쇄기</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B8",
+      "title": "아이폰에 적용된 결합",
+      "track": "shape",
+      "info_type": "인과·수렴",
+      "item_count": 4,
+      "item_structure": "원인 → 중간 → 결과",
+      "slots": [
+        "전화기 기능",
+        "아이팟의 음악 재생 기능",
+        "인터넷 통신 기기 기능",
+        "세 기능을 결합한 아이폰"
+      ],
+      "gate": {
+        "passed": false,
+        "reason": "전화기·음악 재생기·인터넷 통신 기기·스마트폰이라는 서로 다른 사물이 필요해 하나로 좁혀지지 않음"
+      },
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": true,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "인과·수렴",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 156\" role=\"img\"><rect width=\"900\" height=\"156\" fill=\"#fff\"/><rect x=\"24\" y=\"30\" width=\"180\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"114\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">전화기 기능</text><path d=\"M212 78 H240\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M232 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"248\" y=\"30\" width=\"180\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"338\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">아이팟의 음악 재생 기능</text><path d=\"M436 78 H464\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M456 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"472\" y=\"30\" width=\"180\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"562\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">인터넷 통신 기기 기능</text><path d=\"M660 78 H688\" stroke=\"#1F6F68\" stroke-width=\"3\"/><path d=\"M680 70 l10 8 -10 8\" fill=\"none\" stroke=\"#1F6F68\" stroke-width=\"3\"/><rect x=\"696\" y=\"30\" width=\"180\" height=\"96\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"786\" y=\"85\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"16\" fill=\"#212528\">세 기능을 결합한 아이폰</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B9",
+      "title": "실무에 적용하는 대체와 결합",
+      "track": "shape",
+      "info_type": "분류·계층",
+      "item_count": 2,
+      "item_structure": "대분류 | 하위항목 목록",
+      "slots": [
+        "S 대체 | 불만이 많은 부품이나 프로세스를 다른 사람·재질로 대체함",
+        "C 결합 | 옆 부서의 기획안을 자신의 기획안과 결합함"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": true,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "분류·계층",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 138\" role=\"img\"><rect width=\"900\" height=\"138\" fill=\"#fff\"/><rect x=\"24\" y=\"24\" width=\"417\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"232.5\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">S 대체</text><rect x=\"459\" y=\"24\" width=\"417\" height=\"90\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"667.5\" y=\"76\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"17\" fill=\"#212528\">C 결합</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B10",
+      "title": "일반인의 질문과 숙련자의 질문",
+      "track": "shape",
+      "info_type": "비교·대조",
+      "item_count": 2,
+      "item_structure": "항목 | A값 | B값",
+      "slots": [
+        "질문 방식 | 일반인: 기발한 새 의자 아이디어 요구 | 숙련자: 일반 사무용 의자에 S와 C 조건을 강제함",
+        "결과 경향 | 일반인: 메시 소재·인체공학 등 일반적 디자인 | 숙련자: 조건에 맞춘 구체적인 파생 아이디어"
+      ],
+      "gate": null,
+      "card": null,
+      "subject": null,
+      "subject_traits": {
+        "branded_category": false,
+        "same_form_variants": false,
+        "replacement_type": false,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": null,
+    "infoType": "비교·대조",
+    "warnings": [],
+    "prompt": null,
+    "diagramSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 900 166\" role=\"img\"><rect width=\"900\" height=\"166\" fill=\"#fff\"/><rect x=\"30\" y=\"28\" width=\"390\" height=\"110\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><rect x=\"480\" y=\"28\" width=\"390\" height=\"110\" rx=\"12\" fill=\"#f6f7f6\" stroke=\"#1F6F68\"/><text x=\"225\" y=\"58\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"18\" fill=\"#212528\">질문 방식</text><text x=\"675\" y=\"58\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"18\" fill=\"#212528\">결과 경향</text><text x=\"225\" y=\"100\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\">일반인: 기발한 새 의자 아이디어 요구 · 숙련자: 일반 사무용 의자에 S와 C 조건을 강제함</text><text x=\"675\" y=\"100\" text-anchor=\"middle\" font-family=\"Malgun Gothic, sans-serif\" font-size=\"15\" fill=\"#212528\">일반인: 메시 소재·인체공학 등 일반적 디자인 · 숙련자: 조건에 맞춘 구체적인 파생 아이디어</text></svg>",
+    "presentationTrack": "shape"
+  },
+  {
+    "block": {
+      "id": "B11",
+      "title": "스캠퍼 프레임이 만든 의자 아이디어",
+      "track": "image",
+      "info_type": "목록",
+      "item_count": 2,
+      "item_structure": "항목 배열",
+      "slots": [
+        "S 대체 | 의자 다리를 자성 부상 모듈로 대체해 층간 소음을 없앰",
+        "C 결합 | 좌판 하단에 소형 페달 발전기를 결합해 운동하며 스마트폰을 충전함"
+      ],
+      "gate": {
+        "passed": true,
+        "reason": "기준 사무용 의자와 다리·좌판 하단만 바뀐 두 변형으로 그릴 대상이 좁혀짐"
+      },
+      "card": "A",
+      "subject": "a standard office chair, the same office chair with magnetic-levitation leg modules, and the same office chair with a compact pedal generator beneath the seat charging a generic smartphone, evenly spaced in a single row, three-quarter angle",
+      "subject_traits": {
+        "branded_category": true,
+        "same_form_variants": true,
+        "replacement_type": true,
+        "scale_is_the_point": false,
+        "spreads_across_frame": false
+      }
+    },
+    "card": "A",
+    "infoType": "목록",
+    "warnings": [],
+    "prompt": [
+      {
+        "key": "subject",
+        "value": "a standard office chair, the same office chair with magnetic-levitation leg modules, and the same office chair with a compact pedal generator beneath the seat charging a generic smartphone, evenly spaced in a single row, three-quarter angle, all clearly made from the same base form, unbranded, no app icons, no screen content, no brand logos, generic design"
+      },
+      {
+        "key": "background",
+        "value": "uniform solid light-gray seamless background"
+      },
+      {
+        "key": "composition",
+        "value": "a single row, lower 10% clear"
+      },
+      {
+        "key": "style",
+        "value": "premium 3D educational render, matte materials, soft directional key light from upper-left, no baked shadows"
+      },
+      {
+        "key": "ratio",
+        "value": "16:9"
+      },
+      {
+        "key": "negative",
+        "value": "text-free, no readable text, no letters, no numbers, no labels, no logos, no brand names, no overlapping objects, no environmental props"
+      }
+    ],
+    "diagramSvg": null,
+    "presentationTrack": "image"
+  }
+]
